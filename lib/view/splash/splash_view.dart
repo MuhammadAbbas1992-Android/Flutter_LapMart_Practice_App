@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:lap_mart/view_model/services/splash_services/splash_services.dart';
 
 class SplashView extends StatefulWidget {
@@ -20,9 +21,15 @@ class _SplashViewState extends State<SplashView> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Colors.green,
-      body: Text('Splash Screen'),
+    return Scaffold(
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        child: const Image(
+          image: AssetImage('assets/images/splash.png'),
+          fit: BoxFit.fill,
+        ),
+      ),
     );
   }
 }
