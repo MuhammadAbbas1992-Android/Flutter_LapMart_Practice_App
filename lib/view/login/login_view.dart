@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get_navigation/src/router_report.dart';
+import 'package:get/get.dart';
+import 'package:lap_mart/res/routs/routs_app.dart';
+import 'package:lap_mart/res/routs/routs_name.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -18,7 +21,7 @@ class _LoginViewState extends State<LoginView> {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 100.0,
               ),
               Row(
@@ -27,10 +30,10 @@ class _LoginViewState extends State<LoginView> {
                   SvgPicture.asset(
                     'assets/icons/ic_laptop.svg',
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 5.0,
                   ),
-                  Text(
+                  const Text(
                     'LapMart',
                     style: TextStyle(
                         color: Color(0xFF000000),
@@ -39,7 +42,7 @@ class _LoginViewState extends State<LoginView> {
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 100.0,
               ),
               SizedBox(
@@ -113,27 +116,37 @@ class _LoginViewState extends State<LoginView> {
                 height: 48.0,
                 child: TextButton(
                   onPressed: () {},
-                  child: Text(
+                  style: TextButton.styleFrom(
+                      backgroundColor: const Color(0xFFE77FB3)),
+                  child: const Text(
                     'Sign In',
                     style: TextStyle(color: Colors.white, fontSize: 16.0),
                   ),
-                  style:
-                      TextButton.styleFrom(backgroundColor: Color(0xFFE77FB3)),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10.0,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     'Don’t have an account?',
                     style: TextStyle(color: Color(0xFFA6A4A4), fontSize: 14.0),
                   ),
-                  Text(
-                    'Sign Up',
-                    style: TextStyle(color: Color(0xFFE77FB3), fontSize: 14.0),
+                  const SizedBox(
+                    width: 10.0,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Get.back();
+                      Get.toNamed(RoutsName.signUpView);
+                    },
+                    child: const Text(
+                      'Sign Up',
+                      style:
+                          TextStyle(color: Color(0xFFE77FB3), fontSize: 14.0),
+                    ),
                   )
                 ],
               )

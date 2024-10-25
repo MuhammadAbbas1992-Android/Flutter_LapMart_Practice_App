@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:lap_mart/res/routs/routs_app.dart';
+import 'package:lap_mart/view/contact_us/contact_us_view.dart';
+import 'package:lap_mart/view/sign_up/sign_up_view.dart';
 import 'package:lap_mart/view/splash/splash_view.dart';
 
 void main() {
@@ -19,8 +21,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const SplashView(),
-      getPages: AppRouts.appRouts(),
+      // home: const SplashView(),
+      // getPages: AppRouts.appRouts(),
+      home: ContactUsView(),
     );
   }
 }
