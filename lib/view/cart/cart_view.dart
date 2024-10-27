@@ -92,7 +92,7 @@ class _CartViewState extends State<CartView> {
                             height: double.infinity,
                             child: SvgPicture.asset(
                               'assets/icons/ic_delete.svg',
-                              alignment: Alignment(0, 1),
+                              alignment: Alignment(0, .9),
                             ),
                           )
                         ],
