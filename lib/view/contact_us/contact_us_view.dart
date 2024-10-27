@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:lap_mart/res/components/email_widget.dart';
+import 'package:lap_mart/res/components/row_widget.dart';
+import 'package:lap_mart/res/components/text_widget.dart';
 
 class ContactUsView extends StatefulWidget {
   const ContactUsView({super.key});
@@ -12,276 +15,84 @@ class ContactUsView extends StatefulWidget {
 class _ContactUsViewState extends State<ContactUsView> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: SafeArea(
           child: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: EdgeInsets.all(20.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Row(
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: SvgPicture.asset('assets/icons/ic_menu.svg'),
-                ),
-                Expanded(
-                    flex: 8,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset(
-                          'assets/icons/ic_laptop.svg',
-                          width: 24.0,
-                          height: 17.0,
-                        ),
-                        const SizedBox(
-                          width: 5.0,
-                        ),
-                        const Text(
-                          'LapMart',
-                          style: TextStyle(
-                              color: Color(0xFF000000),
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    )),
-                const Expanded(
-                  flex: 1,
-                  child: SizedBox(
-                    width: double.infinity,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
+            RowWidget(),
+            SizedBox(
               height: 30.0,
             ),
-            const Text(
-              'Contact Us',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(
+            TextWidget(
+                text: 'Contact Us',
+                size: 18.0,
+                fontWeight: FontWeight.bold,
+                textAlign: TextAlign.center),
+            SizedBox(
               height: 20.0,
             ),
-            const Text(
-              'If you  have any inquiries get in touch with us.\nWe will be happy to help you.',
-              style: TextStyle(
-                fontSize: 14,
-              ),
+            TextWidget(
+              text:
+                  'If you  have any inquiries get in touch with us. We will be happy to help you.',
+              size: 14,
+              fontWeight: FontWeight.normal,
+              textAlign: TextAlign.start,
             ),
-            const SizedBox(
+            SizedBox(
               height: 20.0,
             ),
-            const Text(
-              'Lolwah Altayyar ',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            TextWidget(
+              text: 'Lolwah Altayyar',
+              size: 18.0,
+              fontWeight: FontWeight.bold,
+              textAlign: TextAlign.center,
             ),
-            const SizedBox(
+            SizedBox(
               height: 10.0,
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-              child: Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(
-                      10.0,
-                    ),
-                    border: Border.all(color: Colors.black)),
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 53.0,
-                  child: Row(
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 10.0),
-                          child: SvgPicture.asset(
-                            'assets/icons/ic_email_1.svg',
-                          ),
-                        ),
-                      ),
-                      const Expanded(
-                        flex: 8,
-                        child: Text(
-                          'Lolwah @gmail.com',
-                          style: TextStyle(
-                            fontSize: 16.0,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      const Expanded(
-                        flex: 1,
-                        child: SizedBox(
-                          width: double.infinity,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(
+            EmailWidget(text: 'Lolwah@gmail.com'),
+            SizedBox(
               height: 20.0,
             ),
-            const Text(
-              'Razan  Arishi',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            TextWidget(
+              text: 'Razan  Arishi',
+              size: 18.0,
+              fontWeight: FontWeight.bold,
+              textAlign: TextAlign.center,
             ),
-            const SizedBox(
+            SizedBox(
               height: 10.0,
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-              child: Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(
-                      10.0,
-                    ),
-                    border: Border.all(color: Colors.black)),
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 53.0,
-                  child: Row(
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 10.0),
-                          child: SvgPicture.asset(
-                            'assets/icons/ic_email_1.svg',
-                          ),
-                        ),
-                      ),
-                      const Expanded(
-                        flex: 8,
-                        child: Text(
-                          'Razan@gmail.com',
-                          style: TextStyle(
-                            fontSize: 16.0,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      const Expanded(
-                        flex: 1,
-                        child: SizedBox(
-                          width: double.infinity,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(
+            EmailWidget(text: 'Razan@gmail.com'),
+            SizedBox(
               height: 20.0,
             ),
-            const Text(
-              'Nouf Aljammaz',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            TextWidget(
+              text: 'Nouf Aljammaz',
+              size: 18.0,
+              fontWeight: FontWeight.bold,
+              textAlign: TextAlign.center,
             ),
-            const SizedBox(
+            SizedBox(
               height: 10.0,
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-              child: Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(
-                      10.0,
-                    ),
-                    border: Border.all(color: Colors.black)),
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 53.0,
-                  child: Row(
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 10.0),
-                          child: SvgPicture.asset(
-                            'assets/icons/ic_email_1.svg',
-                          ),
-                        ),
-                      ),
-                      const Expanded(
-                        flex: 8,
-                        child: Text(
-                          'Nouf@gmail.com',
-                          style: TextStyle(
-                            fontSize: 16.0,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      const Expanded(
-                        flex: 1,
-                        child: SizedBox(
-                          width: double.infinity,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(
+            EmailWidget(text: 'Nouf@gmail.com'),
+            SizedBox(
               height: 20.0,
             ),
-            const Text(
-              'Khloud Alshahrani',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            TextWidget(
+              text: 'Khloud Alshahrani',
+              size: 18.0,
+              fontWeight: FontWeight.bold,
+              textAlign: TextAlign.center,
             ),
-            const SizedBox(
+            SizedBox(
               height: 10.0,
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-              child: Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(
-                      10.0,
-                    ),
-                    border: Border.all(color: Colors.black)),
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 53.0,
-                  child: Row(
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 10.0),
-                          child: SvgPicture.asset(
-                            'assets/icons/ic_email_1.svg',
-                          ),
-                        ),
-                      ),
-                      const Expanded(
-                        flex: 8,
-                        child: Text(
-                          'Khloud@gmail.com',
-                          style: TextStyle(
-                            fontSize: 16.0,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      const Expanded(
-                        flex: 1,
-                        child: SizedBox(
-                          width: double.infinity,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
+            EmailWidget(text: 'Khloud@gmail.com'),
           ],
         ),
       )),

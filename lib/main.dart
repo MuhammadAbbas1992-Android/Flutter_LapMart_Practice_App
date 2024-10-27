@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:lap_mart/res/routs/routs_app.dart';
+import 'package:lap_mart/view/about_us/about_us_view.dart';
+import 'package:lap_mart/view/cart/cart_view.dart';
 import 'package:lap_mart/view/contact_us/contact_us_view.dart';
 import 'package:lap_mart/view/sign_up/sign_up_view.dart';
 import 'package:lap_mart/view/splash/splash_view.dart';
@@ -23,7 +25,9 @@ class MyApp extends StatelessWidget {
       ),
       // home: const SplashView(),
       // getPages: AppRouts.appRouts(),
-      home: ContactUsView(),
+      // home: ContactUsView(),
+      // home: AboutUsView(),
+      home: CartView(),
     );
   }
 }
