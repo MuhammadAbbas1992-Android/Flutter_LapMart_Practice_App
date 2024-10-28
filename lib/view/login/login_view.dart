@@ -111,7 +111,7 @@ class _LoginViewState extends State<LoginView> {
               const SizedBox(
                 height: 40.0,
               ),
-              SizedBox(
+              Container(
                 width: double.infinity,
                 height: 48.0,
                 child: TextButton(

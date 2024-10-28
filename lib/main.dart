@@ -4,6 +4,7 @@ import 'package:lap_mart/res/routs/routs_app.dart';
 import 'package:lap_mart/view/about_us/about_us_view.dart';
 import 'package:lap_mart/view/cart/cart_view.dart';
 import 'package:lap_mart/view/contact_us/contact_us_view.dart';
+import 'package:lap_mart/view/product_detail/product_detail_view.dart';
 import 'package:lap_mart/view/sign_up/sign_up_view.dart';
 import 'package:lap_mart/view/splash/splash_view.dart';
 
@@ -18,16 +19,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      // home: const SplashView(),
-      // getPages: AppRouts.appRouts(),
-      // home: ContactUsView(),
-      // home: AboutUsView(),
-      home: CartView(),
-    );
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        // home: const SplashView(),
+        // getPages: AppRouts.appRouts(),
+        // home: ContactUsView(),
+        // home: AboutUsView(),
+        // home: CartView(),
+        home: ProductDetailView());
   }
 }
