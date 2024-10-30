@@ -7,4 +7,4 @@ const String text3 =
 const String text4 =
     'My name is Khloud Alshahrani, I\'m currently studying for my Bachelor\'s degree in IT. I\'m particularly skillful in Java, HTML, and SQL, and I have experience in creating web pages.';
 const String text5 =
-    'Model: Apple M1 chip with 8‑core CPU and\n\nGeneration: 7‑core GPU, 16-core Neural Engine\n\nRAM:  8GB unified memory, 256GB SSD storage, Retina display\n\nModel: Apple M1 chip with 8‑core CPU and\n\nGeneration: 7‑core GPU, 16-core Neural Engine\n\nRAM:  8GB unified memory, 256GB SSD storage, Retina display\n\nModel: Apple M1 chip with 8‑core CPU and\n\nGeneration: 7‑core GPU, 16-core Neural Engine\n\nRAM:  8GB unified memory, 256GB SSD storage, Retina display';
+    'Model: Apple M1 chip with 8‑core CPU and\n\nGeneration: 7‑core GPU, 16-core Neural Engine\n\nRAM:  8GB unified memory, 256GB SSD storage, Retina display';

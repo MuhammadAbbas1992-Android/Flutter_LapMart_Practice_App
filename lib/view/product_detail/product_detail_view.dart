@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:lap_mart/res/components/button_widget.dart';
 import 'package:lap_mart/utils/constants/constants.dart';
 
 import '../../res/components/row_widget.dart';
@@ -24,7 +25,9 @@ class _ProductDetailViewState extends State<ProductDetailView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            RowWidget(),
+            RowWidget(
+              icon: 'assets/icons/ic_menu.svg',
+            ),
             SizedBox(
               height: 10.0,
             ),
@@ -137,20 +140,10 @@ class _ProductDetailViewState extends State<ProductDetailView> {
             SizedBox(
               height: 60,
             ),
-            Container(
-              width: double.infinity,
-              height: 48.0,
-              margin: const EdgeInsets.only(bottom: 10),
-              child: TextButton(
-                onPressed: () {},
-                style: TextButton.styleFrom(
-                    backgroundColor: const Color(0xFFE77FB3)),
-                child: const Text(
-                  'Add to Cart',
-                  style: TextStyle(color: Colors.white, fontSize: 16.0),
-                ),
-              ),
-            ),
+            ButtonWidget(text: 'Add to Cart'),
+            SizedBox(
+              height: 30,
+            )
           ],
         ),
       )),

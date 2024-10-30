@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
+import '../../res/components/button_widget.dart';
 import '../../res/routs/routs_name.dart';
 
 class SignUpView extends StatefulWidget {
@@ -143,18 +144,8 @@ class _SignUpViewState extends State<SignUpView> {
               const SizedBox(
                 height: 40.0,
               ),
-              Container(
-                width: double.infinity,
-                height: 48.0,
-                child: TextButton(
-                  onPressed: () {},
-                  style: TextButton.styleFrom(
-                      backgroundColor: const Color(0xFFE77FB3)),
-                  child: const Text(
-                    'Sign Up',
-                    style: TextStyle(color: Colors.white, fontSize: 16.0),
-                  ),
-                ),
+              const ButtonWidget(
+                text: 'Sign Up',
               ),
               const SizedBox(
                 height: 10.0,

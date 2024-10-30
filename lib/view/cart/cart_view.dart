@@ -22,7 +22,9 @@ class _CartViewState extends State<CartView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            RowWidget(),
+            RowWidget(
+              icon: 'assets/icons/ic_menu.svg',
+            ),
             SizedBox(
               height: 40.0,
             ),
@@ -384,19 +386,18 @@ class _CartViewState extends State<CartView> {
               height: 30,
             ),
             Container(
-              width: double.infinity,
-              height: 48.0,
-              margin: const EdgeInsets.only(bottom: 45),
-              child: TextButton(
-                onPressed: () {},
-                style: TextButton.styleFrom(
-                    backgroundColor: const Color(0xFFE77FB3)),
-                child: const Text(
-                  'Check Out',
-                  style: TextStyle(color: Colors.white, fontSize: 16.0),
-                ),
-              ),
-            ),
+                width: double.infinity,
+                height: 48.0,
+                decoration: BoxDecoration(
+                    color: const Color(0xFFE77FB3),
+                    borderRadius: BorderRadius.circular(10)),
+                margin: const EdgeInsets.only(bottom: 40),
+                child: TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      'Check Out',
+                      style: TextStyle(color: Colors.white, fontSize: 16.0),
+                    )))
           ],
         ),
       )),

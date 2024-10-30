@@ -24,7 +24,9 @@ class _AboutUsViewState extends State<AboutUsView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            RowWidget(),
+            RowWidget(
+              icon: 'assets/icons/ic_menu.svg',
+            ),
             SizedBox(
               height: 40.0,
             ),

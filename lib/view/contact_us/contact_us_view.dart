@@ -22,7 +22,9 @@ class _ContactUsViewState extends State<ContactUsView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            RowWidget(),
+            RowWidget(
+              icon: 'assets/icons/ic_menu.svg',
+            ),
             SizedBox(
               height: 30.0,
             ),

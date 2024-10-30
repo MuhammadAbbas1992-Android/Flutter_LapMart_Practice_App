@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:lap_mart/res/routs/routs_app.dart';
 import 'package:lap_mart/res/routs/routs_name.dart';
 
+import '../../res/components/button_widget.dart';
+
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
 
@@ -111,18 +113,8 @@ class _LoginViewState extends State<LoginView> {
               const SizedBox(
                 height: 40.0,
               ),
-              Container(
-                width: double.infinity,
-                height: 48.0,
-                child: TextButton(
-                  onPressed: () {},
-                  style: TextButton.styleFrom(
-                      backgroundColor: const Color(0xFFE77FB3)),
-                  child: const Text(
-                    'Sign In',
-                    style: TextStyle(color: Colors.white, fontSize: 16.0),
-                  ),
-                ),
+              const ButtonWidget(
+                text: 'Sign In',
               ),
               const SizedBox(
                 height: 10.0,
