@@ -33,8 +33,8 @@ class MyApp extends StatelessWidget {
       // home: AboutUsView(),
       // home: CartView(),
       // home: ProductDetailView()
-      home: ProductsView(),
-      // home: HomeAdminView(),
+      // home: ProductsView(),
+      home: HomeAdminView(),
       // home: TestScreen(),
     );
   }

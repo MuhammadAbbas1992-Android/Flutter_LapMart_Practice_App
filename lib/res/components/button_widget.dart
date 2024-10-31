@@ -13,7 +13,6 @@ class ButtonWidget extends StatelessWidget {
   final double width;
   final double height;
   final double size;
-
   @override
   Widget build(BuildContext context) {
     return Container(
