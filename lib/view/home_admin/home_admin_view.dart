@@ -25,7 +25,7 @@ class _HomeAdminViewState extends State<HomeAdminView> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             RowWidget(
-              icon: 'assets/icons/ic_sing_out.svg',
+              icon: 'assets/icons/ic_sign_out.svg',
               isAddNewButton: true,
             ),
             SizedBox(
@@ -72,7 +72,7 @@ class _HomeAdminViewState extends State<HomeAdminView> {
                       mainAxisExtent: 210),
                   itemCount: 10,
                   itemBuilder: (context, index) {
-                    return const CardWidget(
+                    return const CardInfoWidget(
                       image: 'assets/images/laptops.png',
                       name: 'Apple Macbook 12',
                       price: 'SAR 500',

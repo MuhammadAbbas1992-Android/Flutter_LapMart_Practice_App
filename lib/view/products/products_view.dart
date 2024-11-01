@@ -75,7 +75,7 @@ class _ProductsViewState extends State<ProductsView> {
                       mainAxisExtent: 210),
                   itemCount: 10,
                   itemBuilder: (context, index) {
-                    return const CardWidget(
+                    return const CardInfoWidget(
                       image: 'assets/images/laptops.png',
                       name: 'Apple Macbook 12',
                       price: 'SAR 500',

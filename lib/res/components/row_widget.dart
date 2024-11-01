@@ -26,6 +26,7 @@ class RowWidget extends StatelessWidget {
           icon,
           color: iconColor,
         ),
+        Spacer(),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -46,18 +47,11 @@ class RowWidget extends StatelessWidget {
             )
           ],
         ),
-        Container(
-          child: isAddNewButton
-              ? const ButtonWidget(
-                  text: 'Add New',
-                  height: 33,
-                  size: 14,
-                )
-              : SvgPicture.asset(
-                  icon,
-                  color: Colors.white,
-                ),
-        )
+        Spacer(),
+        SvgPicture.asset(
+          icon,
+          color: Colors.white30,
+        ),
       ],
     );
   }

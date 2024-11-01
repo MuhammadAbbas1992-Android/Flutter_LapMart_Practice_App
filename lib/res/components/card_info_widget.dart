@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lap_mart/res/components/text_widget.dart';
 
-class CardWidget extends StatelessWidget {
-  const CardWidget(
+class CardInfoWidget extends StatelessWidget {
+  const CardInfoWidget(
       {super.key,
       required this.image,
       required this.name,
