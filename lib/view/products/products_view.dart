@@ -4,11 +4,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_common/get_reset.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:lap_mart/res/components/card_info_widget.dart';
 
-import '../../res/components/card_icon_widget.dart';
-import '../../res/components/row_widget.dart';
-import '../../res/components/text_widget.dart';
+import '../../res/common_widgets/card_icon_widget.dart';
+import '../../res/common_widgets/card_info_widget.dart';
+import '../../res/common_widgets/common_row_widget.dart';
+import '../../res/common_widgets/text_widget.dart';
 
 class ProductsView extends StatefulWidget {
   const ProductsView({super.key});
@@ -28,8 +28,9 @@ class _ProductsViewState extends State<ProductsView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            RowWidget(
-              icon: 'assets/icons/ic_menu.svg',
+            const CommonRowWidget(
+              size: 33,
+              svgIconMiddle: 'assets/icons/ic_laptop.svg',
             ),
             SizedBox(
               height: 20.0,
@@ -49,17 +50,17 @@ class _ProductsViewState extends State<ProductsView> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const CardIconWidget(
-                  icon: 'assets/icons/ic_hp.svg',
+                  icon: 'constants/icons/ic_hp.svg',
                   padding: 12.0,
                 ),
                 const CardIconWidget(
-                  icon: 'assets/icons/ic_iphone.svg',
+                  icon: 'constants/icons/ic_iphone.svg',
                 ),
                 const CardIconWidget(
-                  icon: 'assets/icons/ic_dell.svg',
+                  icon: 'constants/icons/ic_dell.svg',
                 ),
                 const CardIconWidget(
-                  icon: 'assets/icons/ic_lenovo.svg',
+                  icon: 'constants/icons/ic_lenovo.svg',
                 ),
               ],
             ),
@@ -76,7 +77,7 @@ class _ProductsViewState extends State<ProductsView> {
                   itemCount: 10,
                   itemBuilder: (context, index) {
                     return const CardInfoWidget(
-                      image: 'assets/images/laptops.png',
+                      image: 'constants/images/laptops.png',
                       name: 'Apple Macbook 12',
                       price: 'SAR 500',
                     );

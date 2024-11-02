@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../res/components/card_icon_widget.dart';
-import '../../res/components/card_info_widget.dart';
-import '../../res/components/row_widget.dart';
-import '../../res/components/text_widget.dart';
+import '../../res/common_widgets/card_icon_widget.dart';
+import '../../res/common_widgets/card_info_widget.dart';
+import '../../res/common_widgets/common_row_widget.dart';
+import '../../res/common_widgets/text_widget.dart';
 
 class HomeAdminView extends StatefulWidget {
   const HomeAdminView({super.key});
@@ -24,11 +24,11 @@ class _HomeAdminViewState extends State<HomeAdminView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            RowWidget(
-              icon: 'assets/icons/ic_sign_out.svg',
-              isAddNewButton: true,
+            const CommonRowWidget(
+              size: 33,
+              svgIconMiddle: 'assets/icons/ic_laptop.svg',
             ),
-            SizedBox(
+            const SizedBox(
               height: 20.0,
             ),
             Padding(
@@ -46,17 +46,17 @@ class _HomeAdminViewState extends State<HomeAdminView> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const CardIconWidget(
-                  icon: 'assets/icons/ic_hp.svg',
+                  icon: 'constants/icons/ic_hp.svg',
                   padding: 12.0,
                 ),
                 const CardIconWidget(
-                  icon: 'assets/icons/ic_iphone.svg',
+                  icon: 'constants/icons/ic_iphone.svg',
                 ),
                 const CardIconWidget(
-                  icon: 'assets/icons/ic_dell.svg',
+                  icon: 'constants/icons/ic_dell.svg',
                 ),
                 const CardIconWidget(
-                  icon: 'assets/icons/ic_lenovo.svg',
+                  icon: 'constants/icons/ic_lenovo.svg',
                 ),
               ],
             ),
@@ -73,7 +73,7 @@ class _HomeAdminViewState extends State<HomeAdminView> {
                   itemCount: 10,
                   itemBuilder: (context, index) {
                     return const CardInfoWidget(
-                      image: 'assets/images/laptops.png',
+                      image: 'constants/images/laptops.png',
                       name: 'Apple Macbook 12',
                       price: 'SAR 500',
                     );

@@ -8,6 +8,7 @@ import 'package:lap_mart/view/cart/cart_view.dart';
 import 'package:lap_mart/view/contact_us/contact_us_view.dart';
 import 'package:lap_mart/view/home/home_view.dart';
 import 'package:lap_mart/view/home_admin/home_admin_view.dart';
+import 'package:lap_mart/view/login/login_view.dart';
 import 'package:lap_mart/view/product_detail/product_detail_view.dart';
 import 'package:lap_mart/view/products/products_view.dart';
 import 'package:lap_mart/view/sign_up/sign_up_view.dart';
@@ -30,16 +31,19 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       // home: const SplashView(),
-      // getPages: AppRouts.appRouts(),
+      // home: LoginView(),
+      // home: SignUpView(),
+      // home: HomeView(),
       // home: ContactUsView(),
       // home: AboutUsView(),
-      // home: CartView(),
+      home: CartView(),
       // home: ProductDetailView()
       // home: ProductsView(),
       // home: HomeAdminView(),
-      home: HomeView(),
+
       // home: AddProductView(),
-      // home: SignUpView(),
+
+      // getPages: AppRouts.appRouts(),
       // home: TestScreen(),
     );
   }

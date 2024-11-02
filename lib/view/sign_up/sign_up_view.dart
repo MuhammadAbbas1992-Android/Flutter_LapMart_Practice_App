@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-
-import '../../res/components/button_widget.dart';
+import '../../constants/app_colors.dart';
+import '../../res/common_widgets/common_button_widget.dart';
+import '../../res/common_widgets/common_row_widget.dart';
+import '../../res/common_widgets/common_text_field_widget.dart';
+import '../../res/common_widgets/common_account_row_widget.dart';
 import '../../res/routs/routs_name.dart';
 
 class SignUpView extends StatefulWidget {
@@ -20,159 +23,55 @@ class _SignUpViewState extends State<SignUpView> {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
+          padding: const EdgeInsets.all(30.0),
+          child: const Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(
+              Spacer(),
+              /*SizedBox(
+                height: 100.0,
+              ),*/
+              CommonRowWidget(
+                size: 33,
+                svgIconMiddle: 'assets/icons/ic_laptop.svg',
+                width: 35,
+                height: 25,
+              ),
+              SizedBox(
                 height: 100.0,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SvgPicture.asset(
-                    'assets/icons/ic_laptop.svg',
-                  ),
-                  const SizedBox(
-                    width: 5.0,
-                  ),
-                  const Text(
-                    'LapMart',
-                    style: TextStyle(
-                        color: Color(0xFF000000),
-                        fontSize: 33.0,
-                        fontWeight: FontWeight.bold),
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 100.0,
-              ),
+              CommonTextFieldWidget(
+                  hint: 'Email Address',
+                  color: AppColors.grey,
+                  prefixIcon: 'assets/icons/ic_email.svg'),
               SizedBox(
-                height: 48.0,
-                child: TextField(
-                  textAlignVertical: TextAlignVertical.center,
-                  decoration: InputDecoration(
-                    prefixIcon: Padding(
-                      padding: const EdgeInsets.only(
-                        left: 20.0,
-                        right: 5.0,
-                        top: 18.0,
-                        bottom: 18.0,
-                      ),
-                      child: SvgPicture.asset(
-                        'assets/icons/ic_email.svg',
-                        height: 13,
-                        width: 13,
-                      ),
-                    ),
-                    hintText: 'Email Address',
-                    hintStyle: const TextStyle(
-                        color: Color(0xFF858585),
-                        fontFamily: 'Inter',
-                        fontSize: 14.0),
-                    enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25.0),
-                        borderSide: const BorderSide(color: Color(0xFFCBCBCB))),
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25.0),
-                        borderSide: const BorderSide(color: Color(0xFFCBCBCB))),
-                  ),
-                ),
+                height: 15.0,
               ),
-              const SizedBox(
-                height: 20.0,
-              ),
+              CommonTextFieldWidget(
+                  hint: 'Password',
+                  color: AppColors.grey,
+                  prefixIcon: 'assets/icons/ic_password.svg'),
               SizedBox(
-                height: 48.0,
-                child: TextField(
-                  textAlignVertical: TextAlignVertical.center,
-                  decoration: InputDecoration(
-                    prefixIcon: Padding(
-                      padding: const EdgeInsets.only(
-                        left: 20.0,
-                        right: 5.0,
-                        top: 18.0,
-                        bottom: 18.0,
-                      ),
-                      child: SvgPicture.asset('assets/icons/ic_password.svg'),
-                    ),
-                    hintText: 'Password',
-                    hintStyle: const TextStyle(
-                        color: Color(0xFF858585),
-                        fontFamily: 'Inter',
-                        fontSize: 14.0),
-                    enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25.0),
-                        borderSide: const BorderSide(color: Color(0xFFCBCBCB))),
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25.0),
-                        borderSide: const BorderSide(color: Color(0xFFCBCBCB))),
-                  ),
-                ),
+                height: 15.0,
               ),
-              const SizedBox(
-                height: 20.0,
-              ),
+              CommonTextFieldWidget(
+                  hint: 'Confirm Password',
+                  color: AppColors.grey,
+                  prefixIcon: 'assets/icons/ic_password.svg'),
               SizedBox(
-                height: 48.0,
-                child: TextField(
-                  textAlignVertical: TextAlignVertical.center,
-                  decoration: InputDecoration(
-                    prefixIcon: Padding(
-                      padding: const EdgeInsets.only(
-                        left: 20.0,
-                        right: 5.0,
-                        top: 18.0,
-                        bottom: 18.0,
-                      ),
-                      child: SvgPicture.asset('assets/icons/ic_password.svg'),
-                    ),
-                    hintText: 'Confirm Password',
-                    hintStyle: const TextStyle(
-                        color: Color(0xFF858585),
-                        fontFamily: 'Inter',
-                        fontSize: 14.0),
-                    enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25.0),
-                        borderSide: const BorderSide(color: Color(0xFFCBCBCB))),
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25.0),
-                        borderSide: const BorderSide(color: Color(0xFFCBCBCB))),
-                  ),
-                ),
-              ),
-              const SizedBox(
                 height: 40.0,
               ),
-              const ButtonWidget(
+              CommonButtonWidget(
                 text: 'Sign Up',
               ),
-              const SizedBox(
+              SizedBox(
                 height: 10.0,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    'Already have an account?',
-                    style: TextStyle(color: Color(0xFFA6A4A4), fontSize: 14.0),
-                  ),
-                  const SizedBox(
-                    width: 10.0,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Get.back();
-                      Get.toNamed(RoutsName.loginView);
-                    },
-                    child: const Text(
-                      'Sign In',
-                      style:
-                          TextStyle(color: Color(0xFFE77FB3), fontSize: 14.0),
-                    ),
-                  )
-                ],
-              )
+              CommonAccountRowWidget(
+                textMessage: 'Already have an account? ',
+                textScreen: 'Sign In',
+              ),
+              Spacer()
             ],
           ),
         ),

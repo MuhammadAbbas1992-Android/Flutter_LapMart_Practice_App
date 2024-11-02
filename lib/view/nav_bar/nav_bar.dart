@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:lap_mart/res/components/icon_button_widget.dart';
+
+import '../../res/common_widgets/icon_button_widget.dart';
 
 class NavBar extends StatelessWidget {
   const NavBar({super.key});
@@ -22,36 +23,36 @@ class NavBar extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 10.0),
               child: SvgPicture.asset(
-                'assets/icons/ic_back.svg',
+                'constants/icons/ic_back.svg',
                 alignment: Alignment.centerLeft,
               ),
             ),
             SizedBox(
               height: 20,
             ),
-            IconButtonWidget(icon: 'assets/icons/ic_home.svg', text: 'Home'),
+            IconButtonWidget(icon: 'constants/icons/ic_home.svg', text: 'Home'),
             SizedBox(
               height: 10,
             ),
             IconButtonWidget(
-                icon: 'assets/icons/ic_product.svg', text: 'Products'),
+                icon: 'constants/icons/ic_product.svg', text: 'Products'),
             SizedBox(
               height: 10,
             ),
-            IconButtonWidget(icon: 'assets/icons/ic_cart.svg', text: 'Cart'),
-            SizedBox(
-              height: 10,
-            ),
-            IconButtonWidget(
-                icon: 'assets/icons/ic_about_us.svg', text: 'About us'),
+            IconButtonWidget(icon: 'constants/icons/ic_cart.svg', text: 'Cart'),
             SizedBox(
               height: 10,
             ),
             IconButtonWidget(
-                icon: 'assets/icons/ic_contact_us.svg', text: 'Contact us'),
+                icon: 'constants/icons/ic_about_us.svg', text: 'About us'),
+            SizedBox(
+              height: 10,
+            ),
+            IconButtonWidget(
+                icon: 'constants/icons/ic_contact_us.svg', text: 'Contact us'),
             Spacer(),
             IconButtonWidget(
-                icon: 'assets/icons/ic_sign_out.svg', text: 'Sign Out'),
+                icon: 'constants/icons/ic_sign_out.svg', text: 'Sign Out'),
             SizedBox(
               height: 50,
             )

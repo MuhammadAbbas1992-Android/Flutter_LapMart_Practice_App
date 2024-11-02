@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:lap_mart/res/components/card_info_widget.dart';
+import 'package:lap_mart/res/common_widgets/card_info_widget.dart';
 
 class TestScreen extends StatefulWidget {
   const TestScreen({super.key});
@@ -34,7 +34,7 @@ class _TestScreenState extends State<TestScreen> {
                     itemCount: 10,
                     itemBuilder: (context, index) {
                       return const CardInfoWidget(
-                        image: 'assets/images/laptops.png',
+                        image: 'constants/images/laptops.png',
                         name: 'Apple Macbook 12',
                         price: 'SAR 500',
                       );

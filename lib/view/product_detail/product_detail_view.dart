@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:lap_mart/res/components/button_widget.dart';
-import 'package:lap_mart/utils/constants/constants.dart';
+import 'package:lap_mart/utils/constants/string_constants.dart';
 
-import '../../res/components/row_widget.dart';
-import '../../res/components/text_widget.dart';
+import '../../res/common_widgets/common_button_widget.dart';
+import '../../res/common_widgets/common_row_widget.dart';
+import '../../res/common_widgets/text_widget.dart';
 
 class ProductDetailView extends StatefulWidget {
   const ProductDetailView({super.key});
@@ -25,8 +25,9 @@ class _ProductDetailViewState extends State<ProductDetailView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            RowWidget(
-              icon: 'assets/icons/ic_menu.svg',
+            const CommonRowWidget(
+              size: 33,
+              svgIconMiddle: 'assets/icons/ic_laptop.svg',
             ),
             SizedBox(
               height: 10.0,
@@ -37,7 +38,7 @@ class _ProductDetailViewState extends State<ProductDetailView> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Image.asset(
-                  'assets/images/laptop.png',
+                  'constants/images/laptop.png',
                   fit: BoxFit.cover,
                 ),
               ),
@@ -140,7 +141,7 @@ class _ProductDetailViewState extends State<ProductDetailView> {
             SizedBox(
               height: 60,
             ),
-            ButtonWidget(text: 'Add to Cart'),
+            CommonButtonWidget(text: 'Add to Cart'),
             SizedBox(
               height: 30,
             )

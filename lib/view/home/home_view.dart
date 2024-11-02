@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lap_mart/utils/constants/constants.dart';
+import 'package:lap_mart/constants/app_colors.dart';
+import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
+import 'package:lap_mart/res/components_widgets/video_play_widget.dart';
+import 'package:lap_mart/utils/constants/string_constants.dart';
 import 'package:lap_mart/view/nav_bar/nav_bar.dart';
 
-import '../../res/components/row_widget.dart';
-import '../../res/components/text_widget.dart';
+import '../../res/common_widgets/common_row_widget.dart';
+import '../../res/common_widgets/text_widget.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -20,56 +23,44 @@ class _HomeViewState extends State<HomeView> {
       backgroundColor: Colors.white,
       drawer: NavBar(),
       appBar: AppBar(),
-      body: SafeArea(
+      body: const SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Padding(
               padding: EdgeInsets.all(20.0),
-              child: RowWidget(
-                icon: 'assets/icons/ic_menu.svg',
+              child: CommonRowWidget(
+                svgIconLeft: 'assets/icons/ic_menu.svg',
+                svgIconMiddle: 'assets/icons/ic_laptop.svg',
               ),
             ),
             SizedBox(
               height: 20.0,
             ),
-            Container(
-              width: double.infinity,
-              height: 285,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(
-                      'assets/images/home_img.png'), // Update with your image path
-                  fit: BoxFit
-                      .cover, // BoxFit to control how the image should be fitted
-                ),
+            VideoPlayWidget(),
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
+              child: CommonTextWidget(
+                text: 'About us',
+                size: 20,
+                color: AppColors.pink,
+                fontWeight: FontWeight.bold,
+                textAlign: TextAlign.left,
               ),
-              child: Image(image: AssetImage('assets/icons/ic_play.png')),
             ),
             SizedBox(
               height: 20,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: TextWidget(
-                  text: 'About us',
-                  size: 20,
-                  color: Color(0xFFE77FB3),
-                  fontWeight: FontWeight.bold,
-                  textAlign: TextAlign.left),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Container(
-                child: SingleChildScrollView(
-                  child: TextWidget(
-                      text: homeText,
-                      size: 12,
-                      fontWeight: FontWeight.normal,
-                      textAlign: TextAlign.justify),
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
+              child: SingleChildScrollView(
+                child: CommonTextWidget(
+                  text: homeText,
+                  size: 12,
+                  textAlign: TextAlign.justify,
                 ),
               ),
             ),

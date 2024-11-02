@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lap_mart/res/components/button_widget.dart';
-import 'package:lap_mart/res/components/dropdown_widget.dart';
-import 'package:lap_mart/res/components/text_field_widget.dart';
 
-import '../../res/components/row_widget.dart';
-import '../../res/components/text_widget.dart';
+import '../../res/common_widgets/common_button_widget.dart';
+import '../../res/common_widgets/common_row_widget.dart';
+import '../../res/common_widgets/dropdown_widget.dart';
+import '../../res/common_widgets/text_field_widget.dart';
+import '../../res/common_widgets/text_widget.dart';
 
 class AddProductView extends StatefulWidget {
   const AddProductView({super.key});
@@ -24,8 +24,9 @@ class _AddProductViewState extends State<AddProductView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            RowWidget(
-              icon: 'assets/icons/ic_back.svg',
+            const CommonRowWidget(
+              size: 33,
+              svgIconMiddle: 'assets/icons/ic_laptop.svg',
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -83,7 +84,7 @@ class _AddProductViewState extends State<AddProductView> {
                   SizedBox(
                     height: 30,
                   ),
-                  ButtonWidget(text: 'ADD')
+                  CommonButtonWidget(text: 'ADD')
                 ],
               ),
             )

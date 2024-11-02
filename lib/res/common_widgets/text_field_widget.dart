@@ -27,7 +27,7 @@ class TextFieldWidget extends StatelessWidget {
           hintText: hint,
           hintStyle: const TextStyle(
             color: Colors.black,
-            fontFamily: 'Inter',
+            fontFamily: 'inter',
             fontSize: 14.0,
           ),
           fillColor: Color(0xffE9E9E9),

@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:lap_mart/res/components/row_widget.dart';
-import 'package:lap_mart/utils/constants/constants.dart';
+import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
+import 'package:lap_mart/utils/constants/string_constants.dart';
 
-import '../../res/components/email_widget.dart';
-import '../../res/components/text_widget.dart';
+import '../../res/common_widgets/common_row_widget.dart';
+import '../../res/common_widgets/text_widget.dart';
 
 class AboutUsView extends StatefulWidget {
   const AboutUsView({super.key});
@@ -24,13 +24,14 @@ class _AboutUsViewState extends State<AboutUsView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            RowWidget(
-              icon: 'assets/icons/ic_menu.svg',
+            CommonRowWidget(
+              size: 16,
+              svgIconMiddle: 'assets/icons/ic_laptop.svg',
             ),
             SizedBox(
               height: 40.0,
             ),
-            TextWidget(
+            CommonTextWidget(
                 text: 'About Us',
                 size: 18.0,
                 fontWeight: FontWeight.bold,
@@ -38,59 +39,35 @@ class _AboutUsViewState extends State<AboutUsView> {
             SizedBox(
               height: 20.0,
             ),
-            TextWidget(
+            CommonTextWidget(
               text: 'Lolwah Altayyar ',
-              size: 14.0,
               fontWeight: FontWeight.bold,
-              textAlign: TextAlign.left,
             ),
-            TextWidget(
-                text: text1,
-                size: 14.0,
-                fontWeight: FontWeight.normal,
-                textAlign: TextAlign.justify),
+            CommonTextWidget(text: text1, textAlign: TextAlign.justify),
             SizedBox(
               height: 20.0,
             ),
-            TextWidget(
+            CommonTextWidget(
               text: 'Razan  Arishi',
-              size: 14.0,
               fontWeight: FontWeight.bold,
-              textAlign: TextAlign.left,
             ),
-            TextWidget(
-                text: text2,
-                size: 14.0,
-                fontWeight: FontWeight.normal,
-                textAlign: TextAlign.justify),
+            CommonTextWidget(text: text2, textAlign: TextAlign.justify),
             SizedBox(
               height: 20.0,
             ),
-            TextWidget(
+            CommonTextWidget(
               text: 'Nouf Aljammaz',
-              size: 14.0,
               fontWeight: FontWeight.bold,
-              textAlign: TextAlign.left,
             ),
-            TextWidget(
-                text: text3,
-                size: 14.0,
-                fontWeight: FontWeight.normal,
-                textAlign: TextAlign.justify),
+            CommonTextWidget(text: text3, textAlign: TextAlign.justify),
             SizedBox(
               height: 20.0,
             ),
-            TextWidget(
+            CommonTextWidget(
               text: 'Khloud Alshahrani',
-              size: 14.0,
               fontWeight: FontWeight.bold,
-              textAlign: TextAlign.left,
             ),
-            TextWidget(
-                text: text4,
-                size: 14.0,
-                fontWeight: FontWeight.normal,
-                textAlign: TextAlign.justify),
+            CommonTextWidget(text: text4, textAlign: TextAlign.justify),
           ],
         ),
       )),

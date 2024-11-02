@@ -27,7 +27,7 @@ class _DropdownWidgetState extends State<DropdownWidget> {
             'Choose Brand',
             style: TextStyle(
               color: Colors.black,
-              fontFamily: 'Inter',
+              fontFamily: 'inter',
               fontSize: 14.0,
             ),
           ),
@@ -43,7 +43,7 @@ class _DropdownWidgetState extends State<DropdownWidget> {
                 value,
                 style: const TextStyle(
                   color: Colors.black,
-                  fontFamily: 'Inter',
+                  fontFamily: 'inter',
                   fontSize: 14.0,
                 ),
               ),

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:lap_mart/res/components/text_widget.dart';
+import 'package:lap_mart/res/common_widgets/text_widget.dart';
 
 class IconButtonWidget extends StatelessWidget {
   const IconButtonWidget(

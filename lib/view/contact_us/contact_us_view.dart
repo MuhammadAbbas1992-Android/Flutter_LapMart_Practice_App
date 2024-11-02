@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:lap_mart/res/components/email_widget.dart';
-import 'package:lap_mart/res/components/row_widget.dart';
-import 'package:lap_mart/res/components/text_widget.dart';
+import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
+import 'package:lap_mart/utils/constants/string_constants.dart';
+import '../../res/common_widgets/common_row_widget.dart';
+import '../../res/common_widgets/common_email_widget.dart';
+import '../../res/common_widgets/text_widget.dart';
 
 class ContactUsView extends StatefulWidget {
   const ContactUsView({super.key});
@@ -22,44 +23,39 @@ class _ContactUsViewState extends State<ContactUsView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            RowWidget(
-              icon: 'assets/icons/ic_menu.svg',
+            CommonRowWidget(
+              svgIconMiddle: 'assets/icons/ic_laptop.svg',
             ),
             SizedBox(
               height: 30.0,
             ),
-            TextWidget(
-                text: 'Contact Us',
-                size: 18.0,
-                fontWeight: FontWeight.bold,
-                textAlign: TextAlign.center),
-            SizedBox(
-              height: 20.0,
-            ),
-            TextWidget(
-              text:
-                  'If you  have any inquiries get in touch with us. We will be happy to help you.',
-              size: 14,
-              fontWeight: FontWeight.normal,
-              textAlign: TextAlign.start,
+            CommonTextWidget(
+              text: 'Contact Us',
+              size: 18,
+              fontWeight: FontWeight.bold,
+              textAlign: TextAlign.center,
             ),
             SizedBox(
               height: 20.0,
             ),
-            TextWidget(
+            CommonTextWidget(text: contactText),
+            SizedBox(
+              height: 20.0,
+            ),
+            CommonTextWidget(
               text: 'Lolwah Altayyar',
-              size: 18.0,
+              size: 18,
               fontWeight: FontWeight.bold,
               textAlign: TextAlign.center,
             ),
             SizedBox(
               height: 10.0,
             ),
-            EmailWidget(text: 'Lolwah@gmail.com'),
+            CommonEmailWidget(text: 'Lolwah@gmail.com'),
             SizedBox(
               height: 20.0,
             ),
-            TextWidget(
+            CommonTextWidget(
               text: 'Razan  Arishi',
               size: 18.0,
               fontWeight: FontWeight.bold,
@@ -68,11 +64,11 @@ class _ContactUsViewState extends State<ContactUsView> {
             SizedBox(
               height: 10.0,
             ),
-            EmailWidget(text: 'Razan@gmail.com'),
+            CommonEmailWidget(text: 'Razan@gmail.com'),
             SizedBox(
               height: 20.0,
             ),
-            TextWidget(
+            CommonTextWidget(
               text: 'Nouf Aljammaz',
               size: 18.0,
               fontWeight: FontWeight.bold,
@@ -81,11 +77,11 @@ class _ContactUsViewState extends State<ContactUsView> {
             SizedBox(
               height: 10.0,
             ),
-            EmailWidget(text: 'Nouf@gmail.com'),
+            CommonEmailWidget(text: 'Nouf@gmail.com'),
             SizedBox(
               height: 20.0,
             ),
-            TextWidget(
+            CommonTextWidget(
               text: 'Khloud Alshahrani',
               size: 18.0,
               fontWeight: FontWeight.bold,
@@ -94,7 +90,7 @@ class _ContactUsViewState extends State<ContactUsView> {
             SizedBox(
               height: 10.0,
             ),
-            EmailWidget(text: 'Khloud@gmail.com'),
+            CommonEmailWidget(text: 'Khloud@gmail.com'),
           ],
         ),
       )),

@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
 
-class EmailWidget extends StatelessWidget {
-  const EmailWidget({super.key, required this.text});
+class CommonEmailWidget extends StatelessWidget {
+  const CommonEmailWidget({super.key, required this.text});
   final String text;
 
   @override
@@ -31,15 +32,12 @@ class EmailWidget extends StatelessWidget {
                 ),
               ),
               Expanded(
-                flex: 8,
-                child: Text(
-                  text,
-                  style: const TextStyle(
-                    fontSize: 16.0,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
+                  flex: 8,
+                  child: CommonTextWidget(
+                    text: text,
+                    size: 16,
+                    textAlign: TextAlign.center,
+                  )),
               const Expanded(
                 flex: 1,
                 child: SizedBox(
