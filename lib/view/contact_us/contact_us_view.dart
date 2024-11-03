@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
 import 'package:lap_mart/utils/constants/string_constants.dart';
-import '../../res/common_widgets/common_row_widget.dart';
+import '../../res/common_widgets/common_row_header_widget.dart';
 import '../../res/common_widgets/common_email_widget.dart';
 import '../../res/common_widgets/text_widget.dart';
 
@@ -23,8 +23,10 @@ class _ContactUsViewState extends State<ContactUsView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            CommonRowWidget(
+            CommonRowHeaderWidget(
+              svgIconLeft: 'assets/icons/ic_menu.svg',
               svgIconMiddle: 'assets/icons/ic_laptop.svg',
+              svgIconRight: 'assets/icons/ic_menu.svg',
             ),
             SizedBox(
               height: 30.0,

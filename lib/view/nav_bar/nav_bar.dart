@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../res/common_widgets/icon_button_widget.dart';
+import '../../res/common_widgets/common_icon_button_widget.dart';
 
 class NavBar extends StatelessWidget {
   const NavBar({super.key});
@@ -11,49 +11,51 @@ class NavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       width: MediaQuery.of(context).size.width * 0.5,
-      shape: LinearBorder(),
+      shape: const LinearBorder(),
       child: SafeArea(
           child: SizedBox(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 80,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 10.0),
+              padding: const EdgeInsets.only(left: 10.0, bottom: 10),
               child: SvgPicture.asset(
-                'constants/icons/ic_back.svg',
+                'assets/icons/ic_back.svg',
                 alignment: Alignment.centerLeft,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            IconButtonWidget(icon: 'constants/icons/ic_home.svg', text: 'Home'),
-            SizedBox(
+            const CommonIconButtonWidget(
+                icon: 'assets/icons/ic_home.svg', text: 'Home'),
+            const SizedBox(
               height: 10,
             ),
-            IconButtonWidget(
-                icon: 'constants/icons/ic_product.svg', text: 'Products'),
-            SizedBox(
+            const CommonIconButtonWidget(
+                icon: 'assets/icons/ic_product.svg', text: 'Products'),
+            const SizedBox(
               height: 10,
             ),
-            IconButtonWidget(icon: 'constants/icons/ic_cart.svg', text: 'Cart'),
-            SizedBox(
+            const CommonIconButtonWidget(
+                icon: 'assets/icons/ic_cart.svg', text: 'Cart'),
+            const SizedBox(
               height: 10,
             ),
-            IconButtonWidget(
-                icon: 'constants/icons/ic_about_us.svg', text: 'About us'),
-            SizedBox(
+            const CommonIconButtonWidget(
+                icon: 'assets/icons/ic_about_us.svg', text: 'About us'),
+            const SizedBox(
               height: 10,
             ),
-            IconButtonWidget(
-                icon: 'constants/icons/ic_contact_us.svg', text: 'Contact us'),
-            Spacer(),
-            IconButtonWidget(
-                icon: 'constants/icons/ic_sign_out.svg', text: 'Sign Out'),
-            SizedBox(
+            const CommonIconButtonWidget(
+                icon: 'assets/icons/ic_contact_us.svg', text: 'Contact us'),
+            const Spacer(),
+            const CommonIconButtonWidget(
+                icon: 'assets/icons/ic_sign_out.svg', text: 'Sign Out'),
+            const SizedBox(
               height: 50,
             )
           ],

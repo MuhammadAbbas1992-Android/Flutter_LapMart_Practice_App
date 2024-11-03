@@ -9,8 +9,8 @@ import 'package:lap_mart/res/routs/routs_app.dart';
 import 'package:lap_mart/res/routs/routs_name.dart';
 
 import '../../res/common_widgets/common_button_widget.dart';
-import '../../res/common_widgets/common_row_widget.dart';
-import '../../res/common_widgets/common_text_field_widget.dart';
+import '../../res/common_widgets/common_row_header_widget.dart';
+import '../../res/common_widgets/common_text_field_icon_widget.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -30,10 +30,7 @@ class _LoginViewState extends State<LoginView> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Spacer(),
-              /*SizedBox(
-                height: 100.0,
-              ),*/
-              CommonRowWidget(
+              CommonRowHeaderWidget(
                 size: 33,
                 svgIconMiddle: 'assets/icons/ic_laptop.svg',
                 width: 35,
@@ -42,17 +39,14 @@ class _LoginViewState extends State<LoginView> {
               SizedBox(
                 height: 100.0,
               ),
-              CommonTextFieldWidget(
+              CommonTextFieldIconWidget(
                   hint: 'Email Address',
-                  color: AppColors.grey,
                   prefixIcon: 'assets/icons/ic_email.svg'),
               SizedBox(
                 height: 15.0,
               ),
-              CommonTextFieldWidget(
-                  hint: 'Password',
-                  color: AppColors.grey,
-                  prefixIcon: 'assets/icons/ic_password.svg'),
+              CommonTextFieldIconWidget(
+                  hint: 'Password', prefixIcon: 'assets/icons/ic_password.svg'),
               SizedBox(
                 height: 40.0,
               ),

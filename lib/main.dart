@@ -36,12 +36,11 @@ class MyApp extends StatelessWidget {
       // home: HomeView(),
       // home: ContactUsView(),
       // home: AboutUsView(),
-      home: CartView(),
+      // home: CartView(),
       // home: ProductDetailView()
       // home: ProductsView(),
-      // home: HomeAdminView(),
-
       // home: AddProductView(),
+      home: HomeAdminView(),
 
       // getPages: AppRouts.appRouts(),
       // home: TestScreen(),

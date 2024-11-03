@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class CardIconWidget extends StatelessWidget {
-  const CardIconWidget({
+class CommonCardIconWidget extends StatelessWidget {
+  const CommonCardIconWidget({
     super.key,
     required this.icon,
     this.padding = 10,

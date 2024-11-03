@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:lap_mart/res/common_widgets/card_info_widget.dart';
+import 'package:lap_mart/res/common_widgets/common_card_info_widget.dart';
+import 'package:lap_mart/res/common_widgets/common_cart_widget.dart';
 
 class TestScreen extends StatefulWidget {
   const TestScreen({super.key});
@@ -24,7 +25,7 @@ class _TestScreenState extends State<TestScreen> {
                 color: Colors.white,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: GridView.builder(
+                  /* child: GridView.builder(
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
@@ -37,6 +38,17 @@ class _TestScreenState extends State<TestScreen> {
                         image: 'constants/images/laptops.png',
                         name: 'Apple Macbook 12',
                         price: 'SAR 500',
+                      );
+                    },
+                  ),*/
+                  child: ListView.builder(
+                    // mainAxisExtent: 210,
+                    itemCount: 10,
+                    itemBuilder: (context, index) {
+                      return const CommonCartWidget(
+                        name: 'Dell Latitude E5470',
+                        price: '799.00',
+                        quantity: '1',
                       );
                     },
                   ),

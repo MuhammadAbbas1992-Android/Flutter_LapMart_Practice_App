@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:lap_mart/constants/app_colors.dart';
+import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
 import 'package:lap_mart/res/common_widgets/text_widget.dart';
 
-class IconButtonWidget extends StatelessWidget {
-  const IconButtonWidget(
+class CommonIconButtonWidget extends StatelessWidget {
+  const CommonIconButtonWidget(
       {super.key,
       required this.icon,
       required this.text,
@@ -21,7 +23,7 @@ class IconButtonWidget extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: 34,
-      color: Color(0xffE77FB3),
+      color: AppColors.pink,
       child: Row(
         children: [
           Padding(
@@ -33,12 +35,12 @@ class IconButtonWidget extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(left: 20.0),
-            child: TextWidget(
-                text: text,
-                size: size,
-                color: color,
-                fontWeight: FontWeight.bold,
-                textAlign: TextAlign.left),
+            child: CommonTextWidget(
+              text: text,
+              size: size,
+              color: color,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ],
       ),

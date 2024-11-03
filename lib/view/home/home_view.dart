@@ -6,7 +6,7 @@ import 'package:lap_mart/res/components_widgets/video_play_widget.dart';
 import 'package:lap_mart/utils/constants/string_constants.dart';
 import 'package:lap_mart/view/nav_bar/nav_bar.dart';
 
-import '../../res/common_widgets/common_row_widget.dart';
+import '../../res/common_widgets/common_row_header_widget.dart';
 import '../../res/common_widgets/text_widget.dart';
 
 class HomeView extends StatefulWidget {
@@ -29,9 +29,10 @@ class _HomeViewState extends State<HomeView> {
           children: [
             Padding(
               padding: EdgeInsets.all(20.0),
-              child: CommonRowWidget(
+              child: CommonRowHeaderWidget(
                 svgIconLeft: 'assets/icons/ic_menu.svg',
                 svgIconMiddle: 'assets/icons/ic_laptop.svg',
+                svgIconRight: 'assets/icons/ic_menu.svg',
               ),
             ),
             SizedBox(

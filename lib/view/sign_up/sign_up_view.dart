@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import '../../constants/app_colors.dart';
 import '../../res/common_widgets/common_button_widget.dart';
-import '../../res/common_widgets/common_row_widget.dart';
-import '../../res/common_widgets/common_text_field_widget.dart';
+import '../../res/common_widgets/common_row_header_widget.dart';
+import '../../res/common_widgets/common_text_field_icon_widget.dart';
 import '../../res/common_widgets/common_account_row_widget.dart';
 import '../../res/routs/routs_name.dart';
 
@@ -31,7 +31,7 @@ class _SignUpViewState extends State<SignUpView> {
               /*SizedBox(
                 height: 100.0,
               ),*/
-              CommonRowWidget(
+              CommonRowHeaderWidget(
                 size: 33,
                 svgIconMiddle: 'assets/icons/ic_laptop.svg',
                 width: 35,
@@ -40,23 +40,19 @@ class _SignUpViewState extends State<SignUpView> {
               SizedBox(
                 height: 100.0,
               ),
-              CommonTextFieldWidget(
+              CommonTextFieldIconWidget(
                   hint: 'Email Address',
-                  color: AppColors.grey,
                   prefixIcon: 'assets/icons/ic_email.svg'),
               SizedBox(
                 height: 15.0,
               ),
-              CommonTextFieldWidget(
-                  hint: 'Password',
-                  color: AppColors.grey,
-                  prefixIcon: 'assets/icons/ic_password.svg'),
+              CommonTextFieldIconWidget(
+                  hint: 'Password', prefixIcon: 'assets/icons/ic_password.svg'),
               SizedBox(
                 height: 15.0,
               ),
-              CommonTextFieldWidget(
+              CommonTextFieldIconWidget(
                   hint: 'Confirm Password',
-                  color: AppColors.grey,
                   prefixIcon: 'assets/icons/ic_password.svg'),
               SizedBox(
                 height: 40.0,

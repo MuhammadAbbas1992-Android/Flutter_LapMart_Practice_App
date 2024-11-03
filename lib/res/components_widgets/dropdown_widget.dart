@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:lap_mart/constants/app_colors.dart';
+import 'package:lap_mart/constants/app_fonts.dart';
+import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
 
 class DropdownWidget extends StatefulWidget {
   const DropdownWidget({super.key});
@@ -23,13 +27,10 @@ class _DropdownWidgetState extends State<DropdownWidget> {
       ),
       child: DropdownButtonHideUnderline(
         child: DropdownButton<String>(
-          hint: const Text(
-            'Choose Brand',
-            style: TextStyle(
-              color: Colors.black,
-              fontFamily: 'inter',
-              fontSize: 14.0,
-            ),
+          hint: const CommonTextWidget(
+            text: 'Choose Brand',
+            color: AppColors.black,
+            fontWeight: FontWeight.w500,
           ),
           value: _selectedOption,
           icon: const Icon(
@@ -39,13 +40,10 @@ class _DropdownWidgetState extends State<DropdownWidget> {
           items: _options.map((String value) {
             return DropdownMenuItem<String>(
               value: value,
-              child: Text(
-                value,
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontFamily: 'inter',
-                  fontSize: 14.0,
-                ),
+              child: CommonTextWidget(
+                text: value,
+                color: AppColors.black,
+                fontWeight: FontWeight.w500,
               ),
             );
           }).toList(),
@@ -54,10 +52,10 @@ class _DropdownWidgetState extends State<DropdownWidget> {
               _selectedOption = newValue;
             });
           },
-          dropdownColor: const Color(0xffFFDBED),
+          dropdownColor: AppColors.lightPink,
           style: const TextStyle(
             fontSize: 15,
-            color: Colors.black,
+            color: AppColors.black,
             fontWeight: FontWeight.w500,
           ),
           menuWidth: 100,

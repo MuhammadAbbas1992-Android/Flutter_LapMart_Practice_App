@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lap_mart/constants/app_colors.dart';
+import 'package:lap_mart/res/common_widgets/common_text_field_icon_widget.dart';
+import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
 
 import '../../res/common_widgets/common_button_widget.dart';
-import '../../res/common_widgets/common_row_widget.dart';
-import '../../res/common_widgets/dropdown_widget.dart';
-import '../../res/common_widgets/text_field_widget.dart';
+import '../../res/common_widgets/common_row_header_widget.dart';
+import '../../res/components_widgets/dropdown_widget.dart';
+import '../../res/common_widgets/common_text_field_widget.dart';
 import '../../res/common_widgets/text_widget.dart';
 
 class AddProductView extends StatefulWidget {
@@ -19,76 +22,77 @@ class _AddProductViewState extends State<AddProductView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: Padding(
-        padding: EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            const CommonRowWidget(
-              size: 33,
-              svgIconMiddle: 'assets/icons/ic_laptop.svg',
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 50.0,
-                  ),
-                  TextWidget(
-                      text: 'Add New Device',
-                      size: 20.0,
-                      fontWeight: FontWeight.bold,
-                      textAlign: TextAlign.center),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    height: 143,
-                    decoration: BoxDecoration(
-                      color: const Color(0xffE9E9E9),
-                      border:
-                          Border.all(color: const Color(0xFFCBCBCB), width: 1),
-                      borderRadius: BorderRadius.circular(10.0),
+          child: SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const CommonRowHeaderWidget(
+                svgIconLeft: 'assets/icons/ic_back.svg',
+                svgIconMiddle: 'assets/icons/ic_laptop.svg',
+                svgIconRight: 'assets/icons/ic_back.svg',
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                child: Column(
+                  children: [
+                    Spacer(),
+                    const CommonTextWidget(
+                        text: 'Add New Device',
+                        size: 20.0,
+                        fontWeight: FontWeight.bold,
+                        textAlign: TextAlign.center),
+                    const SizedBox(
+                      height: 20,
                     ),
-                    child: Center(
-                      child: TextWidget(
-                        text: '+ Add Image',
-                        size: 14,
-                        fontWeight: FontWeight.normal,
-                        textAlign: TextAlign.center,
+                    Container(
+                      height: 143,
+                      decoration: BoxDecoration(
+                        color: AppColors.tinGrey,
+                        border:
+                            Border.all(color: AppColors.lightGrey, width: 1),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      child: const Center(
+                        child: CommonTextWidget(
+                          text: '+ Add Image',
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  DropdownWidget(),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  TextFieldWidget(hint: 'Product Name'),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  TextFieldWidget(
-                    hint: 'Price',
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  TextFieldWidget(
-                    hint: 'Price',
-                    height: 115,
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  CommonButtonWidget(text: 'ADD')
-                ],
-              ),
-            )
-          ],
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const DropdownWidget(),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    CommonTextFieldWidget(
+                      hint: 'Product Name',
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    CommonTextFieldWidget(
+                      hint: 'Price',
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    CommonTextFieldWidget(
+                      hint: 'Description',
+                      height: 115,
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    CommonButtonWidget(text: 'ADD'),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       )),
     );

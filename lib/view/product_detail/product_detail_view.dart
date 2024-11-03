@@ -2,11 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
 import 'package:lap_mart/utils/constants/string_constants.dart';
 
 import '../../res/common_widgets/common_button_widget.dart';
-import '../../res/common_widgets/common_row_widget.dart';
+import '../../res/common_widgets/common_image_widget.dart';
+import '../../res/common_widgets/common_row_header_widget.dart';
 import '../../res/common_widgets/text_widget.dart';
+import '../../res/components_widgets/quantity_counter_widget.dart';
 
 class ProductDetailView extends StatefulWidget {
   const ProductDetailView({super.key});
@@ -21,130 +24,63 @@ class _ProductDetailViewState extends State<ProductDetailView> {
     return Scaffold(
       body: SafeArea(
           child: Padding(
-        padding: EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const CommonRowWidget(
-              size: 33,
+            const CommonRowHeaderWidget(
+              svgIconLeft: 'assets/icons/ic_back.svg',
               svgIconMiddle: 'assets/icons/ic_laptop.svg',
+              svgIconRight: 'assets/icons/ic_back.svg',
             ),
-            SizedBox(
+            const SizedBox(
               height: 10.0,
             ),
-            Container(
-              width: double.infinity,
+            CommonImageWidget(
+              image: 'assets/images/laptop.png',
               height: 228,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  'constants/images/laptop.png',
-                  fit: BoxFit.cover,
-                ),
-              ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10.0,
             ),
-            TextWidget(
-                text: 'Apple Macbook 12 MNYK2 Core M3',
-                size: 16.0,
-                fontWeight: FontWeight.bold,
-                textAlign: TextAlign.left),
-            SizedBox(
+            CommonTextWidget(
+              text: 'Apple Macbook 12 MNYK2 Core M3',
+              size: 16.0,
+              fontWeight: FontWeight.bold,
+            ),
+            const SizedBox(
               height: 10,
             ),
-            TextWidget(
-                text: 'SAR 999.0',
-                size: 16,
-                fontWeight: FontWeight.bold,
-                textAlign: TextAlign.left),
+            CommonTextWidget(
+              text: 'SAR 999.0',
+              size: 16,
+              fontWeight: FontWeight.bold,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            const QuantityCounterWidget(),
             SizedBox(
               height: 20,
             ),
-            Container(
-              height: 40,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  InkWell(
-                    child: Container(
-                        height: double.infinity,
-                        decoration: BoxDecoration(
-                            color: Color(0xFFF5F5F5),
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(20),
-                                bottomLeft: Radius.circular(20))),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: Icon(Icons.remove),
-                        )),
-                  ),
-                  Container(
-                    width: 1,
-                    color: Color(0xFFD0D0D0),
-                  ),
-                  Container(
-                    height: double.infinity,
-                    color: Color(0xFFF5F5F5),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 10.0, vertical: 10),
-                      child: Text(
-                        '0',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: 1,
-                    color: Color(0xFFD0D0D0),
-                  ),
-                  InkWell(
-                    child: Container(
-                        height: double.infinity,
-                        decoration: BoxDecoration(
-                            color: Color(0xFFF5F5F5),
-                            borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(20),
-                                bottomRight: Radius.circular(20))),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: Icon(Icons.add),
-                        )),
-                  ),
-                ],
-              ),
+            CommonTextWidget(
+              text: 'Description',
+              size: 16,
+              fontWeight: FontWeight.bold,
             ),
-            SizedBox(
-              height: 20,
-            ),
-            TextWidget(
-                text: 'Description',
-                size: 16,
-                fontWeight: FontWeight.bold,
-                textAlign: TextAlign.left),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
               height: 120,
               child: SingleChildScrollView(
-                child: TextWidget(
-                    text: text5,
-                    size: 12,
-                    fontWeight: FontWeight.normal,
-                    textAlign: TextAlign.justify),
+                child: CommonTextWidget(
+                    text: text5, size: 12, textAlign: TextAlign.justify),
               ),
             ),
-            SizedBox(
-              height: 60,
-            ),
-            CommonButtonWidget(text: 'Add to Cart'),
-            SizedBox(
-              height: 30,
-            )
+            const Spacer(),
+            const CommonButtonWidget(text: 'Add to Cart'),
+            const Spacer()
           ],
         ),
       )),

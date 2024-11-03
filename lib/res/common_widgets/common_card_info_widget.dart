@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
 import 'package:lap_mart/res/common_widgets/text_widget.dart';
 
-class CardInfoWidget extends StatelessWidget {
-  const CardInfoWidget(
+class CommonCardInfoWidget extends StatelessWidget {
+  const CommonCardInfoWidget(
       {super.key,
       required this.image,
       required this.name,
@@ -37,19 +38,19 @@ class CardInfoWidget extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 15),
-                      TextWidget(
-                          text: name,
-                          size: 12,
-                          fontWeight: FontWeight.bold,
-                          textAlign: TextAlign.left),
+                      CommonTextWidget(
+                        text: name,
+                        size: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
                       const SizedBox(
                         height: 5,
                       ),
-                      TextWidget(
-                          text: price,
-                          size: 12,
-                          fontWeight: FontWeight.bold,
-                          textAlign: TextAlign.left),
+                      CommonTextWidget(
+                        text: price,
+                        size: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ],
                   ),
                 ))));
