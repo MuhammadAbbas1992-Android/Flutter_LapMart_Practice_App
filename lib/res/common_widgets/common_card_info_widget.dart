@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
-import 'package:lap_mart/res/common_widgets/text_widget.dart';
 
 class CommonCardInfoWidget extends StatelessWidget {
   const CommonCardInfoWidget(

@@ -7,6 +7,7 @@ import 'package:lap_mart/constants/app_fonts.dart';
 import 'package:lap_mart/res/common_widgets/common_account_row_widget.dart';
 import 'package:lap_mart/res/routs/routs_app.dart';
 import 'package:lap_mart/res/routs/routs_name.dart';
+import 'package:lap_mart/utils/app_utils.dart';
 
 import '../../res/common_widgets/common_button_widget.dart';
 import '../../res/common_widgets/common_row_header_widget.dart';
@@ -20,13 +21,15 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
+  final controllers = List.generate(2, (index) => TextEditingController());
+  final formKeys = List.generate(2, (index) => GlobalKey<FormState>());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Container(
           padding: const EdgeInsets.all(30.0),
-          child: const Column(
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Spacer(),
@@ -36,17 +39,31 @@ class _LoginViewState extends State<LoginView> {
                 width: 35,
                 height: 25,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 100.0,
               ),
-              CommonTextFieldIconWidget(
+              Form(
+                key: formKeys[0],
+                child: CommonTextFieldIconWidget(
                   hint: 'Email Address',
-                  prefixIcon: 'assets/icons/ic_email.svg'),
+                  prefixIcon: 'assets/icons/ic_email.svg',
+                  controller: controllers[0],
+                  validator: AppUtils.isEmail,
+                ),
+              ),
               SizedBox(
                 height: 15.0,
               ),
-              CommonTextFieldIconWidget(
-                  hint: 'Password', prefixIcon: 'assets/icons/ic_password.svg'),
+              Form(
+                key: formKeys[1],
+                child: CommonTextFieldIconWidget(
+                  hint: 'Password',
+                  prefixIcon: 'assets/icons/ic_password.svg',
+                  controller: controllers[1],
+                  validator: AppUtils.validatePassword,
+                  obscure: true,
+                ),
+              ),
               SizedBox(
                 height: 40.0,
               ),

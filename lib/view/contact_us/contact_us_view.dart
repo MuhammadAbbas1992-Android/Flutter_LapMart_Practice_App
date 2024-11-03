@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
-import 'package:lap_mart/utils/constants/string_constants.dart';
+import 'package:lap_mart/constants/app_constants.dart';
 import '../../res/common_widgets/common_row_header_widget.dart';
 import '../../res/common_widgets/common_email_widget.dart';
-import '../../res/common_widgets/text_widget.dart';
 
 class ContactUsView extends StatefulWidget {
   const ContactUsView({super.key});

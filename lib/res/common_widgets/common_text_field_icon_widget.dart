@@ -5,6 +5,15 @@ import 'package:lap_mart/constants/app_colors.dart';
 import 'package:lap_mart/constants/app_fonts.dart';
 
 class CommonTextFieldIconWidget extends StatelessWidget {
+  final String hint;
+  final double size;
+  final double height;
+  final double radius;
+  final bool obscure;
+  final String prefixIcon;
+  final TextEditingController? controller;
+  final String? Function(String?)? validator;
+
   const CommonTextFieldIconWidget({
     super.key,
     required this.hint,
@@ -12,13 +21,10 @@ class CommonTextFieldIconWidget extends StatelessWidget {
     this.height = 48.0,
     this.radius = 25.0,
     required this.prefixIcon,
+    this.controller,
+    this.validator,
+    this.obscure = false,
   });
-
-  final String hint;
-  final double size;
-  final double height;
-  final double radius;
-  final String prefixIcon;
 
   @override
   Widget build(BuildContext context) {

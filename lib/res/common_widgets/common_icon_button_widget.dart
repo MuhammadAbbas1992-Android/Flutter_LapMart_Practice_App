@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lap_mart/constants/app_colors.dart';
 import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
-import 'package:lap_mart/res/common_widgets/text_widget.dart';
 
 class CommonIconButtonWidget extends StatelessWidget {
   const CommonIconButtonWidget(

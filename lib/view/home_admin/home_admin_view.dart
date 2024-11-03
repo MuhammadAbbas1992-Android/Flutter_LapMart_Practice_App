@@ -1,12 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
-import 'package:lap_mart/view/product_detail/product_detail_view.dart';
-
-import '../../res/common_widgets/common_card_icon_widget.dart';
-import '../../res/common_widgets/common_card_info_widget.dart';
 import '../../res/common_widgets/common_row_header_widget.dart';
-import '../../res/common_widgets/text_widget.dart';
 import '../../res/components_widgets/icons_row_widget.dart';
 import '../../res/components_widgets/product_list_view_widget.dart';
 

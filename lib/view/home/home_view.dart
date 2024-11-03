@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:lap_mart/constants/app_colors.dart';
 import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
 import 'package:lap_mart/res/components_widgets/video_play_widget.dart';
-import 'package:lap_mart/utils/constants/string_constants.dart';
+import 'package:lap_mart/constants/app_constants.dart';
 import 'package:lap_mart/view/nav_bar/nav_bar.dart';
 
 import '../../res/common_widgets/common_row_header_widget.dart';
-import '../../res/common_widgets/text_widget.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});

@@ -8,7 +8,6 @@ import '../../res/common_widgets/common_button_widget.dart';
 import '../../res/common_widgets/common_row_header_widget.dart';
 import '../../res/components_widgets/dropdown_widget.dart';
 import '../../res/common_widgets/common_text_field_widget.dart';
-import '../../res/common_widgets/text_widget.dart';
 
 class AddProductView extends StatefulWidget {
   const AddProductView({super.key});
