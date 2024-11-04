@@ -46,34 +46,37 @@ class _LoginViewState extends State<LoginView> {
                 key: formKeys[0],
                 child: CommonTextFieldIconWidget(
                   hint: 'Email Address',
+                  customLabel: 'Email',
                   prefixIcon: 'assets/icons/ic_email.svg',
                   controller: controllers[0],
                   validator: AppUtils.isEmail,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15.0,
               ),
               Form(
                 key: formKeys[1],
                 child: CommonTextFieldIconWidget(
                   hint: 'Password',
+                  customLabel: 'Password',
                   prefixIcon: 'assets/icons/ic_password.svg',
                   controller: controllers[1],
                   validator: AppUtils.validatePassword,
                   obscure: true,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40.0,
               ),
-              CommonButtonWidget(
+              const CommonButtonWidget(
                 text: 'Sign In',
+                onTap: loginUser,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10.0,
               ),
-              CommonAccountRowWidget(
+              const CommonAccountRowWidget(
                 textMessage: 'Don’t have an account?',
                 textScreen: 'Sign Up',
               ),
@@ -84,4 +87,8 @@ class _LoginViewState extends State<LoginView> {
       ),
     );
   }
+}
+
+void loginUser() {
+  Get.toNamed(RoutsName.homeView);
 }

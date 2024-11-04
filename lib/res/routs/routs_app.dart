@@ -13,61 +13,63 @@ import 'package:lap_mart/view/sign_up/sign_up_view.dart';
 import 'package:lap_mart/view/splash/splash_view.dart';
 
 class AppRouts {
-  static appRouts() => [
-        GetPage(
-            name: RoutsName.splashView,
-            page: () => const SplashView(),
-            transitionDuration: const Duration(milliseconds: 250),
-            transition: Transition.leftToRightWithFade),
-        GetPage(
-            name: RoutsName.loginView,
-            page: () => const LoginView(),
-            transitionDuration: const Duration(milliseconds: 250),
-            transition: Transition.leftToRightWithFade),
-        GetPage(
-            name: RoutsName.signUpView,
-            page: () => const SignUpView(),
-            transitionDuration: const Duration(milliseconds: 250),
-            transition: Transition.leftToRightWithFade),
-        GetPage(
-            name: RoutsName.homeView,
-            page: () => const HomeView(),
-            transitionDuration: const Duration(milliseconds: 250),
-            transition: Transition.leftToRightWithFade),
-        GetPage(
-            name: RoutsName.productsView,
-            page: () => const ProductsView(),
-            transitionDuration: const Duration(milliseconds: 250),
-            transition: Transition.leftToRightWithFade),
-        GetPage(
-            name: RoutsName.productsDetailView,
-            page: () => const ProductDetailView(),
-            transitionDuration: const Duration(milliseconds: 250),
-            transition: Transition.leftToRightWithFade),
-        GetPage(
-            name: RoutsName.cartView,
-            page: () => const CartView(),
-            transitionDuration: const Duration(milliseconds: 250),
-            transition: Transition.leftToRightWithFade),
-        GetPage(
-            name: RoutsName.aboutUsView,
-            page: () => const AboutUsView(),
-            transitionDuration: const Duration(milliseconds: 250),
-            transition: Transition.leftToRightWithFade),
-        GetPage(
-            name: RoutsName.contactUsView,
-            page: () => const ContactUsView(),
-            transitionDuration: const Duration(milliseconds: 250),
-            transition: Transition.leftToRightWithFade),
-        GetPage(
-            name: RoutsName.homeAdminView,
-            page: () => const HomeAdminView(),
-            transitionDuration: const Duration(milliseconds: 250),
-            transition: Transition.leftToRightWithFade),
-        GetPage(
-            name: RoutsName.addProductView,
-            page: () => const AddProductView(),
-            transitionDuration: const Duration(milliseconds: 250),
-            transition: Transition.leftToRightWithFade),
-      ];
+  AppRouts._();
+  static String initial = RoutsName.splashView;
+  static final appRouts = [
+    GetPage(
+        name: RoutsName.splashView,
+        page: () => const SplashView(),
+        transitionDuration: const Duration(milliseconds: 250),
+        transition: Transition.leftToRightWithFade),
+    GetPage(
+        name: RoutsName.loginView,
+        page: () => const LoginView(),
+        transitionDuration: const Duration(milliseconds: 250),
+        transition: Transition.leftToRightWithFade),
+    GetPage(
+        name: RoutsName.signUpView,
+        page: () => const SignUpView(),
+        transitionDuration: const Duration(milliseconds: 250),
+        transition: Transition.leftToRightWithFade),
+    GetPage(
+        name: RoutsName.homeView,
+        page: () => const HomeView(),
+        transitionDuration: const Duration(milliseconds: 250),
+        transition: Transition.leftToRightWithFade),
+    GetPage(
+        name: RoutsName.productsView,
+        page: () => const ProductsView(),
+        transitionDuration: const Duration(milliseconds: 250),
+        transition: Transition.leftToRightWithFade),
+    GetPage(
+        name: RoutsName.productsDetailView,
+        page: () => const ProductDetailView(),
+        transitionDuration: const Duration(milliseconds: 250),
+        transition: Transition.leftToRightWithFade),
+    GetPage(
+        name: RoutsName.cartView,
+        page: () => const CartView(),
+        transitionDuration: const Duration(milliseconds: 250),
+        transition: Transition.leftToRightWithFade),
+    GetPage(
+        name: RoutsName.aboutUsView,
+        page: () => const AboutUsView(),
+        transitionDuration: const Duration(milliseconds: 250),
+        transition: Transition.leftToRightWithFade),
+    GetPage(
+        name: RoutsName.contactUsView,
+        page: () => const ContactUsView(),
+        transitionDuration: const Duration(milliseconds: 250),
+        transition: Transition.leftToRightWithFade),
+    GetPage(
+        name: RoutsName.homeAdminView,
+        page: () => const HomeAdminView(),
+        transitionDuration: const Duration(milliseconds: 250),
+        transition: Transition.leftToRightWithFade),
+    GetPage(
+        name: RoutsName.addProductView,
+        page: () => const AddProductView(),
+        transitionDuration: const Duration(milliseconds: 250),
+        transition: Transition.leftToRightWithFade),
+  ];
 }

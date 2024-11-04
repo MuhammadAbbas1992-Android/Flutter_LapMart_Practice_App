@@ -10,6 +10,7 @@ class CommonTextFieldIconWidget extends StatelessWidget {
   final double height;
   final double radius;
   final bool obscure;
+  final String? customLabel;
   final String prefixIcon;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
@@ -24,6 +25,7 @@ class CommonTextFieldIconWidget extends StatelessWidget {
     this.controller,
     this.validator,
     this.obscure = false,
+    this.customLabel,
   });
 
   @override
@@ -52,6 +54,7 @@ class CommonTextFieldIconWidget extends StatelessWidget {
               color: AppColors.grey,
               fontFamily: AppFonts.interRegular,
               fontSize: size),
+          label: Text(customLabel!),
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(radius),
               borderSide: const BorderSide(color: AppColors.lightGrey)),

@@ -40,9 +40,9 @@ class MyApp extends StatelessWidget {
       // home: ProductDetailView()
       // home: ProductsView(),
       // home: AddProductView(),
-      home: HomeAdminView(),
-
-      // getPages: AppRouts.appRouts(),
+      // home: HomeAdminView(),
+      initialRoute: AppRouts.initial,
+      getPages: AppRouts.appRouts,
       // home: TestScreen(),
     );
   }

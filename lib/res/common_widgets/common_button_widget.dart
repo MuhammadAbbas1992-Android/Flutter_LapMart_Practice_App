@@ -11,11 +11,13 @@ class CommonButtonWidget extends StatelessWidget {
     this.width = double.infinity,
     this.height = 48.0,
     this.size = 16.0,
+    this.onTap,
   });
   final String text;
   final double width;
   final double height;
   final double size;
+  final VoidCallback? onTap;
   @override
   Widget build(BuildContext context) {
     return TextButton(
@@ -28,7 +30,7 @@ class CommonButtonWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(10.0),
             ),
           )),
-      onPressed: () {},
+      onPressed: onTap,
       child: CommonTextWidget(text: text, color: AppColors.white, size: size),
     );
   }
