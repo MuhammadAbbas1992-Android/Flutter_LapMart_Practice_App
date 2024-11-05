@@ -7,7 +7,10 @@ class SplashServices {
   void goToLoginScreen() {
     Timer(
       const Duration(seconds: 3),
-      () => Get.toNamed(RoutsName.loginView),
+      () {
+        Get.back();
+        Get.toNamed(RoutsName.loginView);
+      },
     );
   }
 }

@@ -9,9 +9,13 @@ import '../routs/routs_name.dart';
 
 class CommonAccountRowWidget extends StatelessWidget {
   const CommonAccountRowWidget(
-      {super.key, required this.textMessage, required this.textScreen});
+      {super.key,
+      required this.textMessage,
+      required this.textScreen,
+      required this.onTap});
   final String textMessage;
   final String textScreen;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +30,7 @@ class CommonAccountRowWidget extends StatelessWidget {
           width: 10.0,
         ),
         InkWell(
-          onTap: () {
-            Get.back();
-            Get.toNamed(RoutsName.signUpView);
-          },
+          onTap: onTap,
           child: CommonTextWidget(
             text: textScreen,
             color: AppColors.pink,

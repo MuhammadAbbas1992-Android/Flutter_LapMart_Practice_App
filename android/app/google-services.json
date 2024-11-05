@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "266366762633",
+    "project_id": "lapmart-90c2a",
+    "storage_bucket": "lapmart-90c2a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:266366762633:android:7b0fc9f0784cac46f75058",
+        "android_client_info": {
+          "package_name": "com.example.lap_mart"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwvI4MydnZMus2Qlx_ImyNviGLSVJ6MdQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

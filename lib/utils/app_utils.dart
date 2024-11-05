@@ -1,3 +1,9 @@
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:lap_mart/res/routs/routs_app.dart';
+
+import '../res/routs/routs_name.dart';
+
 class AppUtils {
   static String isEmail(String? email) {
     email = email!.trim();
@@ -16,5 +22,30 @@ class AppUtils {
       return 'Requires at least 6 characters';
     }
     return null;
+  }
+
+  static String? validateConfirmPassword(String? value, String password) {
+    if (value == null || value.isEmpty) {
+      return 'Confirm password is required';
+    }
+    if (value != password) {
+      return 'Passwords do not match';
+    }
+    return null;
+  }
+
+  static void loginView() {
+    Get.back();
+    Get.toNamed(RoutsName.loginView);
+  }
+
+  static void signUpView() {
+    Get.back();
+    Get.toNamed(RoutsName.signUpView);
+  }
+
+  static void homeView() {
+    Get.back();
+    Get.toNamed(RoutsName.homeView);
   }
 }
