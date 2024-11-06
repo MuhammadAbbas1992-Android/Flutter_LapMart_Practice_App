@@ -5,13 +5,17 @@ import 'package:lap_mart/res/routs/routs_app.dart';
 import '../res/routs/routs_name.dart';
 
 class AppUtils {
-  static String isEmail(String? email) {
-    email = email!.trim();
-    final emailRegex = RegExp(
-      r"^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z]{2,})+$",
-    );
+  static String? validateEmail(String? email) {
+    if (email == null || email.isEmpty) {
+      return 'Please enter email';
+    } else {
+      email = email!.trim();
+      final emailRegex = RegExp(
+        r"^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z]{2,})+$",
+      );
 
-    return emailRegex.hasMatch(email) ? "" : "Please enter a valid email";
+      return emailRegex.hasMatch(email) ? null : "Please enter a valid email";
+    }
   }
 
   static String? validatePassword(String? value) {
@@ -32,6 +36,10 @@ class AppUtils {
       return 'Passwords do not match';
     }
     return null;
+  }
+
+  static void mySnackBar({required String title, required String message}) {
+    Get.snackbar(title, message);
   }
 
   static void loginView() {

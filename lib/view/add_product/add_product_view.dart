@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lap_mart/constants/app_colors.dart';
-import 'package:lap_mart/res/common_widgets/common_text_field_icon_widget.dart';
+import 'package:lap_mart/res/common_widgets/common_text_form_field_widget.dart';
 import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
 
 import '../../res/common_widgets/common_button_widget.dart';

@@ -11,7 +11,7 @@ import 'package:lap_mart/utils/app_utils.dart';
 
 import '../../res/common_widgets/common_button_widget.dart';
 import '../../res/common_widgets/common_row_header_widget.dart';
-import '../../res/common_widgets/common_text_field_icon_widget.dart';
+import '../../res/common_widgets/common_text_form_field_widget.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -48,12 +48,11 @@ class _LoginViewState extends State<LoginView> {
                 ),
                 Form(
                   key: formKeys[0],
-                  child: CommonTextFieldIconWidget(
+                  child: CommonTextFormFieldWidget(
                     hint: 'Email Address',
                     customLabel: 'Email',
                     prefixIcon: 'assets/icons/ic_email.svg',
                     controller: controllers[0],
-                    validator: AppUtils.isEmail,
                   ),
                 ),
                 const SizedBox(
@@ -61,7 +60,7 @@ class _LoginViewState extends State<LoginView> {
                 ),
                 Form(
                   key: formKeys[1],
-                  child: CommonTextFieldIconWidget(
+                  child: CommonTextFormFieldWidget(
                     hint: 'Password',
                     customLabel: 'Password',
                     prefixIcon: 'assets/icons/ic_password.svg',

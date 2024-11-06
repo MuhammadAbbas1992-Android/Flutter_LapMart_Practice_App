@@ -1,10 +1,12 @@
+import 'dart:ffi';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lap_mart/constants/app_colors.dart';
 import 'package:lap_mart/constants/app_fonts.dart';
 
-class CommonTextFieldIconWidget extends StatelessWidget {
+class CommonTextFormFieldWidget extends StatelessWidget {
   final String hint;
   final double size;
   final double height;
@@ -15,7 +17,7 @@ class CommonTextFieldIconWidget extends StatelessWidget {
   final TextEditingController? controller;
   final String? Function(String?)? validator;
 
-  const CommonTextFieldIconWidget({
+  const CommonTextFormFieldWidget({
     super.key,
     required this.hint,
     this.size = 14.0,
@@ -32,10 +34,14 @@ class CommonTextFieldIconWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: height,
-      child: TextField(
+      child: TextFormField(
+        controller: controller,
+        validator: validator,
+        obscureText: obscure,
+        obscuringCharacter: obscure == true ? '*' : '.',
         textAlignVertical: TextAlignVertical.center,
-        maxLines: null, // Allows the TextField to grow with content
-        expands: true,
+        // maxLines: 1, // Allows the TextField to grow with content
+        // expands: true,
         decoration: InputDecoration(
           prefixIcon: Padding(
             padding: const EdgeInsets.only(
@@ -61,6 +67,9 @@ class CommonTextFieldIconWidget extends StatelessWidget {
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(radius),
               borderSide: const BorderSide(color: AppColors.lightGrey)),
+          /*errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(radius),
+              borderSide: const BorderSide(color: AppColors.lightGrey)),*/
         ),
       ),
     );
