@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
       ),
       // home: const SplashView(),
       // home: LoginView(),
-      home: SignUpView(),
+      // home: SignUpView(),
       // home: HomeView(),
       // home: ContactUsView(),
       // home: AboutUsView(),
@@ -46,8 +46,8 @@ class MyApp extends StatelessWidget {
       // home: ProductsView(),
       // home: AddProductView(),
       // home: HomeAdminView(),
-      /*initialRoute: AppRouts.initial,
-      getPages: AppRouts.appRouts,*/
+      initialRoute: AppRouts.initial,
+      getPages: AppRouts.appRouts,
       // home: TestScreen(),
     );
   }

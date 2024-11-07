@@ -31,6 +31,12 @@ class _SignUpViewState extends State<SignUpView> {
   // final formKeys = List.generate(3, (index) => GlobalKey<FormState>());
 
   @override
+  void dispose() {
+    signUpController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
@@ -61,24 +67,24 @@ class _SignUpViewState extends State<SignUpView> {
                           customLabel: 'Email',
                           prefixIcon: 'assets/icons/ic_email.svg',
                           controller: signUpController.emailController.value,
-                          validator: (value) {
+
+                          /*validator: (value) {
                             String? msg = AppUtils.validateEmail(value);
                             AppUtils.mySnackBar(title: 'Alert', message: msg!);
                             // return msg;
                             return null;
-                          },
+                          },*/
                         ),
                         const SizedBox(
                           height: 15.0,
                         ),
                         CommonTextFormFieldWidget(
-                            obscure: true,
-                            hint: 'Password',
-                            customLabel: 'Password',
-                            prefixIcon: 'assets/icons/ic_password.svg',
-                            controller:
-                                signUpController.passwordController.value,
-                            validator: (value) {
+                          obscure: true,
+                          hint: 'Password',
+                          customLabel: 'Password',
+                          prefixIcon: 'assets/icons/ic_password.svg',
+                          controller: signUpController.passwordController.value,
+                          /*validator: (value) {
                               // Validate only if email is valid
                               if (_formKeys.currentState?.validate() == true) {
                                 String? msg = AppUtils.validatePassword(value);
@@ -87,7 +93,8 @@ class _SignUpViewState extends State<SignUpView> {
                                 // return msg;
                               }
                               return null;
-                            }),
+                            }*/
+                        ),
                         const SizedBox(
                           height: 15.0,
                         ),
@@ -98,7 +105,8 @@ class _SignUpViewState extends State<SignUpView> {
                           prefixIcon: 'assets/icons/ic_password.svg',
                           controller:
                               signUpController.confirmPasswordController.value,
-                          validator: (value) {
+
+                          /*validator: (value) {
                             // Validate only if email and password are valid
                             if (_formKeys.currentState?.validate() == true) {
                               String? msg = AppUtils.validateConfirmPassword(
@@ -110,7 +118,7 @@ class _SignUpViewState extends State<SignUpView> {
                               // return msg;
                             }
                             return null;
-                          },
+                          },*/
                         ),
                       ],
                     )),

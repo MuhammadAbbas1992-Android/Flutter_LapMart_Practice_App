@@ -56,4 +56,14 @@ class AppUtils {
     Get.back();
     Get.toNamed(RoutsName.homeView);
   }
+
+  static void homeAdminView() {
+    Get.back();
+    Get.toNamed(RoutsName.homeAdminView);
+  }
+
+  static void addProductView() {
+    Get.back();
+    Get.toNamed(RoutsName.addProductView);
+  }
 }

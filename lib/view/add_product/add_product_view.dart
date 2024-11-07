@@ -1,8 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_common/get_reset.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:lap_mart/constants/app_colors.dart';
 import 'package:lap_mart/res/common_widgets/common_text_form_field_widget.dart';
 import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
+import 'package:lap_mart/view_model/controller/add_product/add_product_controller.dart';
 
 import '../../res/common_widgets/common_button_widget.dart';
 import '../../res/common_widgets/common_row_header_widget.dart';
@@ -17,6 +21,15 @@ class AddProductView extends StatefulWidget {
 }
 
 class _AddProductViewState extends State<AddProductView> {
+  final addProductController = Get.put(AddProductController());
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    addProductController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +49,9 @@ class _AddProductViewState extends State<AddProductView> {
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: Column(
                   children: [
-                    Spacer(),
+                    SizedBox(
+                      height: 50,
+                    ),
                     const CommonTextWidget(
                         text: 'Add New Device',
                         size: 20.0,
@@ -69,12 +84,14 @@ class _AddProductViewState extends State<AddProductView> {
                     ),
                     CommonTextFieldWidget(
                       hint: 'Product Name',
+                      controller: addProductController.nameController.value,
                     ),
                     const SizedBox(
                       height: 10,
                     ),
                     CommonTextFieldWidget(
                       hint: 'Price',
+                      controller: addProductController.priceController.value,
                     ),
                     const SizedBox(
                       height: 10,
@@ -82,11 +99,16 @@ class _AddProductViewState extends State<AddProductView> {
                     CommonTextFieldWidget(
                       hint: 'Description',
                       height: 115,
+                      controller:
+                          addProductController.descriptionController.value,
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    CommonButtonWidget(text: 'ADD'),
+                    CommonButtonWidget(
+                      text: 'ADD',
+                      onTap: () => addProductController.addProduct(),
+                    ),
                   ],
                 ),
               )

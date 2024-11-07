@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get_navigation/src/router_report.dart';
@@ -8,6 +10,7 @@ import 'package:lap_mart/res/common_widgets/common_account_row_widget.dart';
 import 'package:lap_mart/res/routs/routs_app.dart';
 import 'package:lap_mart/res/routs/routs_name.dart';
 import 'package:lap_mart/utils/app_utils.dart';
+import 'package:lap_mart/view_model/controller/login/login_controller.dart';
 
 import '../../res/common_widgets/common_button_widget.dart';
 import '../../res/common_widgets/common_row_header_widget.dart';
@@ -21,8 +24,16 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  final controllers = List.generate(2, (index) => TextEditingController());
-  final formKeys = List.generate(2, (index) => GlobalKey<FormState>());
+  final loginController = Get.put(LoginController());
+  final _formKeys = GlobalKey<FormState>();
+  /*final controllers = List.generate(2, (index) => TextEditingController());
+  final formKeys = List.generate(2, (index) => GlobalKey<FormState>());*/
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    loginController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,34 +58,33 @@ class _LoginViewState extends State<LoginView> {
                   height: 100.0,
                 ),
                 Form(
-                  key: formKeys[0],
-                  child: CommonTextFormFieldWidget(
-                    hint: 'Email Address',
-                    customLabel: 'Email',
-                    prefixIcon: 'assets/icons/ic_email.svg',
-                    controller: controllers[0],
-                  ),
-                ),
-                const SizedBox(
-                  height: 15.0,
-                ),
-                Form(
-                  key: formKeys[1],
-                  child: CommonTextFormFieldWidget(
-                    hint: 'Password',
-                    customLabel: 'Password',
-                    prefixIcon: 'assets/icons/ic_password.svg',
-                    controller: controllers[1],
-                    validator: AppUtils.validatePassword,
-                    obscure: true,
-                  ),
-                ),
+                    child: Column(
+                  children: [
+                    CommonTextFormFieldWidget(
+                      hint: 'Email Address',
+                      customLabel: 'Email',
+                      prefixIcon: 'assets/icons/ic_email.svg',
+                      controller: loginController.emailController.value,
+                    ),
+                    const SizedBox(
+                      height: 15.0,
+                    ),
+                    CommonTextFormFieldWidget(
+                      hint: 'Password',
+                      customLabel: 'Password',
+                      prefixIcon: 'assets/icons/ic_password.svg',
+                      controller: loginController.passwordController.value,
+                      // validator: AppUtils.validatePassword,
+                      obscure: true,
+                    ),
+                  ],
+                )),
                 const SizedBox(
                   height: 40.0,
                 ),
-                const CommonButtonWidget(
+                CommonButtonWidget(
                   text: 'Sign In',
-                  onTap: AppUtils.homeView,
+                  onTap: () => loginController.loginUser(_formKeys),
                 ),
                 const SizedBox(
                   height: 10.0,

@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
+import 'package:lap_mart/view_model/controller/home_admin/home_admin_controller.dart';
 import '../../res/common_widgets/common_row_header_widget.dart';
 import '../../res/components_widgets/icons_row_widget.dart';
 import '../../res/components_widgets/product_list_view_widget.dart';
@@ -13,6 +16,7 @@ class ProductsView extends StatefulWidget {
 }
 
 class _ProductsViewState extends State<ProductsView> {
+  final productsController = Get.put(HomeAdminController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +48,9 @@ class _ProductsViewState extends State<ProductsView> {
             ),
             const IconsRowWidget(),
             const SizedBox(height: 10),
-            ProductListViewWidget()
+            ProductListViewWidget(
+              controller: productsController,
+            )
           ],
         ),
       )),

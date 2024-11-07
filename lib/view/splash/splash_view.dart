@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:lap_mart/view_model/services/splash_services/splash_services.dart';
+
+import '../../view_model/services/splash/splash_services.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});

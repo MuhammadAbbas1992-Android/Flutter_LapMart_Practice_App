@@ -2,14 +2,17 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../utils/app_utils.dart';
+
 class LoginController extends GetxController {
-  final emailController = TextEditingController().obs;
-  final passwordController = TextEditingController().obs;
+  final emailController = TextEditingController(text: 'admin123@gmail.com').obs;
+  final passwordController = TextEditingController(text: '123456').obs;
 
   bool showSpinner = false;
   late FirebaseAuth _auth;
 
   LoginController() {
+    // print('yes called LoginController Constructor');
     _auth = FirebaseAuth.instance;
   }
 
@@ -17,27 +20,31 @@ class LoginController extends GetxController {
 
   void validateEmail() {}
 
-  void signUpUser() {
-    loading.value = true;
+  void loginUser(dynamic formKey) async {
+    /*if (formKey.currentState!.validate()) {
+      loading.value = true;
+      AppUtils.mySnackBar(
+          title: 'Message', message: confirmPasswordController.value.text);
+    }*/
 
-    print(emailController.value);
-    print(passwordController.value);
-/*
     try {
-      UserCredential newUser = await _auth.createUserWithEmailAndPassword(
-          email: email, password: password);
+      UserCredential newUser = await _auth.signInWithEmailAndPassword(
+          email: emailController.value.text,
+          password: passwordController.value.text);
       if (newUser != null) {
-        print(newUser);
-        print("New user created successfully");
-        Navigator.pop(context);
-        // Navigator.pushNamed(context, ChatScreen.id);
-        // Navigator.pushNamed(context, ChatScreenV21.id);
-        Navigator.pushNamed(context, ChatScreenV22.id);
+        print('NewUser $newUser');
+        AppUtils.mySnackBar(title: 'Response', message: 'Login successfully');
+        if (emailController.value.text == 'admin123@gmail.com') {
+          AppUtils.homeAdminView();
+        } else {
+          AppUtils.homeView();
+        }
       } else {
-        print("Error occurred for creating new user");
+        AppUtils.mySnackBar(
+            title: 'Response', message: 'Error occurred to login');
       }
     } catch (e) {
-      print("Exception Occurred: $e");
-    }*/
+      AppUtils.mySnackBar(title: 'Response', message: 'Exception Occurred: $e');
+    }
   }
 }

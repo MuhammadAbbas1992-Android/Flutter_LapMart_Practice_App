@@ -1,8 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:lap_mart/utils/status.dart';
 import '../../res/common_widgets/common_row_header_widget.dart';
 import '../../res/components_widgets/icons_row_widget.dart';
 import '../../res/components_widgets/product_list_view_widget.dart';
+import '../../utils/app_utils.dart';
+import '../../view_model/controller/home_admin/home_admin_controller.dart';
 
 class HomeAdminView extends StatefulWidget {
   const HomeAdminView({super.key});
@@ -12,6 +17,15 @@ class HomeAdminView extends StatefulWidget {
 }
 
 class _HomeAdminViewState extends State<HomeAdminView> {
+  final homeAdminController = Get.put(HomeAdminController());
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    homeAdminController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,13 +39,36 @@ class _HomeAdminViewState extends State<HomeAdminView> {
             const CommonRowHeaderWidget(
               svgIconLeft: 'assets/icons/ic_sign_out.svg',
               svgIconMiddle: 'assets/icons/ic_laptop.svg',
+              onTap: AppUtils.addProductView,
             ),
             const SizedBox(
               height: 20.0,
             ),
             const IconsRowWidget(),
             const SizedBox(height: 10),
-            ProductListViewWidget()
+            Obx(
+              () {
+                if (homeAdminController.isLoading.value) {
+                  return Expanded(
+                      child: ProductListViewWidget(
+                    controller: homeAdminController,
+                  ));
+                } else {
+                  return const Center(
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 200.0, bottom: 200.0),
+                      child: SizedBox(
+                          width: 100,
+                          height: 100,
+                          child: CircularProgressIndicator(
+                            color: Colors.blueAccent,
+                          )),
+                    ),
+                  );
+                }
+              },
+            )
+            // const Expanded(child: ProductListViewWidget()),
           ],
         ),
       )),

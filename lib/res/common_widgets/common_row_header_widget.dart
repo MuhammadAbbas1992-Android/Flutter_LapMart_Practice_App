@@ -8,6 +8,14 @@ import '../../constants/app_fonts.dart';
 import 'common_text_widget.dart';
 
 class CommonRowHeaderWidget extends StatelessWidget {
+  final double size;
+  final String? svgIconLeft;
+  final String svgIconMiddle;
+  final String? svgIconRight;
+  final double height;
+  final double width;
+  final VoidCallback? onTap;
+
   const CommonRowHeaderWidget({
     super.key,
     this.size = 16,
@@ -16,14 +24,8 @@ class CommonRowHeaderWidget extends StatelessWidget {
     this.svgIconRight,
     this.height = 17,
     this.width = 25,
+    this.onTap,
   });
-
-  final double size;
-  final String? svgIconLeft;
-  final String svgIconMiddle;
-  final String? svgIconRight;
-  final double height;
-  final double width;
 
   @override
   Widget build(BuildContext context) {
@@ -60,11 +62,12 @@ class CommonRowHeaderWidget extends StatelessWidget {
                   svgIconRight!,
                   color: AppColors.white,
                 )
-              : const CommonButtonWidget(
+              : CommonButtonWidget(
                   text: 'Add New',
                   height: 30,
                   width: 70,
                   size: 14,
+                  onTap: onTap,
                 ),
         ),
       ],
