@@ -12,7 +12,8 @@ class CommonTextWidget extends StatelessWidget {
       this.color = AppColors.black,
       this.fontWeight = FontWeight.normal,
       this.fontFamily = AppFonts.interRegular,
-      this.textAlign = TextAlign.left});
+      this.textAlign = TextAlign.left,
+      this.onTap});
 
   final String text;
   final double? size;
@@ -20,16 +21,20 @@ class CommonTextWidget extends StatelessWidget {
   final FontWeight? fontWeight;
   final String? fontFamily;
   final TextAlign textAlign;
+  final VoidCallback? onTap;
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(
-          fontSize: size,
-          color: color,
-          fontWeight: fontWeight,
-          fontFamily: fontFamily),
-      textAlign: textAlign,
+    return InkWell(
+      onTap: onTap,
+      child: Text(
+        text,
+        style: TextStyle(
+            fontSize: size,
+            color: color,
+            fontWeight: fontWeight,
+            fontFamily: fontFamily),
+        textAlign: textAlign,
+      ),
     );
   }
 }

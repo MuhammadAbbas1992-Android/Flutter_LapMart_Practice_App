@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -49,36 +51,51 @@ class _AddProductViewState extends State<AddProductView> {
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 50,
                     ),
                     const CommonTextWidget(
-                        text: 'Add New Device',
-                        size: 20.0,
-                        fontWeight: FontWeight.bold,
-                        textAlign: TextAlign.center),
+                      text: 'Add New Device',
+                      size: 20.0,
+                      fontWeight: FontWeight.bold,
+                      textAlign: TextAlign.center,
+                    ),
                     const SizedBox(
                       height: 20,
                     ),
-                    Container(
-                      height: 143,
-                      decoration: BoxDecoration(
-                        color: AppColors.tinGrey,
-                        border:
-                            Border.all(color: AppColors.lightGrey, width: 1),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      child: const Center(
-                        child: CommonTextWidget(
-                          text: '+ Add Image',
-                          textAlign: TextAlign.center,
+                    Obx(
+                      () => Container(
+                        height: 143,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: AppColors.tinGrey,
+                          border:
+                              Border.all(color: AppColors.lightGrey, width: 1),
+                          borderRadius: BorderRadius.circular(10.0),
                         ),
+                        child: addProductController.imagePath.isNotEmpty
+                            ? InkWell(
+                                onTap: () => addProductController.getImage(),
+                                child: Image.file(
+                                  File(addProductController.imagePath.value),
+                                  fit: BoxFit.fill,
+                                ),
+                              )
+                            : Center(
+                                child: CommonTextWidget(
+                                  text: '+ Add Image',
+                                  textAlign: TextAlign.center,
+                                  onTap: () => addProductController.getImage(),
+                                ),
+                              ),
                       ),
                     ),
                     const SizedBox(
                       height: 10,
                     ),
-                    const DropdownWidget(),
+                    DropdownWidget(
+                      controller: addProductController,
+                    ),
                     const SizedBox(
                       height: 10,
                     ),
@@ -107,7 +124,7 @@ class _AddProductViewState extends State<AddProductView> {
                     ),
                     CommonButtonWidget(
                       text: 'ADD',
-                      onTap: () => addProductController.addProduct(),
+                      onTap: () => addProductController.uploadProduct(),
                     ),
                   ],
                 ),

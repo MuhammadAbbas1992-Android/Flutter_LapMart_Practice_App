@@ -132,10 +132,10 @@ class _SignUpViewState extends State<SignUpView> {
                 const SizedBox(
                   height: 10.0,
                 ),
-                const CommonAccountRowWidget(
+                CommonAccountRowWidget(
                   textMessage: 'Already have an account? ',
                   textScreen: 'Sign In',
-                  onTap: AppUtils.loginView,
+                  onTap: () => AppUtils.loginView(),
                 ),
               ],
             ),

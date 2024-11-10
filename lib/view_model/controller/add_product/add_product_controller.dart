@@ -1,9 +1,13 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get/get_common/get_reset.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:lap_mart/utils/app_utils.dart';
 
 class AddProductController extends GetxController {
@@ -11,23 +15,66 @@ class AddProductController extends GetxController {
   final priceController = TextEditingController(text: '200').obs;
   final descriptionController =
       TextEditingController(text: 'Good product for use').obs;
-  late FirebaseAuth _auth;
+  // late FirebaseAuth _auth;
   late FirebaseFirestore _fireStore;
-  late FirebaseDatabase _rootRef;
+  // late FirebaseDatabase _rootRef;
+  late String imageUrl;
+
+  RxString selectedOption = 'Choose Brand'.obs;
+  final List<String> options =
+      ['Choose Brand', 'Apple', 'Dell', 'Hp', 'Lenovo'].obs;
+
+  RxString imagePath = ''.obs;
 
   bool showSpinner = false;
 
   AddProductController() {
-    print('yes called AddProductController Constructor');
-    _auth = FirebaseAuth.instance;
+    // _auth = FirebaseAuth.instance;
     _fireStore = FirebaseFirestore.instance;
-    _rootRef = FirebaseDatabase.instance;
+    // _rootRef = FirebaseDatabase.instance;
     // getCurrentUser();
+  }
+  Future getImage() async {
+    AppUtils.mySnackBar(title: 'Alert', message: 'Welcome to Add New Device');
+    final ImagePicker picker = ImagePicker();
+    final image = await picker.pickImage(source: ImageSource.gallery);
+    // final image = await picker.pickImage(source: ImageSource.camera);
+
+    if (image != null) {
+      //Get String of Image File from Gallery or Camera
+      imagePath.value = image.path.toString();
+      //Get File from Gallery or Camera
+      // imagePath = File(image.path);
+    }
+    AppUtils.mySnackBar(title: "Image Path", message: imagePath.value);
+  }
+
+  Future<void> uploadProduct() async {
+    if (imagePath.value.isEmpty) return;
+
+    try {
+      // Create a reference to Firebase Storage
+      final storageRef = FirebaseStorage.instance
+          .ref()
+          .child('uploads/${DateTime.now().millisecondsSinceEpoch}.jpg');
+
+      // Upload the image file
+      await storageRef.putFile(File(imagePath.value));
+
+      // Get the download URL
+      imageUrl = await storageRef.getDownloadURL();
+      addProduct();
+    } catch (e) {
+      AppUtils.mySnackBar(
+          title: 'Error uploading image', message: e.toString());
+    }
   }
 
   // If Document name is system defined
   void addProduct() {
     _fireStore.collection('Products').add({
+      'url': imageUrl,
+      'category': selectedOption.value,
       'name': nameController.value.text,
       'price': priceController.value.text,
       'description': descriptionController.value.text

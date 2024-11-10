@@ -89,10 +89,10 @@ class _LoginViewState extends State<LoginView> {
                 const SizedBox(
                   height: 10.0,
                 ),
-                const CommonAccountRowWidget(
+                CommonAccountRowWidget(
                   textMessage: 'Don’t have an account?',
                   textScreen: 'Sign Up',
-                  onTap: AppUtils.signUpView,
+                  onTap: () => AppUtils.signUpView(),
                 ),
               ],
             ),

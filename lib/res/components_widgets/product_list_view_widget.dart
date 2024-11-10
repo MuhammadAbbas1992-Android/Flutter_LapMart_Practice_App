@@ -44,7 +44,7 @@ class ProductListViewWidget extends StatelessWidget {
         ),
       ),*/
         return CommonCardInfoWidget(
-          image: 'assets/images/laptops.png',
+          image: 'assets/images/laptop.png',
           name: controller.productList[index]['name'],
           price: controller.productList[index]['price'],
           // name: 'Laptop',
