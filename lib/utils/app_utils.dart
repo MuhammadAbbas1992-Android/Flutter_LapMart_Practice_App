@@ -1,10 +1,18 @@
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:lap_mart/model/product_model.dart';
 import 'package:lap_mart/res/routs/routs_app.dart';
 
 import '../res/routs/routs_name.dart';
 
 class AppUtils {
+  static ProductModel? productModel;
+
+  static selectedProduct(ProductModel product) {
+    productModel = product;
+    addProductView();
+  }
+
   static String? validateEmail(String? email) {
     if (email == null || email.isEmpty) {
       return 'Please enter email';
@@ -60,6 +68,11 @@ class AppUtils {
   static void homeAdminView() {
     Get.back();
     Get.toNamed(RoutsName.homeAdminView);
+  }
+
+  static void productsView() {
+    Get.back();
+    Get.toNamed(RoutsName.productsView);
   }
 
   static void addProductView() {

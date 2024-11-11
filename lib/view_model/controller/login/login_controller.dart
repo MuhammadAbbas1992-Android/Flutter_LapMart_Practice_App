@@ -37,7 +37,7 @@ class LoginController extends GetxController {
         if (emailController.value.text == 'admin123@gmail.com') {
           AppUtils.homeAdminView();
         } else {
-          AppUtils.homeView();
+          AppUtils.productsView();
         }
       } else {
         AppUtils.mySnackBar(

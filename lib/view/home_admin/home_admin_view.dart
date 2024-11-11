@@ -52,6 +52,7 @@ class _HomeAdminViewState extends State<HomeAdminView> {
                   return Expanded(
                       child: ProductListViewWidget(
                     controller: homeAdminController,
+                    dotMenuImage: 'assets/icons/ic_back.svg',
                   ));
                 } else {
                   return const Center(

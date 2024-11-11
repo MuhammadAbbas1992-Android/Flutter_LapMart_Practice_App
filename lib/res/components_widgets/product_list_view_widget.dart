@@ -13,43 +13,29 @@ class ProductListViewWidget extends StatelessWidget {
   // final homeAdminController = Get.put(HomeAdminController());
   const ProductListViewWidget({
     super.key,
-    required this.controller,
+    this.controller,
+    this.dotMenuImage,
   });
-  final HomeAdminController controller;
+  final dynamic controller;
+  final String? dotMenuImage;
 
   @override
   Widget build(BuildContext context) {
-    // return Text(homeAdminController.status.toString());
-    // return homeAdminController.status == Status.COMPLETED
-    //     ? Text(homeAdminController.status.toString())
-    //     : CircularProgressIndicator();
     return GridView.builder(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 10,
           crossAxisSpacing: 10,
           mainAxisExtent: 210),
-      itemCount: controller.productList.length,
+      itemCount: controller?.productList.length,
       itemBuilder: (context, index) {
-        // return Text('Goo');
-        /*return Card(
-        child: Column(
-          children: [
-            Image.asset('assets/images/laptops.png',
-                height: 100, width: 100),
-            const SizedBox(height: 8),
-            const Text('Apple Macbook 12', style: TextStyle(fontSize: 16)),
-            const Text('SAR 500', style: TextStyle(fontSize: 14)),
-          ],
-        ),
-      ),*/
         return CommonCardInfoWidget(
           image: 'assets/images/laptop.png',
-          name: controller.productList[index]['name'],
-          price: controller.productList[index]['price'],
+          productIndex: index,
           // name: 'Laptop',
           // price: '300',
-          dotMenuImage: 'assets/icons/ic_back.svg',
+          dotMenuImage: dotMenuImage,
+          controller: controller,
         );
       },
     );

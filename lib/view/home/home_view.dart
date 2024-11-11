@@ -20,7 +20,7 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      drawer: NavBar(),
+      drawer: const NavBar(),
       appBar: AppBar(),
       body: const SafeArea(
         child: Column(

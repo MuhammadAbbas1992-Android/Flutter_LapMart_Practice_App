@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:lap_mart/model/product_model.dart';
 import 'package:lap_mart/res/routs/routs_name.dart';
 import 'package:lap_mart/view/about_us/about_us_view.dart';
 import 'package:lap_mart/view/add_product/add_product_view.dart';
@@ -68,7 +69,7 @@ class AppRouts {
         transition: Transition.leftToRightWithFade),
     GetPage(
         name: RoutsName.addProductView,
-        page: () => const AddProductView(),
+        page: () => AddProductView(),
         transitionDuration: const Duration(milliseconds: 250),
         transition: Transition.leftToRightWithFade),
   ];

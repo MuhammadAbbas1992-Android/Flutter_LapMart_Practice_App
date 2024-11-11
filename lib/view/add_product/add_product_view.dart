@@ -6,8 +6,10 @@ import 'package:get/get.dart';
 import 'package:get/get_common/get_reset.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:lap_mart/constants/app_colors.dart';
+import 'package:lap_mart/model/product_model.dart';
 import 'package:lap_mart/res/common_widgets/common_text_form_field_widget.dart';
 import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
+import 'package:lap_mart/utils/app_utils.dart';
 import 'package:lap_mart/view_model/controller/add_product/add_product_controller.dart';
 
 import '../../res/common_widgets/common_button_widget.dart';
@@ -24,6 +26,13 @@ class AddProductView extends StatefulWidget {
 
 class _AddProductViewState extends State<AddProductView> {
   final addProductController = Get.put(AddProductController());
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    addProductController.loadProductScreen();
+  }
 
   @override
   void dispose() {
@@ -124,7 +133,7 @@ class _AddProductViewState extends State<AddProductView> {
                     ),
                     CommonButtonWidget(
                       text: 'ADD',
-                      onTap: () => addProductController.uploadProduct(),
+                      onTap: () => addProductController.addProduct(),
                     ),
                   ],
                 ),
