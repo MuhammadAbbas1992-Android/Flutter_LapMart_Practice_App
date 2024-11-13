@@ -28,7 +28,7 @@ class ProductListViewWidget extends StatelessWidget {
           mainAxisSpacing: 10,
           crossAxisSpacing: 10,
           mainAxisExtent: 210),
-      itemCount: FirebaseServices.productList.length,
+      itemCount: FirebaseServices.categoryList.length,
       itemBuilder: (context, index) {
         return CommonCardInfoWidget(
           image: 'assets/images/laptop.png',

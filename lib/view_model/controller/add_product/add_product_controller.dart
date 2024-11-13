@@ -107,7 +107,8 @@ class AddProductController extends GetxController {
         AppUtils.mySnackBar(
             title: 'Success', message: 'Product details updated successfully');
         AppUtils.productIndex = -1;
-        AppUtils.homeAdminView();
+        Get.back();
+        // AppUtils.homeAdminView();
       } catch (e) {
         AppUtils.mySnackBar(
             title: 'Error', message: 'Product details failed to updated');
@@ -134,7 +135,8 @@ class AddProductController extends GetxController {
         print('ABC Response IsBlank ${value.isBlank}');
         print('ABC Response Reactive ${value.reactive}');*/
 
-          AppUtils.homeAdminView();
+          // AppUtils.homeAdminView();
+          Get.back();
         },
       ).onError(
         (error, stackTrace) {

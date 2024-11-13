@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:lap_mart/utils/app_utils.dart';
 
 import '../../../model/product_model.dart';
 
@@ -9,6 +10,7 @@ class FirebaseServices {
   // final FirebaseAuth _auth = FirebaseAuth.instance;
   // final FirebaseDatabase _rootRef = FirebaseDatabase.instance;
   static List<ProductModel> productList = <ProductModel>[];
+  static List<ProductModel> categoryList = <ProductModel>[];
 
   // This code is helps to fetch messages already stored in firebase collection
   static Future<List<ProductModel>?> getProducts() async {
@@ -29,6 +31,9 @@ class FirebaseServices {
           ProductModel productModel = ProductModel.fromJson(product);
           print('ABC Check it ${product.id}\n${productModel.id}');
           productList.add(productModel);
+          if (productModel.category == AppUtils.category) {
+            categoryList.add(productModel);
+          }
         }
         return productList;
       },

@@ -61,7 +61,7 @@ class _ProductsViewState extends State<ProductsView> {
             Obx(
               () {
                 if (productsController.isLoading.value) {
-                  return Expanded(
+                  return const Expanded(
                       child: ProductListViewWidget(
                     dotMenuImage: 'assets/icons/ic_back.svg',
                   ));

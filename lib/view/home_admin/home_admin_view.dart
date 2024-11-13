@@ -39,10 +39,10 @@ class _HomeAdminViewState extends State<HomeAdminView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const CommonRowHeaderWidget(
+            CommonRowHeaderWidget(
               svgIconLeft: 'assets/icons/ic_sign_out.svg',
               svgIconMiddle: 'assets/icons/ic_laptop.svg',
-              onTap: AppUtils.addProductView,
+              onTap: () => Get.back(),
             ),
             const SizedBox(
               height: 20.0,

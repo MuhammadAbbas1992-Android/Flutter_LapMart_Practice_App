@@ -22,28 +22,29 @@ class _HomeViewState extends State<HomeView> {
       backgroundColor: Colors.white,
       drawer: const NavBar(),
       appBar: AppBar(),
-      body: const SafeArea(
+      body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Padding(
-              padding: EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(20.0),
               child: CommonRowHeaderWidget(
                 svgIconLeft: 'assets/icons/ic_menu.svg',
                 svgIconMiddle: 'assets/icons/ic_laptop.svg',
                 svgIconRight: 'assets/icons/ic_menu.svg',
+                onTap: () => const NavBar(),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20.0,
             ),
-            VideoPlayWidget(
+            const VideoPlayWidget(
               videoUrl: '',
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0),
               child: CommonTextWidget(
                 text: 'About us',
@@ -53,10 +54,10 @@ class _HomeViewState extends State<HomeView> {
                 textAlign: TextAlign.left,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0),
               child: SingleChildScrollView(
                 child: CommonTextWidget(

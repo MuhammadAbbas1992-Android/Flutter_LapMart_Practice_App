@@ -51,10 +51,11 @@ class _AddProductViewState extends State<AddProductView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const CommonRowHeaderWidget(
+              CommonRowHeaderWidget(
                 svgIconLeft: 'assets/icons/ic_back.svg',
                 svgIconMiddle: 'assets/icons/ic_laptop.svg',
                 svgIconRight: 'assets/icons/ic_back.svg',
+                onTap: () => Get.back(),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),

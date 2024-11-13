@@ -24,7 +24,7 @@ class CommonCardInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ProductModel productModel = FirebaseServices.productList[productIndex];
+    ProductModel productModel = FirebaseServices.categoryList[productIndex];
     return InkWell(
       onTap: onTap,
       child: Card(

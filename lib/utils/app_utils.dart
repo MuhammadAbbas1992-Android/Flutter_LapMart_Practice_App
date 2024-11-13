@@ -9,6 +9,7 @@ import '../res/routs/routs_name.dart';
 class AppUtils {
   static bool isUserLogin = false;
   static int productIndex = -1;
+  static String category = 'Apple';
 
   static toggleUserLoginStatus(String user) {
     if (user == 'admin123@gmail.com') {
@@ -20,6 +21,10 @@ class AppUtils {
       // SharedPreferenceServices.saveUsername('User');
       AppUtils.homeView();
     }
+  }
+
+  static setProductCategory(String name) {
+    category = name;
   }
 
   static selectedProduct(int index) {
@@ -95,7 +100,6 @@ class AppUtils {
   }
 
   static void addProductView() {
-    Get.back();
     Get.toNamed(RoutsName.addProductView);
   }
 
