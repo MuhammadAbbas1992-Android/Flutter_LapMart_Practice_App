@@ -1,23 +1,46 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:lap_mart/view_model/controller/home/home_controller.dart';
+import 'package:video_player/video_player.dart';
 
 class VideoPlayWidget extends StatelessWidget {
   const VideoPlayWidget({
     super.key,
+    required this.videoUrl,
   });
+
+  final String videoUrl;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: 285,
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(
-              'assets/images/home_img.png'), // Update with your image path
-          fit: BoxFit.cover, // BoxFit to control how the image should be fitted
-        ),
+    final homeController = Get.put(HomeController());
+    return Center(
+      child: Obx(
+        () => homeController.isInitialized.value
+            ? Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  AspectRatio(
+                    aspectRatio:
+                        homeController.videoPlayerController.value.aspectRatio,
+                    child: VideoPlayer(homeController.videoPlayerController),
+                  ),
+                  const SizedBox(height: 20),
+                  IconButton(
+                    icon: Icon(
+                      homeController.isPlaying.value
+                          ? Icons.pause
+                          : Icons.play_arrow,
+                      size: 40,
+                    ),
+                    onPressed: homeController.togglePlayPause,
+                  ),
+                ],
+              )
+            : const CircularProgressIndicator(), // Shows while video is loading
       ),
-      child: const Image(image: AssetImage('assets/icons/ic_play.png')),
     );
   }
 }

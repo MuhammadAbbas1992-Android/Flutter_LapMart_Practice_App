@@ -37,7 +37,9 @@ class _HomeViewState extends State<HomeView> {
             SizedBox(
               height: 20.0,
             ),
-            VideoPlayWidget(),
+            VideoPlayWidget(
+              videoUrl: '',
+            ),
             SizedBox(
               height: 20,
             ),

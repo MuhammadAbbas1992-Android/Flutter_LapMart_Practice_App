@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:lap_mart/utils/app_utils.dart';
+import 'package:lap_mart/view/home/home_view.dart';
 
 import '../../res/common_widgets/common_icon_button_widget.dart';
 
@@ -30,31 +32,49 @@ class NavBar extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            const CommonIconButtonWidget(
-                icon: 'assets/icons/ic_home.svg', text: 'Home'),
+            InkWell(
+              onTap: () => AppUtils.homeView(),
+              child: const CommonIconButtonWidget(
+                  icon: 'assets/icons/ic_home.svg', text: 'Home'),
+            ),
             const SizedBox(
               height: 10,
             ),
-            const CommonIconButtonWidget(
-                icon: 'assets/icons/ic_product.svg', text: 'Products'),
+            InkWell(
+              onTap: () => AppUtils.productsView(),
+              child: const CommonIconButtonWidget(
+                  icon: 'assets/icons/ic_product.svg', text: 'Products'),
+            ),
             const SizedBox(
               height: 10,
             ),
-            const CommonIconButtonWidget(
-                icon: 'assets/icons/ic_cart.svg', text: 'Cart'),
+            InkWell(
+              onTap: () => AppUtils.cartView(),
+              child: const CommonIconButtonWidget(
+                  icon: 'assets/icons/ic_cart.svg', text: 'Cart'),
+            ),
             const SizedBox(
               height: 10,
             ),
-            const CommonIconButtonWidget(
-                icon: 'assets/icons/ic_about_us.svg', text: 'About us'),
+            InkWell(
+              onTap: () => AppUtils.aboutUsView(),
+              child: const CommonIconButtonWidget(
+                  icon: 'assets/icons/ic_about_us.svg', text: 'About us'),
+            ),
             const SizedBox(
               height: 10,
             ),
-            const CommonIconButtonWidget(
-                icon: 'assets/icons/ic_contact_us.svg', text: 'Contact us'),
+            InkWell(
+              onTap: () => AppUtils.contactUsView(),
+              child: const CommonIconButtonWidget(
+                  icon: 'assets/icons/ic_contact_us.svg', text: 'Contact us'),
+            ),
             const Spacer(),
-            const CommonIconButtonWidget(
-                icon: 'assets/icons/ic_sign_out.svg', text: 'Sign Out'),
+            InkWell(
+              onTap: () => AppUtils.logout(),
+              child: const CommonIconButtonWidget(
+                  icon: 'assets/icons/ic_sign_out.svg', text: 'Sign Out'),
+            ),
             const SizedBox(
               height: 50,
             )

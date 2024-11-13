@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
+import 'package:lap_mart/utils/app_utils.dart';
 import 'package:lap_mart/view_model/controller/home_admin/home_admin_controller.dart';
 import 'package:lap_mart/view_model/controller/products/products_controller.dart';
 import '../../res/common_widgets/common_row_header_widget.dart';
 import '../../res/components_widgets/icons_row_widget.dart';
 import '../../res/components_widgets/product_list_view_widget.dart';
+import '../nav_bar/nav_bar.dart';
 
 class ProductsView extends StatefulWidget {
   const ProductsView({super.key});
@@ -30,6 +32,8 @@ class _ProductsViewState extends State<ProductsView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      drawer: const NavBar(),
+      appBar: AppBar(),
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -59,7 +63,6 @@ class _ProductsViewState extends State<ProductsView> {
                 if (productsController.isLoading.value) {
                   return Expanded(
                       child: ProductListViewWidget(
-                    controller: productsController,
                     dotMenuImage: 'assets/icons/ic_back.svg',
                   ));
                 } else {

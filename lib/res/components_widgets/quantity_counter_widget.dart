@@ -1,13 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:lap_mart/constants/app_colors.dart';
 import 'package:lap_mart/res/common_widgets/common_button_widget.dart';
 
+import '../../view_model/controller/product_detail/product_detail_controller.dart';
+
 class QuantityCounterWidget extends StatelessWidget {
-  const QuantityCounterWidget({
+  QuantityCounterWidget({
     super.key,
   });
-
+  final productDetailCounter = Get.put(ProductDetailController());
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -16,6 +20,7 @@ class QuantityCounterWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           InkWell(
+            onTap: () => productDetailCounter.decrementCounter(),
             child: Container(
                 height: double.infinity,
                 decoration: const BoxDecoration(
@@ -35,11 +40,15 @@ class QuantityCounterWidget extends StatelessWidget {
           Container(
             height: double.infinity,
             color: AppColors.offWhite,
-            child: const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
-              child: Text(
-                '0',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
+              child: Obx(
+                () => Text(
+                  productDetailCounter.counter.value.toString(),
+                  style: const TextStyle(
+                      fontSize: 16, fontWeight: FontWeight.bold),
+                ),
               ),
             ),
           ),
@@ -48,6 +57,7 @@ class QuantityCounterWidget extends StatelessWidget {
             color: AppColors.lightGrey,
           ),
           InkWell(
+            onTap: () => productDetailCounter.incrementCounter(),
             child: Container(
                 height: double.infinity,
                 decoration: const BoxDecoration(

@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:lap_mart/model/cart_model.dart';
+import 'package:lap_mart/view_model/controller/cart/cart_controller.dart';
 
 import '../../constants/app_colors.dart';
 import 'common_text_widget.dart';
@@ -8,16 +10,16 @@ import 'common_text_widget.dart';
 class CommonCartWidget extends StatelessWidget {
   const CommonCartWidget({
     super.key,
-    required this.name,
-    required this.price,
-    required this.quantity,
+    required this.cartIndex,
+    this.controller,
   });
-  final String name;
-  final String price;
-  final String quantity;
+
+  final int cartIndex;
+  final CartController? controller;
 
   @override
   Widget build(BuildContext context) {
+    CartModel? cartModel = controller!.cartList?[cartIndex];
     return Container(
       margin: const EdgeInsets.only(top: 10),
       height: 140.0,
@@ -43,7 +45,7 @@ class CommonCartWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     CommonTextWidget(
-                      text: name,
+                      text: cartModel!.name,
                       size: 13.0,
                       fontWeight: FontWeight.bold,
                     ),
@@ -51,7 +53,7 @@ class CommonCartWidget extends StatelessWidget {
                       height: 10,
                     ),
                     CommonTextWidget(
-                      text: 'SAR $price',
+                      text: 'SAR ${cartModel.price}',
                       size: 12.0,
                       fontWeight: FontWeight.bold,
                     ),
@@ -59,7 +61,7 @@ class CommonCartWidget extends StatelessWidget {
                       height: 10,
                     ),
                     CommonTextWidget(
-                      text: 'Qty: $quantity',
+                      text: 'Qty: ${cartModel.quantity}',
                       size: 12.0,
                       fontWeight: FontWeight.bold,
                     )
@@ -67,11 +69,16 @@ class CommonCartWidget extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              height: double.infinity,
-              child: SvgPicture.asset(
-                'assets/icons/ic_delete.svg',
-                alignment: const Alignment(0, .9),
+            InkWell(
+              onTap: () => controller?.removeCart(
+                cartIndex,
+              ),
+              child: SizedBox(
+                height: double.infinity,
+                child: SvgPicture.asset(
+                  'assets/icons/ic_delete.svg',
+                  alignment: const Alignment(0, .9),
+                ),
               ),
             )
           ],

@@ -4,6 +4,7 @@ import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
 import 'package:lap_mart/constants/app_constants.dart';
 import '../../res/common_widgets/common_row_header_widget.dart';
 import '../../res/common_widgets/common_email_widget.dart';
+import '../nav_bar/nav_bar.dart';
 
 class ContactUsView extends StatefulWidget {
   const ContactUsView({super.key});
@@ -15,8 +16,11 @@ class ContactUsView extends StatefulWidget {
 class _ContactUsViewState extends State<ContactUsView> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SafeArea(
+    return Scaffold(
+      backgroundColor: Colors.white,
+      drawer: const NavBar(),
+      appBar: AppBar(),
+      body: const SafeArea(
           child: Padding(
         padding: EdgeInsets.all(20.0),
         child: Column(

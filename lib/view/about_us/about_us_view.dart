@@ -5,6 +5,7 @@ import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
 import 'package:lap_mart/constants/app_constants.dart';
 
 import '../../res/common_widgets/common_row_header_widget.dart';
+import '../nav_bar/nav_bar.dart';
 
 class AboutUsView extends StatefulWidget {
   const AboutUsView({super.key});
@@ -16,8 +17,11 @@ class AboutUsView extends StatefulWidget {
 class _AboutUsViewState extends State<AboutUsView> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SafeArea(
+    return Scaffold(
+      backgroundColor: Colors.white,
+      drawer: const NavBar(),
+      appBar: AppBar(),
+      body: const SafeArea(
           child: Padding(
         padding: EdgeInsets.all(20.0),
         child: Column(

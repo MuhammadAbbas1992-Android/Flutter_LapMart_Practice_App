@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lap_mart/constants/app_colors.dart';
 import 'package:lap_mart/res/common_widgets/common_button_widget.dart';
+import 'package:lap_mart/utils/app_utils.dart';
 
 import '../../constants/app_fonts.dart';
+import '../../view/nav_bar/nav_bar.dart';
 import 'common_text_widget.dart';
 
 class CommonRowHeaderWidget extends StatelessWidget {
@@ -32,13 +34,16 @@ class CommonRowHeaderWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Center(
-          child: svgIconLeft != null
-              ? SvgPicture.asset(
-                  svgIconLeft!,
-                  color: AppColors.black,
-                )
-              : null,
+        InkWell(
+          onTap: () => AppUtils.logout(),
+          child: Center(
+            child: svgIconLeft != null
+                ? SvgPicture.asset(
+                    svgIconLeft!,
+                    color: AppColors.black,
+                  )
+                : null,
+          ),
         ),
         const Spacer(),
         SvgPicture.asset(

@@ -10,6 +10,7 @@ import 'package:get/get_common/get_reset.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:lap_mart/model/product_model.dart';
 import 'package:lap_mart/utils/app_utils.dart';
+import 'package:lap_mart/view_model/services/firebase/firebase_services.dart';
 
 class AddProductController extends GetxController {
   final nameController = TextEditingController().obs;
@@ -19,7 +20,7 @@ class AddProductController extends GetxController {
   late FirebaseFirestore _fireStore;
   // late FirebaseDatabase _rootRef;
   late String imageUrl;
-  late int productIndex = -1.obs;
+  // late int productIndex = -1.obs;
 
   RxString selectedOption = 'Choose Brand'.obs;
   final List<String> options =
@@ -37,12 +38,13 @@ class AddProductController extends GetxController {
   }
 
   void loadProductScreen() {
-    final tempProductModel = AppUtils.productModel;
-    if (tempProductModel != null) {
-      selectedOption.value = tempProductModel.category;
-      nameController.value.text = tempProductModel.name;
-      priceController.value.text = tempProductModel.price;
-      descriptionController.value.text = tempProductModel.description;
+    if (AppUtils.productIndex >= 0) {
+      ProductModel productModel =
+          FirebaseServices.productList[AppUtils.productIndex];
+      selectedOption.value = productModel.category;
+      nameController.value.text = productModel.name;
+      priceController.value.text = productModel.price;
+      descriptionController.value.text = productModel.description;
     }
   }
 
@@ -86,24 +88,25 @@ class AddProductController extends GetxController {
   void addProduct() {
     AppUtils.mySnackBar(title: "Yes ", message: 'its working');
 
-    final tempProductModel = AppUtils.productModel;
-    if (tempProductModel != null) {
-      String? documentId = tempProductModel.id;
-      AppUtils.productModel?.id = '';
-      AppUtils.productModel?.category = selectedOption.value;
-      AppUtils.productModel?.name = nameController.value.text;
-      AppUtils.productModel?.price = priceController.value.text;
-      AppUtils.productModel?.description = descriptionController.value.text;
+    if (AppUtils.productIndex >= 0) {
+      ProductModel productModel =
+          FirebaseServices.productList[AppUtils.productIndex];
+      String? documentId = productModel.id;
+      productModel.id = '';
+      productModel.category = selectedOption.value;
+      productModel.name = nameController.value.text;
+      productModel.price = priceController.value.text;
+      productModel.description = descriptionController.value.text;
 
       try {
         _fireStore
             .collection('Products')
             .doc(documentId)
-            .update(AppUtils.productModel!.toJson());
+            .update(productModel.toJson());
 
         AppUtils.mySnackBar(
             title: 'Success', message: 'Product details updated successfully');
-        AppUtils.productModel = null;
+        AppUtils.productIndex = -1;
         AppUtils.homeAdminView();
       } catch (e) {
         AppUtils.mySnackBar(

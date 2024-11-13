@@ -69,7 +69,7 @@ class AppRouts {
         transition: Transition.leftToRightWithFade),
     GetPage(
         name: RoutsName.addProductView,
-        page: () => AddProductView(),
+        page: () => const AddProductView(),
         transitionDuration: const Duration(milliseconds: 250),
         transition: Transition.leftToRightWithFade),
   ];

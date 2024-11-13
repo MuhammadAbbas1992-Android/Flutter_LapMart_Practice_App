@@ -4,59 +4,23 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:lap_mart/model/product_model.dart';
+import 'package:lap_mart/utils/app_utils.dart';
 import 'package:lap_mart/utils/status.dart';
+import 'package:lap_mart/view_model/services/firebase/firebase_services.dart';
 
 class HomeAdminController extends GetxController {
-  late FirebaseAuth _auth;
-  late FirebaseFirestore _fireStore;
-  late FirebaseDatabase _rootRef;
-  late RxList<ProductModel> productList;
-  late Status status = Status.LOADING;
   // Observable RxBool for loading status
   RxBool isLoading = false.obs;
 
-  // Function to toggle the loading status
-  void toggleLoading() {
-    isLoading.value = !isLoading.value;
-  }
-
   HomeAdminController() {
-    _auth = FirebaseAuth.instance;
-    _fireStore = FirebaseFirestore.instance;
-    _rootRef = FirebaseDatabase.instance;
-    // productList = <Map<String, dynamic>>[].obs;
-    productList = <ProductModel>[].obs;
-    getProducts().then(
+    FirebaseServices.getProducts().then(
       (value) {
-        status = Status.COMPLETED;
         isLoading.value = !isLoading.value;
       },
-    );
-  }
-
-// This code is helps to fetch messages already stored in firebase collection
-  Future<void> getProducts() async {
-    await _fireStore.collection('Products').get().then(
-      (response) {
-        for (var product in response.docs) {
-          print('ABC yes Response Id ${product.id}');
-          print('Response Size ${response.size}');
-          print('category: ${product['category']}');
-          print('Name: ${product['name']}');
-          print('Price: ${product['price']}');
-          print('Description: ${product['description']}');
-          print('Product $product');
-          print('product Data ${product.data()}');
-          // ProductModel.fromJson(product as Map<String, dynamic>);
-          // ProductModel productModel = ProductModel(
-          //     category: product['category'],
-          //     name: product['name'],
-          //     price: product['price'],
-          //     description: product['description']);
-          ProductModel productModel = ProductModel.fromJson(product);
-          print('ABC Check it ${product.id}\n${productModel.id}');
-          productList.add(productModel);
-        }
+    ).onError(
+      (error, stackTrace) {
+        AppUtils.mySnackBar(
+            title: 'Error', message: 'Failed to load products data');
       },
     );
   }

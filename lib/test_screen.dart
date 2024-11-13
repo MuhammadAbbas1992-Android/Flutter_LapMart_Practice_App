@@ -45,10 +45,8 @@ class _TestScreenState extends State<TestScreen> {
                     // mainAxisExtent: 210,
                     itemCount: 10,
                     itemBuilder: (context, index) {
-                      return const CommonCartWidget(
-                        name: 'Dell Latitude E5470',
-                        price: '799.00',
-                        quantity: '1',
+                      return CommonCartWidget(
+                        cartIndex: 1,
                       );
                     },
                   ),

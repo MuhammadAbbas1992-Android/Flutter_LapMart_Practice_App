@@ -8,6 +8,7 @@ import '../../res/components_widgets/icons_row_widget.dart';
 import '../../res/components_widgets/product_list_view_widget.dart';
 import '../../utils/app_utils.dart';
 import '../../view_model/controller/home_admin/home_admin_controller.dart';
+import '../nav_bar/nav_bar.dart';
 
 class HomeAdminView extends StatefulWidget {
   const HomeAdminView({super.key});
@@ -30,6 +31,8 @@ class _HomeAdminViewState extends State<HomeAdminView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      drawer: const NavBar(),
+      appBar: AppBar(),
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -49,9 +52,8 @@ class _HomeAdminViewState extends State<HomeAdminView> {
             Obx(
               () {
                 if (homeAdminController.isLoading.value) {
-                  return Expanded(
+                  return const Expanded(
                       child: ProductListViewWidget(
-                    controller: homeAdminController,
                     dotMenuImage: 'assets/icons/ic_back.svg',
                   ));
                 } else {

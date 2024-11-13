@@ -1,9 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
 import 'package:lap_mart/constants/app_constants.dart';
+import 'package:lap_mart/utils/app_utils.dart';
+import 'package:lap_mart/view_model/controller/product_detail/product_detail_controller.dart';
 
 import '../../res/common_widgets/common_button_widget.dart';
 import '../../res/common_widgets/common_image_widget.dart';
@@ -18,6 +22,7 @@ class ProductDetailView extends StatefulWidget {
 }
 
 class _ProductDetailViewState extends State<ProductDetailView> {
+  final productDetailController = Get.put(ProductDetailController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +40,7 @@ class _ProductDetailViewState extends State<ProductDetailView> {
             const SizedBox(
               height: 10.0,
             ),
-            CommonImageWidget(
+            const CommonImageWidget(
               image: 'assets/images/laptop.png',
               height: 228,
             ),
@@ -43,7 +48,7 @@ class _ProductDetailViewState extends State<ProductDetailView> {
               height: 10.0,
             ),
             CommonTextWidget(
-              text: 'Apple Macbook 12 MNYK2 Core M3',
+              text: productDetailController.productModel.name,
               size: 16.0,
               fontWeight: FontWeight.bold,
             ),
@@ -51,18 +56,18 @@ class _ProductDetailViewState extends State<ProductDetailView> {
               height: 10,
             ),
             CommonTextWidget(
-              text: 'SAR 999.0',
+              text: 'SAR ${productDetailController.productModel.price}',
               size: 16,
               fontWeight: FontWeight.bold,
             ),
             const SizedBox(
               height: 20,
             ),
-            const QuantityCounterWidget(),
-            SizedBox(
+            QuantityCounterWidget(),
+            const SizedBox(
               height: 20,
             ),
-            CommonTextWidget(
+            const CommonTextWidget(
               text: 'Description',
               size: 16,
               fontWeight: FontWeight.bold,
@@ -70,15 +75,20 @@ class _ProductDetailViewState extends State<ProductDetailView> {
             const SizedBox(
               height: 10,
             ),
-            Container(
+            SizedBox(
               height: 120,
               child: SingleChildScrollView(
                 child: CommonTextWidget(
-                    text: text5, size: 12, textAlign: TextAlign.justify),
+                    text: productDetailController.productModel.description,
+                    size: 12,
+                    textAlign: TextAlign.justify),
               ),
             ),
             const Spacer(),
-            const CommonButtonWidget(text: 'Add to Cart'),
+            CommonButtonWidget(
+              text: 'Add to Cart',
+              onTap: () => productDetailController.addCart(),
+            ),
             const Spacer()
           ],
         ),

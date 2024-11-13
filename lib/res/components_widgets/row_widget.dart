@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 
 import '../common_widgets/common_text_widget.dart';
 
 class RowWidget extends StatelessWidget {
   const RowWidget({
     super.key,
-    required this.price,
+    this.controller,
   });
-  final String price;
-
+  final dynamic controller;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -21,11 +21,13 @@ class RowWidget extends StatelessWidget {
             size: 16,
             fontWeight: FontWeight.bold,
           ),
-          CommonTextWidget(
-              text: 'SAR $price',
-              size: 16,
-              fontWeight: FontWeight.bold,
-              textAlign: TextAlign.right),
+          Obx(
+            () => CommonTextWidget(
+                text: 'SAR ${controller.grandTotalPayment.value}',
+                size: 16,
+                fontWeight: FontWeight.bold,
+                textAlign: TextAlign.right),
+          ),
         ],
       ),
     );

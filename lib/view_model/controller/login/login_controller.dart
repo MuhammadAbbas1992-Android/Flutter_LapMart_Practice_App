@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import '../../../utils/app_utils.dart';
 
 class LoginController extends GetxController {
-  final emailController = TextEditingController(text: 'admin123@gmail.com').obs;
+  final emailController = TextEditingController(text: 'test123@gmail.com').obs;
   final passwordController = TextEditingController(text: '123456').obs;
 
   bool showSpinner = false;
@@ -34,11 +34,7 @@ class LoginController extends GetxController {
       if (newUser != null) {
         print('NewUser $newUser');
         AppUtils.mySnackBar(title: 'Response', message: 'Login successfully');
-        if (emailController.value.text == 'admin123@gmail.com') {
-          AppUtils.homeAdminView();
-        } else {
-          AppUtils.productsView();
-        }
+        AppUtils.toggleUserLoginStatus(emailController.value.text);
       } else {
         AppUtils.mySnackBar(
             title: 'Response', message: 'Error occurred to login');
