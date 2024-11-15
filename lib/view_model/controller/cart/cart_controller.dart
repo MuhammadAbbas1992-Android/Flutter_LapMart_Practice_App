@@ -5,6 +5,7 @@ import 'package:lap_mart/utils/app_utils.dart';
 import 'package:lap_mart/view_model/services/sharedpreferences/shared_preference_services.dart';
 
 import '../../../res/common_widgets/common_cart_widget.dart';
+import '../../../res/routs/routs_name.dart';
 
 class CartController extends GetxController {
   RxDouble grandTotalPayment = 0.0.obs;
@@ -28,6 +29,6 @@ class CartController extends GetxController {
     grandTotalPayment.value = 0.0;
     cartList?.clear();
     SharedPreferenceServices.cartList.clear();
-    AppUtils.productsView();
+    Get.offNamed(RoutsName.productsView);
   }
 }

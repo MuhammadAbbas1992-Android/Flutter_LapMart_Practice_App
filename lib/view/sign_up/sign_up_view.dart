@@ -52,6 +52,7 @@ class _SignUpViewState extends State<SignUpView> {
                 const CommonRowHeaderWidget(
                   size: 33,
                   svgIconMiddle: 'assets/icons/ic_laptop.svg',
+                  svgIconRight: 'assets/icons/ic_back.svg',
                   width: 35,
                   height: 25,
                 ),
@@ -135,7 +136,7 @@ class _SignUpViewState extends State<SignUpView> {
                 CommonAccountRowWidget(
                   textMessage: 'Already have an account? ',
                   textScreen: 'Sign In',
-                  onTap: () => AppUtils.loginView(),
+                  onTap: () => Get.offNamed(RoutsName.loginView),
                 ),
               ],
             ),

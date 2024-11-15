@@ -1,46 +1,41 @@
 import 'dart:io';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:get/get_common/get_reset.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:lap_mart/model/product_model.dart';
 import 'package:lap_mart/utils/app_utils.dart';
 import 'package:lap_mart/view_model/services/firebase/firebase_services.dart';
 
+import '../../../res/routs/routs_name.dart';
+
 class AddProductController extends GetxController {
   final nameController = TextEditingController().obs;
   final priceController = TextEditingController().obs;
   final descriptionController = TextEditingController().obs;
-  // late FirebaseAuth _auth;
-  late FirebaseFirestore _fireStore;
-  // late FirebaseDatabase _rootRef;
-  late String imageUrl;
+
   // late int productIndex = -1.obs;
 
   RxString selectedOption = 'Choose Brand'.obs;
   final List<String> options =
-      ['Choose Brand', 'Apple', 'Dell', 'Hp', 'Lenovo'].obs;
+      ['Choose Brand', 'Hp', 'Apple', 'Dell', 'Lenovo'].obs;
 
+  RxString imageUrl = ''.obs;
   RxString imagePath = ''.obs;
 
   bool showSpinner = false;
 
   AddProductController() {
-    // _auth = FirebaseAuth.instance;
-    _fireStore = FirebaseFirestore.instance;
-    // _rootRef = FirebaseDatabase.instance;
-    // getCurrentUser();
+    loadProductScreen();
+    print('Called AddProductController Constructor');
   }
 
   void loadProductScreen() {
+    print('productIndex ${AppUtils.productIndex}');
     if (AppUtils.productIndex >= 0) {
       ProductModel productModel =
           FirebaseServices.productList[AppUtils.productIndex];
+      imageUrl.value = productModel.imageUrl;
       selectedOption.value = productModel.category;
       nameController.value.text = productModel.name;
       priceController.value.text = productModel.price;
@@ -63,111 +58,102 @@ class AddProductController extends GetxController {
     AppUtils.mySnackBar(title: "Image Path", message: imagePath.value);
   }
 
-  Future<void> uploadProduct() async {
-    if (imagePath.value.isEmpty) return;
-
-    try {
-      // Create a reference to Firebase Storage
-      final storageRef = FirebaseStorage.instance
-          .ref()
-          .child('uploads/${DateTime.now().millisecondsSinceEpoch}.jpg');
-
-      // Upload the image file
-      await storageRef.putFile(File(imagePath.value));
-
-      // Get the download URL
-      imageUrl = await storageRef.getDownloadURL();
-      addProduct();
-    } catch (e) {
+  Future<void> addProduct() async {
+    AppUtils.mySnackBar(title: "Yes ", message: 'its working');
+    if (imagePath.value.isEmpty && imageUrl.value.isEmpty) {
       AppUtils.mySnackBar(
-          title: 'Error uploading image', message: e.toString());
+          title: 'Alert', message: 'Please add image of product');
+      print('ABC 1');
+      return;
+    } else {
+      uploadImage();
     }
   }
 
-  // If Document name is system defined
-  void addProduct() {
-    AppUtils.mySnackBar(title: "Yes ", message: 'its working');
+  Future<void> uploadImage() async {
+    print('ABC 2');
+    //Each time it will work as u choose a new image from gallary
+    if (imagePath.value.isNotEmpty) {
+      print('ABC 3');
+      try {
+        print('ABC 4');
+        // Create a reference to Firebase Storage
+        final storageRef = FirebaseStorage.instance
+            .ref()
+            .child('Images/${DateTime.now().millisecondsSinceEpoch}.jpg');
 
+        // Upload the image file
+        await storageRef.putFile(File(imagePath.value));
+
+        // Get the download URL
+        imageUrl.value = await storageRef.getDownloadURL();
+        uploadProduct();
+      } catch (e) {
+        print('ABC 5');
+        AppUtils.mySnackBar(
+            title: 'Error uploading image', message: e.toString());
+      }
+    } else {
+      uploadProduct();
+    }
+  }
+
+  Future<void> uploadProduct() async {
+    print('ABC 6');
     if (AppUtils.productIndex >= 0) {
+      print('ABC 7');
+      //Update existing product
       ProductModel productModel =
           FirebaseServices.productList[AppUtils.productIndex];
-      String? documentId = productModel.id;
-      productModel.id = '';
+      productModel.imageUrl = imageUrl.value;
       productModel.category = selectedOption.value;
       productModel.name = nameController.value.text;
       productModel.price = priceController.value.text;
       productModel.description = descriptionController.value.text;
 
-      try {
-        _fireStore
-            .collection('Products')
-            .doc(documentId)
-            .update(productModel.toJson());
-
+      if (await FirebaseServices.updateProduct(productModel)) {
         AppUtils.mySnackBar(
             title: 'Success', message: 'Product details updated successfully');
-        AppUtils.productIndex = -1;
-        Get.back();
-        // AppUtils.homeAdminView();
-      } catch (e) {
+        print('ABC 8');
+        clearData();
+        Get.offNamed(RoutsName.homeAdminView);
+      } else {
+        print('ABC 9');
         AppUtils.mySnackBar(
             title: 'Error', message: 'Product details failed to updated');
       }
     } else {
+      print('ABC 10');
+      //Add new product
       ProductModel productModel = ProductModel(
+          imageUrl: imageUrl.value,
+          id: '',
           category: selectedOption.value,
           name: nameController.value.text,
           price: priceController.value.text,
           description: descriptionController.value.text);
 
-      _fireStore.collection('Products').add(productModel.toJson()).then(
-        (value) {
-          AppUtils.mySnackBar(title: 'Message', message: value.id);
-
-          // Response value having multiple information in it
-          print('ABC Response Id ${value.id}');
-          /*print('ABC Response Path ${value.path}');
-        print('ABC Response Firebase ${value.firestore}');
-        print('ABC Response Parent ${value.parent}');
-        print('ABC Response HashCode ${value.hashCode}');
-        print('ABC Response RuntimeType ${value.runtimeType}');
-        print('ABC Response Obs ${value.obs}');
-        print('ABC Response IsBlank ${value.isBlank}');
-        print('ABC Response Reactive ${value.reactive}');*/
-
-          // AppUtils.homeAdminView();
-          Get.back();
-        },
-      ).onError(
-        (error, stackTrace) {
-          AppUtils.mySnackBar(title: 'Message', message: error.toString());
-        },
-      );
-    }
-
-// If Document name is User defined
-    /*void addProduct() {
-    dynamic data = _fireStore.collection('Items').doc('User').set({
-      'name': nameController.value.text,
-      'price': priceController.value.text,
-      'description': descriptionController.value.text
-    });*/
-    // To get Current User Login Id
-    /* Future<void> getCurrentUser() async {
-    print('ABC Add ${priceController.value.text}');
-    print('ABC Add ${nameController.value.text}');
-    late User loggedInUser;
-    try {
-      final user = _auth.currentUser;
-      if (user != null) {
-        loggedInUser = user;
-        print("1 Account Holder ${loggedInUser.email}");
+      if (await FirebaseServices.addProduct(productModel)) {
+        print('ABC 11');
+        AppUtils.mySnackBar(
+            title: 'Success', message: 'Product details added successfully');
+        clearData();
+        Get.offNamed(RoutsName.homeAdminView);
+      } else {
+        print('ABC 12');
+        AppUtils.mySnackBar(
+            title: 'Error', message: 'Product details failed to add');
       }
-      print("2 Account Holder ${loggedInUser.email}");
-    } catch (e) {
-      print("3 Account Holder ${loggedInUser.email}");
-      print(e);
     }
-  }*/
+  }
+
+  void clearData() {
+    AppUtils.productIndex = -1;
+    imagePath.value = '';
+    imageUrl.value = '';
+    selectedOption.value = 'Choose Brand';
+    nameController.value.text = '';
+    priceController.value.text = '';
+    descriptionController.value.text = '';
   }
 }

@@ -1,7 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:lap_mart/utils/app_utils.dart';
 
 import '../../../model/product_model.dart';
@@ -9,36 +6,59 @@ import '../../../model/product_model.dart';
 class FirebaseServices {
   // final FirebaseAuth _auth = FirebaseAuth.instance;
   // final FirebaseDatabase _rootRef = FirebaseDatabase.instance;
+// static List<ProductModel> categoryList = <ProductModel>[];
   static List<ProductModel> productList = <ProductModel>[];
-  static List<ProductModel> categoryList = <ProductModel>[];
 
-  // This code is helps to fetch messages already stored in firebase collection
+  // Retrieve all Cart items from Firebase
   static Future<List<ProductModel>?> getProducts() async {
     productList.clear();
-    final FirebaseFirestore fireStore = FirebaseFirestore.instance;
-    await fireStore.collection('Products').get().then(
-      (response) {
-        for (var product in response.docs) {
-          print('ABC yes Response Id ${product.id}');
-          print('Response Size ${response.size}');
-          print('category: ${product['category']}');
-          print('Name: ${product['name']}');
-          print('Price: ${product['price']}');
-          print('Description: ${product['description']}');
-          print('Product $product');
-          print('product Data ${product.data()}');
-
-          ProductModel productModel = ProductModel.fromJson(product);
-          print('ABC Check it ${product.id}\n${productModel.id}');
-          productList.add(productModel);
-          if (productModel.category == AppUtils.category) {
-            categoryList.add(productModel);
+    final DatabaseReference databaseReference = FirebaseDatabase.instance.ref();
+    try {
+      await databaseReference.child('Products').get().then(
+        (value) {
+          if (value.exists) {
+            for (var childSnapshot in value.children) {
+              final productModel = ProductModel.fromJson(
+                  Map<String, dynamic>.from(childSnapshot.value as Map));
+              productList.add(productModel);
+              /* if (productModel.category == 'Hp') {
+                categoryList.add(productModel);
+              }*/
+            }
           }
-        }
-        return productList;
-      },
-    ).onError(
-      (error, stackTrace) => productList,
-    );
+        },
+      );
+    } catch (e) {
+      AppUtils.mySnackBar(
+          title: 'Error', message: 'Failed to retrieve product items');
+    }
+    return productList;
+  }
+
+  static Future<bool> updateProduct(ProductModel productModel) async {
+    final DatabaseReference databaseReference = FirebaseDatabase.instance.ref();
+
+    try {
+      await databaseReference
+          .child('Products')
+          .child(productModel.id)
+          .update(productModel.toJson());
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  static Future<bool> addProduct(ProductModel productModel) async {
+    final DatabaseReference databaseReference = FirebaseDatabase.instance.ref();
+
+    try {
+      final productRef = databaseReference.child('Products').push();
+      productModel.id = productRef.key!; // Assign generated ID to cart object
+      await productRef.set(productModel.toJson());
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 }

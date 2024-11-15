@@ -5,6 +5,8 @@ import 'package:lap_mart/utils/app_utils.dart';
 import 'package:lap_mart/view_model/services/firebase/firebase_services.dart';
 import 'package:lap_mart/view_model/services/sharedpreferences/shared_preference_services.dart';
 
+import '../../../res/routs/routs_name.dart';
+
 class ProductDetailController extends GetxController {
   RxInt counter = 0.obs;
   late ProductModel productModel;
@@ -34,7 +36,7 @@ class ProductDetailController extends GetxController {
 
       SharedPreferenceServices.cartList.add(cartModel);
       AppUtils.productIndex = -1;
-      AppUtils.cartView();
+      Get.offNamed(RoutsName.cartView);
     } else {
       AppUtils.mySnackBar(
           title: 'Alert', message: 'Quantity must be at least 1');

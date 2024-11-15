@@ -26,8 +26,7 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> {
   final loginController = Get.put(LoginController());
   final _formKeys = GlobalKey<FormState>();
-  /*final controllers = List.generate(2, (index) => TextEditingController());
-  final formKeys = List.generate(2, (index) => GlobalKey<FormState>());*/
+
   @override
   void dispose() {
     // TODO: implement dispose
@@ -53,6 +52,7 @@ class _LoginViewState extends State<LoginView> {
                   svgIconMiddle: 'assets/icons/ic_laptop.svg',
                   width: 35,
                   height: 25,
+                  svgIconRight: 'assets/icons/ic_back.svg',
                 ),
                 const SizedBox(
                   height: 100.0,
@@ -92,7 +92,7 @@ class _LoginViewState extends State<LoginView> {
                 CommonAccountRowWidget(
                   textMessage: 'Don’t have an account?',
                   textScreen: 'Sign Up',
-                  onTap: () => AppUtils.signUpView(),
+                  onTap: () => Get.offNamed(RoutsName.signUpView),
                 ),
               ],
             ),

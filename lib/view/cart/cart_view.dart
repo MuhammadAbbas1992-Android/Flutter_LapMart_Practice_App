@@ -21,12 +21,17 @@ class CartView extends StatefulWidget {
 class _CartViewState extends State<CartView> {
   final cartController = Get.put(CartController());
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    cartController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     cartController.sumGrandTotalPayment();
     return Scaffold(
       backgroundColor: Colors.white,
-      drawer: const NavBar(),
-      appBar: AppBar(),
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.all(20.0),

@@ -9,32 +9,27 @@ import '../res/routs/routs_name.dart';
 class AppUtils {
   static bool isUserLogin = false;
   static int productIndex = -1;
-  static String category = 'Apple';
 
-  static toggleUserLoginStatus(String user) {
-    if (user == 'admin123@gmail.com') {
+  static toggleUserLoginStatus(String user) async {
+    if (user == 'admin@gmail.com') {
       isUserLogin = false;
-      // SharedPreferenceServices.saveUsername('Admin');
-      AppUtils.homeAdminView();
+      await SharedPreferenceServices.saveUsername('Admin');
+      Get.offNamed(RoutsName.homeAdminView);
     } else {
       isUserLogin = true;
-      // SharedPreferenceServices.saveUsername('User');
-      AppUtils.homeView();
+      await SharedPreferenceServices.saveUsername('User');
+      Get.offNamed(RoutsName.homeView);
     }
-  }
-
-  static setProductCategory(String name) {
-    category = name;
   }
 
   static selectedProduct(int index) {
     productIndex = index;
-    addProductView();
+    Get.offNamed(RoutsName.addProductView);
   }
 
   static selectedProductDetail(int index) {
     productIndex = index;
-    productDetailView();
+    Get.offNamed(RoutsName.productsDetailView);
   }
 
   static String? validateEmail(String? email) {
@@ -74,56 +69,8 @@ class AppUtils {
     Get.snackbar(title, message);
   }
 
-  static void loginView() {
-    Get.back();
-    Get.toNamed(RoutsName.loginView);
-  }
-
-  static void signUpView() {
-    Get.back();
-    Get.toNamed(RoutsName.signUpView);
-  }
-
-  static void homeView() {
-    Get.back();
-    Get.toNamed(RoutsName.homeView);
-  }
-
-  static void homeAdminView() {
-    Get.back();
-    Get.toNamed(RoutsName.homeAdminView);
-  }
-
-  static void productsView() {
-    Get.back();
-    Get.toNamed(RoutsName.productsView);
-  }
-
-  static void addProductView() {
-    Get.toNamed(RoutsName.addProductView);
-  }
-
-  static void productDetailView() {
-    Get.toNamed(RoutsName.productsDetailView);
-  }
-
-  static void cartView() {
-    Get.back();
-    Get.toNamed(RoutsName.cartView);
-  }
-
-  static void aboutUsView() {
-    Get.back();
-    Get.toNamed(RoutsName.aboutUsView);
-  }
-
-  static void contactUsView() {
-    Get.back();
-    Get.toNamed(RoutsName.contactUsView);
-  }
-
   static void logout() {
-    // SharedPreferenceServices.clearUsername();
-    loginView();
+    SharedPreferenceServices.clearUsername();
+    Get.offNamed(RoutsName.loginView);
   }
 }

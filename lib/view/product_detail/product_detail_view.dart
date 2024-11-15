@@ -23,6 +23,14 @@ class ProductDetailView extends StatefulWidget {
 
 class _ProductDetailViewState extends State<ProductDetailView> {
   final productDetailController = Get.put(ProductDetailController());
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    productDetailController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

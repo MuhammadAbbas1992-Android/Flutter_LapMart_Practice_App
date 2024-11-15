@@ -4,7 +4,9 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
 import 'package:lap_mart/utils/status.dart';
+import 'package:lap_mart/view_model/controller/home/home_controller.dart';
 import 'package:lap_mart/view_model/controller/home_admin/home_admin_controller.dart';
+import 'package:lap_mart/view_model/controller/products/products_controller.dart';
 import 'package:lap_mart/view_model/services/firebase/firebase_services.dart';
 
 import '../../model/product_model.dart';
@@ -28,13 +30,10 @@ class ProductListViewWidget extends StatelessWidget {
           mainAxisSpacing: 10,
           crossAxisSpacing: 10,
           mainAxisExtent: 210),
-      itemCount: FirebaseServices.categoryList.length,
+      itemCount: FirebaseServices.productList.length,
       itemBuilder: (context, index) {
         return CommonCardInfoWidget(
-          image: 'assets/images/laptop.png',
           productIndex: index,
-          // name: 'Laptop',
-          // price: '300',
           dotMenuImage: dotMenuImage,
           onTap: AppUtils.isUserLogin
               ? () => AppUtils.selectedProductDetail(index)

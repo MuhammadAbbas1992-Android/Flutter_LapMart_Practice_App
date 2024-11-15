@@ -1,16 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProductModel {
-  late String? id;
-  // late  String url;
+  late String id;
+  late String imageUrl;
   late String category;
   late String name;
   late String price;
   late String description;
 
   ProductModel({
-    this.id,
-    // required this.url,
+    required this.id,
+    required this.imageUrl,
     required this.category,
     required this.name,
     required this.price,
@@ -20,7 +20,8 @@ class ProductModel {
   // Convert a Product object to JSON format (Map)
   Map<String, dynamic> toJson() {
     return {
-      // 'url': url,
+      'id': id,
+      'imageUrl': imageUrl,
       'category': category,
       'name': name,
       'price': price,
@@ -29,11 +30,10 @@ class ProductModel {
   }
 
   // Convert JSON format (Map) to a Product object
-  factory ProductModel.fromJson(
-      QueryDocumentSnapshot<Map<String, dynamic>> json) {
+  factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
-      id: json.id,
-      // url: json['url'] as String,
+      id: json['id'] as String,
+      imageUrl: json['imageUrl'] as String,
       category: json['category'] as String,
       name: json['name'] as String,
       price: json['price'] as String,

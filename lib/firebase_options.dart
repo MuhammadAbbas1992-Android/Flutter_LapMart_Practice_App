@@ -41,48 +41,54 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBNX4TzuDEL_lPa8YoMe9I08nrnvbPAprw',
-    appId: '1:266366762633:web:07aaae01e397c232f75058',
-    messagingSenderId: '266366762633',
-    projectId: 'lapmart-90c2a',
-    authDomain: 'lapmart-90c2a.firebaseapp.com',
-    storageBucket: 'lapmart-90c2a.firebasestorage.app',
-    measurementId: 'G-32TR15KVBS',
+    apiKey: 'AIzaSyBF-hoPG12TuwpKKVyeRVTruut3rkmNiGg',
+    appId: '1:592372405243:web:f54fcdd10bc0baf056b15e',
+    messagingSenderId: '592372405243',
+    projectId: 'labmart-62a0f',
+    authDomain: 'labmart-62a0f.firebaseapp.com',
+    databaseURL: 'https://labmart-62a0f-default-rtdb.firebaseio.com',
+    storageBucket: 'labmart-62a0f.appspot.com',
+    measurementId: 'G-CXPCPTGN4K',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDwvI4MydnZMus2Qlx_ImyNviGLSVJ6MdQ',
-    appId: '1:266366762633:android:7b0fc9f0784cac46f75058',
-    messagingSenderId: '266366762633',
-    projectId: 'lapmart-90c2a',
-    storageBucket: 'lapmart-90c2a.firebasestorage.app',
+    apiKey: 'AIzaSyDb42HPZRystgZdZBE_cIlMriAGCMsgnxY',
+    appId: '1:592372405243:android:084f1c9ac2de16bf56b15e',
+    messagingSenderId: '592372405243',
+    projectId: 'labmart-62a0f',
+    databaseURL: 'https://labmart-62a0f-default-rtdb.firebaseio.com',
+    storageBucket: 'labmart-62a0f.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCclOtfE_Lm_uBEsByeMm-KzQOY0B727f0',
-    appId: '1:266366762633:ios:8631fa246f4b66d4f75058',
-    messagingSenderId: '266366762633',
-    projectId: 'lapmart-90c2a',
-    storageBucket: 'lapmart-90c2a.firebasestorage.app',
+    apiKey: 'AIzaSyAyqBWedTBYSZjcfEIz3YyLk-H18191blw',
+    appId: '1:592372405243:ios:194b0fbaea6b3f7456b15e',
+    messagingSenderId: '592372405243',
+    projectId: 'labmart-62a0f',
+    databaseURL: 'https://labmart-62a0f-default-rtdb.firebaseio.com',
+    storageBucket: 'labmart-62a0f.appspot.com',
     iosBundleId: 'com.example.lapMart',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCclOtfE_Lm_uBEsByeMm-KzQOY0B727f0',
-    appId: '1:266366762633:ios:8631fa246f4b66d4f75058',
-    messagingSenderId: '266366762633',
-    projectId: 'lapmart-90c2a',
-    storageBucket: 'lapmart-90c2a.firebasestorage.app',
+    apiKey: 'AIzaSyAyqBWedTBYSZjcfEIz3YyLk-H18191blw',
+    appId: '1:592372405243:ios:194b0fbaea6b3f7456b15e',
+    messagingSenderId: '592372405243',
+    projectId: 'labmart-62a0f',
+    databaseURL: 'https://labmart-62a0f-default-rtdb.firebaseio.com',
+    storageBucket: 'labmart-62a0f.appspot.com',
     iosBundleId: 'com.example.lapMart',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyBNX4TzuDEL_lPa8YoMe9I08nrnvbPAprw',
-    appId: '1:266366762633:web:1e7ae8ffd759a869f75058',
-    messagingSenderId: '266366762633',
-    projectId: 'lapmart-90c2a',
-    authDomain: 'lapmart-90c2a.firebaseapp.com',
-    storageBucket: 'lapmart-90c2a.firebasestorage.app',
-    measurementId: 'G-LD8GVSV74R',
+    apiKey: 'AIzaSyBF-hoPG12TuwpKKVyeRVTruut3rkmNiGg',
+    appId: '1:592372405243:web:906a196dcabb418356b15e',
+    messagingSenderId: '592372405243',
+    projectId: 'labmart-62a0f',
+    authDomain: 'labmart-62a0f.firebaseapp.com',
+    databaseURL: 'https://labmart-62a0f-default-rtdb.firebaseio.com',
+    storageBucket: 'labmart-62a0f.appspot.com',
+    measurementId: 'G-DHMZQVETK5',
   );
+
 }

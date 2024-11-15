@@ -8,10 +8,7 @@ import 'package:video_player/video_player.dart';
 class VideoPlayWidget extends StatelessWidget {
   const VideoPlayWidget({
     super.key,
-    required this.videoUrl,
   });
-
-  final String videoUrl;
 
   @override
   Widget build(BuildContext context) {

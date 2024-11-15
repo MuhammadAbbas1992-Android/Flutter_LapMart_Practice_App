@@ -9,6 +9,7 @@ import 'package:lap_mart/constants/app_colors.dart';
 import 'package:lap_mart/model/product_model.dart';
 import 'package:lap_mart/res/common_widgets/common_text_form_field_widget.dart';
 import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
+import 'package:lap_mart/res/routs/routs_name.dart';
 import 'package:lap_mart/utils/app_utils.dart';
 import 'package:lap_mart/view_model/controller/add_product/add_product_controller.dart';
 
@@ -26,13 +27,6 @@ class AddProductView extends StatefulWidget {
 
 class _AddProductViewState extends State<AddProductView> {
   final addProductController = Get.put(AddProductController());
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    addProductController.loadProductScreen();
-  }
 
   @override
   void dispose() {
@@ -55,7 +49,7 @@ class _AddProductViewState extends State<AddProductView> {
                 svgIconLeft: 'assets/icons/ic_back.svg',
                 svgIconMiddle: 'assets/icons/ic_laptop.svg',
                 svgIconRight: 'assets/icons/ic_back.svg',
-                onTap: () => Get.back(),
+                onTapLeft: () => Get.offNamed(RoutsName.homeAdminView),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -83,21 +77,33 @@ class _AddProductViewState extends State<AddProductView> {
                               Border.all(color: AppColors.lightGrey, width: 1),
                           borderRadius: BorderRadius.circular(10.0),
                         ),
-                        child: addProductController.imagePath.isNotEmpty
-                            ? InkWell(
-                                onTap: () => addProductController.getImage(),
-                                child: Image.file(
-                                  File(addProductController.imagePath.value),
-                                  fit: BoxFit.fill,
-                                ),
-                              )
-                            : Center(
+                        child: addProductController.imageUrl.isEmpty &&
+                                addProductController.imagePath.isEmpty
+                            ? Center(
                                 child: CommonTextWidget(
                                   text: '+ Add Image',
                                   textAlign: TextAlign.center,
                                   onTap: () => addProductController.getImage(),
                                 ),
-                              ),
+                              )
+                            : addProductController.imagePath.isNotEmpty
+                                ? InkWell(
+                                    onTap: () =>
+                                        addProductController.getImage(),
+                                    child: Image.file(
+                                      File(
+                                          addProductController.imagePath.value),
+                                      fit: BoxFit.fill,
+                                    ),
+                                  )
+                                : InkWell(
+                                    onTap: () =>
+                                        addProductController.getImage(),
+                                    child: Image.network(
+                                      addProductController.imageUrl.value,
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
                       ),
                     ),
                     const SizedBox(

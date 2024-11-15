@@ -9,8 +9,16 @@ class SplashServices {
   Future<void> goToLoginScreen() async {
     Timer(
       const Duration(seconds: 3),
-      () {
-        AppUtils.loginView();
+      () async {
+        String? userName = await SharedPreferenceServices.loadUsername();
+        if (userName == 'Admin') {
+          Get.offNamed(RoutsName.homeAdminView);
+        } else if (userName == 'User') {
+          AppUtils.isUserLogin = true;
+          Get.offNamed(RoutsName.homeView);
+        } else {
+          Get.offNamed(RoutsName.loginView);
+        }
       },
     );
   }

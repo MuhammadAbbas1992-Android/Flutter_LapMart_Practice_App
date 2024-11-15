@@ -39,7 +39,7 @@ class SignUpController extends GetxController {
         print('NewUser $newUser');
         AppUtils.mySnackBar(
             title: 'Response', message: 'New user created successfully');
-        AppUtils.homeView();
+        Get.offNamed(RoutsName.homeView);
       } else {
         AppUtils.mySnackBar(
             title: 'Response', message: 'Error occurred for creating new user');

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -6,25 +8,25 @@ import 'package:lap_mart/model/product_model.dart';
 import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
 import 'package:lap_mart/utils/app_utils.dart';
 import 'package:lap_mart/view_model/controller/home_admin/home_admin_controller.dart';
+import 'package:lap_mart/view_model/controller/products/products_controller.dart';
 import 'package:lap_mart/view_model/services/firebase/firebase_services.dart';
 
 class CommonCardInfoWidget extends StatelessWidget {
   const CommonCardInfoWidget({
     super.key,
-    required this.image,
     this.dotMenuImage,
     required this.productIndex,
     this.onTap,
   });
 
-  final String image;
   final String? dotMenuImage;
   final int productIndex;
   final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
-    ProductModel productModel = FirebaseServices.categoryList[productIndex];
+    ProductModel productModel = FirebaseServices.productList[productIndex];
+
     return InkWell(
       onTap: onTap,
       child: Card(
@@ -53,8 +55,8 @@ class CommonCardInfoWidget extends StatelessWidget {
                     ),
                     SizedBox(
                       height: 115,
-                      child: Image.asset(
-                        image,
+                      child: Image.network(
+                        productModel.imageUrl,
                         fit: BoxFit.fill,
                       ),
                     ),

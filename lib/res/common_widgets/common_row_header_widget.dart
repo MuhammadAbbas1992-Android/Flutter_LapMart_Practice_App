@@ -1,12 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:lap_mart/constants/app_colors.dart';
 import 'package:lap_mart/res/common_widgets/common_button_widget.dart';
 import 'package:lap_mart/utils/app_utils.dart';
 
 import '../../constants/app_fonts.dart';
 import '../../view/nav_bar/nav_bar.dart';
+import '../routs/routs_name.dart';
 import 'common_text_widget.dart';
 
 class CommonRowHeaderWidget extends StatelessWidget {
@@ -16,7 +19,8 @@ class CommonRowHeaderWidget extends StatelessWidget {
   final String? svgIconRight;
   final double height;
   final double width;
-  final VoidCallback? onTap;
+  final VoidCallback? onTapLeft;
+  final VoidCallback? onTapRight;
 
   const CommonRowHeaderWidget({
     super.key,
@@ -26,7 +30,8 @@ class CommonRowHeaderWidget extends StatelessWidget {
     this.svgIconRight,
     this.height = 17,
     this.width = 25,
-    this.onTap,
+    this.onTapLeft,
+    this.onTapRight,
   });
 
   @override
@@ -35,7 +40,7 @@ class CommonRowHeaderWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         InkWell(
-          onTap: () => AppUtils.logout(),
+          onTap: () => onTapLeft,
           child: Center(
             child: svgIconLeft != null
                 ? SvgPicture.asset(
@@ -72,7 +77,7 @@ class CommonRowHeaderWidget extends StatelessWidget {
                   height: 30,
                   width: 70,
                   size: 14,
-                  onTap: onTap,
+                  onTap: onTapRight,
                 ),
         ),
       ],

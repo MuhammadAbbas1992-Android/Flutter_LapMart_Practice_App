@@ -32,15 +32,13 @@ class _HomeViewState extends State<HomeView> {
                 svgIconLeft: 'assets/icons/ic_menu.svg',
                 svgIconMiddle: 'assets/icons/ic_laptop.svg',
                 svgIconRight: 'assets/icons/ic_menu.svg',
-                onTap: () => const NavBar(),
+                onTapLeft: () => const NavBar(),
               ),
             ),
             const SizedBox(
               height: 20.0,
             ),
-            const VideoPlayWidget(
-              videoUrl: '',
-            ),
+            const VideoPlayWidget(),
             const SizedBox(
               height: 20,
             ),

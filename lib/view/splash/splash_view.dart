@@ -20,13 +20,6 @@ class _SplashViewState extends State<SplashView> {
     splashServices.goToLoginScreen();
   }
 
-  /*@override
-  void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
-    super.didChangeDependencies();
-    splashServices.goToLoginScreen();
-  }*/
-
   @override
   Widget build(BuildContext context) {
     return const Scaffold(

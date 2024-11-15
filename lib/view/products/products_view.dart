@@ -40,10 +40,11 @@ class _ProductsViewState extends State<ProductsView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const CommonRowHeaderWidget(
-              svgIconLeft: 'assets/icons/ic_sign_out.svg',
+            CommonRowHeaderWidget(
+              svgIconLeft: 'assets/icons/ic_menu.svg',
               svgIconMiddle: 'assets/icons/ic_laptop.svg',
               svgIconRight: 'assets/icons/ic_sign_out.svg',
+              onTapLeft: () => const NavBar(),
             ),
             const SizedBox(
               height: 20.0,
@@ -61,11 +62,6 @@ class _ProductsViewState extends State<ProductsView> {
             Obx(
               () {
                 if (productsController.isLoading.value) {
-                  return const Expanded(
-                      child: ProductListViewWidget(
-                    dotMenuImage: 'assets/icons/ic_back.svg',
-                  ));
-                } else {
                   return const Center(
                     child: Padding(
                       padding: EdgeInsets.only(top: 200.0, bottom: 200.0),
@@ -77,6 +73,11 @@ class _ProductsViewState extends State<ProductsView> {
                           )),
                     ),
                   );
+                } else {
+                  return const Expanded(
+                      child: ProductListViewWidget(
+                    dotMenuImage: 'assets/icons/ic_back.svg',
+                  ));
                 }
               },
             )

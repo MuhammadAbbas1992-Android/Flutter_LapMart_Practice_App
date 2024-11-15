@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
 
+import '../../../model/product_model.dart';
+
 class HomeController extends GetxController {
   late VideoPlayerController videoPlayerController;
   var isPlaying = false.obs;

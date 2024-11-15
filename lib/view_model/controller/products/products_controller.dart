@@ -9,9 +9,12 @@ import '../../services/firebase/firebase_services.dart';
 
 class ProductsController extends GetxController {
   // Observable RxBool for loading status
-  RxBool isLoading = false.obs;
+  RxBool isLoading = true.obs;
+  // static RxList<ProductModel> categoryList = <ProductModel>[].obs;
 
   ProductsController() {
+    print('isUserLogin ${AppUtils.isUserLogin}');
+    AppUtils.productIndex = -1;
     FirebaseServices.getProducts().then(
       (value) {
         isLoading.value = !isLoading.value;

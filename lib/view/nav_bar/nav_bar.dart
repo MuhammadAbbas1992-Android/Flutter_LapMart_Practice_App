@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:lap_mart/utils/app_utils.dart';
 import 'package:lap_mart/view/home/home_view.dart';
 
 import '../../res/common_widgets/common_icon_button_widget.dart';
+import '../../res/routs/routs_name.dart';
 
 class NavBar extends StatelessWidget {
   const NavBar({super.key});
@@ -33,7 +36,7 @@ class NavBar extends StatelessWidget {
               height: 20,
             ),
             InkWell(
-              onTap: () => AppUtils.homeView(),
+              onTap: () => Get.offNamed(RoutsName.homeView),
               child: const CommonIconButtonWidget(
                   icon: 'assets/icons/ic_home.svg', text: 'Home'),
             ),
@@ -41,7 +44,7 @@ class NavBar extends StatelessWidget {
               height: 10,
             ),
             InkWell(
-              onTap: () => AppUtils.productsView(),
+              onTap: () => Get.offNamed(RoutsName.productsView),
               child: const CommonIconButtonWidget(
                   icon: 'assets/icons/ic_product.svg', text: 'Products'),
             ),
@@ -49,7 +52,7 @@ class NavBar extends StatelessWidget {
               height: 10,
             ),
             InkWell(
-              onTap: () => AppUtils.cartView(),
+              onTap: () => Get.offNamed(RoutsName.cartView),
               child: const CommonIconButtonWidget(
                   icon: 'assets/icons/ic_cart.svg', text: 'Cart'),
             ),
@@ -57,7 +60,7 @@ class NavBar extends StatelessWidget {
               height: 10,
             ),
             InkWell(
-              onTap: () => AppUtils.aboutUsView(),
+              onTap: () => Get.offNamed(RoutsName.aboutUsView),
               child: const CommonIconButtonWidget(
                   icon: 'assets/icons/ic_about_us.svg', text: 'About us'),
             ),
@@ -65,7 +68,7 @@ class NavBar extends StatelessWidget {
               height: 10,
             ),
             InkWell(
-              onTap: () => AppUtils.contactUsView(),
+              onTap: () => Get.offNamed(RoutsName.contactUsView),
               child: const CommonIconButtonWidget(
                   icon: 'assets/icons/ic_contact_us.svg', text: 'Contact us'),
             ),
