@@ -39,6 +39,7 @@ class SignUpController extends GetxController {
         print('NewUser $newUser');
         AppUtils.mySnackBar(
             title: 'Response', message: 'New user created successfully');
+        AppUtils.extractEmailPart(emailController.value.text);
         Get.offNamed(RoutsName.homeView);
       } else {
         AppUtils.mySnackBar(

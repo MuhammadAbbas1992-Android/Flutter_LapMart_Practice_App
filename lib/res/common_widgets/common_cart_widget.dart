@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lap_mart/model/cart_model.dart';
 import 'package:lap_mart/view_model/controller/cart/cart_controller.dart';
+import 'package:lap_mart/view_model/services/firebase/firebase_services.dart';
 
 import '../../constants/app_colors.dart';
 import 'common_text_widget.dart';
@@ -19,7 +20,8 @@ class CommonCartWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CartModel? cartModel = controller!.cartList?[cartIndex];
+    // CartModel? cartModel = controller!.cartList?[cartIndex];
+    CartModel? cartModel = FirebaseServices.cartList[cartIndex];
     return Container(
       margin: const EdgeInsets.only(top: 10),
       height: 140.0,
@@ -45,7 +47,7 @@ class CommonCartWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     CommonTextWidget(
-                      text: cartModel!.name,
+                      text: cartModel.name,
                       size: 13.0,
                       fontWeight: FontWeight.bold,
                     ),
@@ -71,7 +73,7 @@ class CommonCartWidget extends StatelessWidget {
             ),
             InkWell(
               onTap: () => controller?.removeCart(
-                cartIndex,
+                cartModel.id,
               ),
               child: SizedBox(
                 height: double.infinity,

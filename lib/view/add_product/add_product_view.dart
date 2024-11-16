@@ -14,9 +14,10 @@ import 'package:lap_mart/utils/app_utils.dart';
 import 'package:lap_mart/view_model/controller/add_product/add_product_controller.dart';
 
 import '../../res/common_widgets/common_button_widget.dart';
-import '../../res/common_widgets/common_row_header_widget.dart';
+import '../../res/common_widgets/custom_header_widget.dart';
 import '../../res/components_widgets/dropdown_widget.dart';
 import '../../res/common_widgets/common_text_field_widget.dart';
+import '../nav_bar/nav_bar.dart';
 
 class AddProductView extends StatefulWidget {
   const AddProductView({super.key});
@@ -38,6 +39,11 @@ class _AddProductViewState extends State<AddProductView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(automaticallyImplyLeading: true, actions: const [
+        Spacer(),
+        CustomHeaderWidget(),
+        Spacer(),
+      ]),
       body: SafeArea(
           child: SingleChildScrollView(
         child: Container(
@@ -45,18 +51,12 @@ class _AddProductViewState extends State<AddProductView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              CommonRowHeaderWidget(
-                svgIconLeft: 'assets/icons/ic_back.svg',
-                svgIconMiddle: 'assets/icons/ic_laptop.svg',
-                svgIconRight: 'assets/icons/ic_back.svg',
-                onTapLeft: () => Get.offNamed(RoutsName.homeAdminView),
-              ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: Column(
                   children: [
                     const SizedBox(
-                      height: 50,
+                      height: 30,
                     ),
                     const CommonTextWidget(
                       text: 'Add New Device',

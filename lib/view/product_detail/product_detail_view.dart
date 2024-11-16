@@ -11,8 +11,9 @@ import 'package:lap_mart/view_model/controller/product_detail/product_detail_con
 
 import '../../res/common_widgets/common_button_widget.dart';
 import '../../res/common_widgets/common_image_widget.dart';
-import '../../res/common_widgets/common_row_header_widget.dart';
+import '../../res/common_widgets/custom_header_widget.dart';
 import '../../res/components_widgets/quantity_counter_widget.dart';
+import '../nav_bar/nav_bar.dart';
 
 class ProductDetailView extends StatefulWidget {
   const ProductDetailView({super.key});
@@ -34,17 +35,20 @@ class _ProductDetailViewState extends State<ProductDetailView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: true,
+        actions: const [
+          Spacer(),
+          CustomHeaderWidget(),
+          Spacer(),
+        ],
+      ),
       body: SafeArea(
           child: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const CommonRowHeaderWidget(
-              svgIconLeft: 'assets/icons/ic_back.svg',
-              svgIconMiddle: 'assets/icons/ic_laptop.svg',
-              svgIconRight: 'assets/icons/ic_back.svg',
-            ),
             const SizedBox(
               height: 10.0,
             ),
@@ -95,7 +99,7 @@ class _ProductDetailViewState extends State<ProductDetailView> {
             const Spacer(),
             CommonButtonWidget(
               text: 'Add to Cart',
-              onTap: () => productDetailController.addCart(),
+              onTap: () => productDetailController.uploadCart(),
             ),
             const Spacer()
           ],

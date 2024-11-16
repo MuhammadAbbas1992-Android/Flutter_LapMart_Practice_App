@@ -3,7 +3,6 @@ import 'package:lap_mart/model/cart_model.dart';
 import 'package:lap_mart/model/product_model.dart';
 import 'package:lap_mart/utils/app_utils.dart';
 import 'package:lap_mart/view_model/services/firebase/firebase_services.dart';
-import 'package:lap_mart/view_model/services/sharedpreferences/shared_preference_services.dart';
 
 import '../../../res/routs/routs_name.dart';
 
@@ -27,16 +26,26 @@ class ProductDetailController extends GetxController {
     print('ABC Counter ${counter.value}');
   }
 
-  void addCart() {
+  Future<void> uploadCart() async {
     if (counter.value > 0) {
       CartModel cartModel = CartModel(
+          id: '',
+          url: productModel.imageUrl,
           name: productModel.name,
-          price: double.parse(productModel.price),
-          quantity: counter.value);
+          price: productModel.price,
+          quantity: counter.value.toString());
 
-      SharedPreferenceServices.cartList.add(cartModel);
-      AppUtils.productIndex = -1;
-      Get.offNamed(RoutsName.cartView);
+      if (await FirebaseServices.addCart(cartModel)) {
+        print('ABC 11');
+        AppUtils.mySnackBar(
+            title: 'Success', message: 'Cart added successfully');
+        counter.value = 0;
+        // Get.offNamed(RoutsName.productsView);
+        Get.offNamed(RoutsName.productsView);
+      } else {
+        print('ABC 12');
+        AppUtils.mySnackBar(title: 'Error', message: 'Failed to add cart');
+      }
     } else {
       AppUtils.mySnackBar(
           title: 'Alert', message: 'Quantity must be at least 1');

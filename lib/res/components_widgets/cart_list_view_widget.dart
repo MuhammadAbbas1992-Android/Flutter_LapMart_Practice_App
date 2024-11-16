@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:lap_mart/constants/app_colors.dart';
 import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
 import 'package:lap_mart/view_model/controller/cart/cart_controller.dart';
+import 'package:lap_mart/view_model/services/firebase/firebase_services.dart';
 import '../common_widgets/common_cart_widget.dart';
 
 class CartListViewWidget extends StatelessWidget {
@@ -16,21 +17,19 @@ class CartListViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () => SizedBox(
-        height: 480,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-          child: ListView.builder(
-            // mainAxisExtent: 210,
-            itemCount: controller.cartList?.length,
-            itemBuilder: (context, index) {
-              return CommonCartWidget(
-                cartIndex: index,
-                controller: controller,
-              );
-            },
-          ),
+    return SizedBox(
+      height: 480,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
+        child: ListView.builder(
+          // mainAxisExtent: 210,
+          itemCount: FirebaseServices.cartList.length,
+          itemBuilder: (context, index) {
+            return CommonCartWidget(
+              cartIndex: index,
+              controller: controller,
+            );
+          },
         ),
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:lap_mart/constants/app_constants.dart';
 import 'package:lap_mart/model/product_model.dart';
 import 'package:lap_mart/res/routs/routs_app.dart';
 import 'package:lap_mart/view_model/services/sharedpreferences/shared_preference_services.dart';
@@ -7,17 +8,26 @@ import 'package:lap_mart/view_model/services/sharedpreferences/shared_preference
 import '../res/routs/routs_name.dart';
 
 class AppUtils {
+  static String userEmailKey = '';
   static bool isUserLogin = false;
   static int productIndex = -1;
+
+  static extractEmailPart(String email) {
+    // Split the email using '@' as the delimiter
+    userEmailKey = email.split('@')[0];
+
+    print("ABC User Email Username: $userEmailKey");
+  }
 
   static toggleUserLoginStatus(String user) async {
     if (user == 'admin@gmail.com') {
       isUserLogin = false;
-      await SharedPreferenceServices.saveUsername('Admin');
+      await SharedPreferenceServices.saveToSharedPref(userKey, user);
       Get.offNamed(RoutsName.homeAdminView);
     } else {
       isUserLogin = true;
-      await SharedPreferenceServices.saveUsername('User');
+      AppUtils.extractEmailPart(user);
+      await SharedPreferenceServices.saveToSharedPref(userKey, user);
       Get.offNamed(RoutsName.homeView);
     }
   }
@@ -29,7 +39,7 @@ class AppUtils {
 
   static selectedProductDetail(int index) {
     productIndex = index;
-    Get.offNamed(RoutsName.productsDetailView);
+    Get.toNamed(RoutsName.productsDetailView);
   }
 
   static String? validateEmail(String? email) {
@@ -69,8 +79,15 @@ class AppUtils {
     Get.snackbar(title, message);
   }
 
+  static void navigatePage(String pageName) {
+    Get.back();
+    Get.offNamed(pageName);
+  }
+
   static void logout() {
-    SharedPreferenceServices.clearUsername();
-    Get.offNamed(RoutsName.loginView);
+    userEmailKey = '';
+    isUserLogin = false;
+    SharedPreferenceServices.clearFromSharedPref(userKey);
+    navigatePage(RoutsName.loginView);
   }
 }

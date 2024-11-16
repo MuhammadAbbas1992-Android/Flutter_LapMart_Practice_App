@@ -23,20 +23,23 @@ class NavBar extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const SizedBox(
-              height: 80,
+              height: 20,
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10.0, bottom: 10),
-              child: SvgPicture.asset(
-                'assets/icons/ic_back.svg',
-                alignment: Alignment.centerLeft,
+            InkWell(
+              onTap: () => Get.back(),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 10.0, bottom: 10),
+                child: SvgPicture.asset(
+                  'assets/icons/ic_back.svg',
+                  alignment: Alignment.centerLeft,
+                ),
               ),
             ),
             const SizedBox(
               height: 20,
             ),
             InkWell(
-              onTap: () => Get.offNamed(RoutsName.homeView),
+              onTap: () => AppUtils.navigatePage(RoutsName.homeView),
               child: const CommonIconButtonWidget(
                   icon: 'assets/icons/ic_home.svg', text: 'Home'),
             ),
@@ -44,7 +47,7 @@ class NavBar extends StatelessWidget {
               height: 10,
             ),
             InkWell(
-              onTap: () => Get.offNamed(RoutsName.productsView),
+              onTap: () => AppUtils.navigatePage(RoutsName.productsView),
               child: const CommonIconButtonWidget(
                   icon: 'assets/icons/ic_product.svg', text: 'Products'),
             ),
@@ -52,7 +55,7 @@ class NavBar extends StatelessWidget {
               height: 10,
             ),
             InkWell(
-              onTap: () => Get.offNamed(RoutsName.cartView),
+              onTap: () => AppUtils.navigatePage(RoutsName.cartView),
               child: const CommonIconButtonWidget(
                   icon: 'assets/icons/ic_cart.svg', text: 'Cart'),
             ),
@@ -60,7 +63,7 @@ class NavBar extends StatelessWidget {
               height: 10,
             ),
             InkWell(
-              onTap: () => Get.offNamed(RoutsName.aboutUsView),
+              onTap: () => AppUtils.navigatePage(RoutsName.aboutUsView),
               child: const CommonIconButtonWidget(
                   icon: 'assets/icons/ic_about_us.svg', text: 'About us'),
             ),
@@ -68,7 +71,7 @@ class NavBar extends StatelessWidget {
               height: 10,
             ),
             InkWell(
-              onTap: () => Get.offNamed(RoutsName.contactUsView),
+              onTap: () => AppUtils.navigatePage(RoutsName.contactUsView),
               child: const CommonIconButtonWidget(
                   icon: 'assets/icons/ic_contact_us.svg', text: 'Contact us'),
             ),

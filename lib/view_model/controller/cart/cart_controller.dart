@@ -2,33 +2,58 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:lap_mart/model/cart_model.dart';
 import 'package:lap_mart/utils/app_utils.dart';
-import 'package:lap_mart/view_model/services/sharedpreferences/shared_preference_services.dart';
-
-import '../../../res/common_widgets/common_cart_widget.dart';
+import 'package:lap_mart/view_model/services/firebase/firebase_services.dart';
 import '../../../res/routs/routs_name.dart';
 
 class CartController extends GetxController {
+  RxBool isCartLoading = true.obs;
   RxDouble grandTotalPayment = 0.0.obs;
-  RxList<CartModel>? cartList = SharedPreferenceServices.cartList.obs;
 
-  void sumGrandTotalPayment() {
-    for (var cart in cartList!) {
-      double amount = cart.price * cart.quantity;
-      grandTotalPayment.value = grandTotalPayment.value + amount;
+  CartController() {
+    loadCarts();
+  }
+
+  Future<void> loadCarts() async {
+    await FirebaseServices.getCarts().then(
+      (value) {
+        sumGrandTotalPayment();
+      },
+    );
+  }
+
+  Future<void> removeCart(String cartIndex) async {
+    isCartLoading.value = !isCartLoading.value;
+    if (await FirebaseServices.deleteCart(cartIndex)) {
+      AppUtils.mySnackBar(
+          title: 'Success', message: 'Cart deleted successfully');
+      loadCarts();
+    } else {
+      isCartLoading.value = !isCartLoading.value;
+      AppUtils.mySnackBar(title: 'Error', message: 'Cart failed to delete');
     }
   }
 
-  void removeCart(int cartIndex) {
-    CartModel? cartModel = cartList?[cartIndex];
-    double amount = cartModel!.price * cartModel.quantity;
-    grandTotalPayment.value = grandTotalPayment.value - amount;
-    cartList?.removeAt(cartIndex);
+  Future<void> clearCartList() async {
+    if (FirebaseServices.cartList.isEmpty && grandTotalPayment.value == 0.0) {
+      AppUtils.mySnackBar(title: 'Alert', message: 'Your cart is empty');
+    } else {
+      if (await FirebaseServices.deleteAllCart()) {
+        AppUtils.mySnackBar(
+            title: 'Success', message: 'Order made successfully');
+        Get.offNamed(RoutsName.productsView);
+      } else {
+        isCartLoading.value = !isCartLoading.value;
+        AppUtils.mySnackBar(title: 'Error', message: 'Failed to make order');
+      }
+    }
   }
 
-  void clearCartList() {
+  void sumGrandTotalPayment() {
     grandTotalPayment.value = 0.0;
-    cartList?.clear();
-    SharedPreferenceServices.cartList.clear();
-    Get.offNamed(RoutsName.productsView);
+    for (var cart in FirebaseServices.cartList) {
+      double amount = double.parse(cart.price) * int.parse(cart.quantity);
+      grandTotalPayment.value = grandTotalPayment.value + amount;
+    }
+    isCartLoading.value = !isCartLoading.value;
   }
 }

@@ -11,13 +11,9 @@ import 'package:lap_mart/view_model/services/firebase/firebase_services.dart';
 class HomeAdminController extends GetxController {
   // Observable RxBool for loading status
   RxBool isLoading = true.obs;
-  // static RxString category = 'Hp'.obs;
-  // static RxList<ProductModel> categoryList = <ProductModel>[].obs;
 
   HomeAdminController() {
-    print('HomeAdminController Call started');
     loadProductsData();
-    print('HomeAdminController Call finished');
   }
 
   Future<void> loadProductsData() async {
@@ -32,15 +28,4 @@ class HomeAdminController extends GetxController {
       },
     );
   }
-
-  /*static void loadProductCategory(String type) {
-    category.value = type;
-    categoryList.clear();
-    for (ProductModel productModel in FirebaseServices.productList) {
-      if (productModel.category == type) {
-        categoryList.add(productModel);
-      }
-    }
-    print('Category List Updated ${categoryList.length}');
-  }*/
 }

@@ -1,7 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:get/get_navigation/src/router_report.dart';
 import 'package:get/get.dart';
 import 'package:lap_mart/constants/app_colors.dart';
@@ -10,11 +12,13 @@ import 'package:lap_mart/res/common_widgets/common_account_row_widget.dart';
 import 'package:lap_mart/res/routs/routs_app.dart';
 import 'package:lap_mart/res/routs/routs_name.dart';
 import 'package:lap_mart/utils/app_utils.dart';
+import 'package:lap_mart/view/nav_bar/nav_bar.dart';
 import 'package:lap_mart/view_model/controller/login/login_controller.dart';
 
 import '../../res/common_widgets/common_button_widget.dart';
-import '../../res/common_widgets/common_row_header_widget.dart';
 import '../../res/common_widgets/common_text_form_field_widget.dart';
+import '../../res/common_widgets/common_text_widget.dart';
+import '../../res/common_widgets/custom_header_widget.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -47,12 +51,10 @@ class _LoginViewState extends State<LoginView> {
                 const SizedBox(
                   height: 150.0,
                 ),
-                const CommonRowHeaderWidget(
+                const CustomHeaderWidget(
                   size: 33,
-                  svgIconMiddle: 'assets/icons/ic_laptop.svg',
                   width: 35,
                   height: 25,
-                  svgIconRight: 'assets/icons/ic_back.svg',
                 ),
                 const SizedBox(
                   height: 100.0,

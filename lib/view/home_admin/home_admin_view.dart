@@ -1,15 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:lap_mart/utils/status.dart';
-import '../../res/common_widgets/common_row_header_widget.dart';
+import '../../res/common_widgets/common_button_widget.dart';
+import '../../res/common_widgets/custom_header_widget.dart';
 import '../../res/components_widgets/icons_row_widget.dart';
 import '../../res/components_widgets/product_list_view_widget.dart';
 import '../../res/routs/routs_name.dart';
 import '../../utils/app_utils.dart';
 import '../../view_model/controller/home_admin/home_admin_controller.dart';
+import '../../view_model/services/firebase/firebase_services.dart';
 import '../nav_bar/nav_bar.dart';
 
 class HomeAdminView extends StatefulWidget {
@@ -31,29 +34,46 @@ class _HomeAdminViewState extends State<HomeAdminView> {
 
   @override
   Widget build(BuildContext context) {
-    /*SystemChrome.setEnabledSystemUIMode(
-      SystemUiMode.manual,
-      overlays: [SystemUiOverlay.top], // Only the status bar remains visible
-    );*/
     return Scaffold(
-      backgroundColor: Colors.white,
-      drawer: const NavBar(),
-      appBar: AppBar(),
+      appBar: AppBar(
+        leading: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: InkWell(
+            onTap: () => AppUtils.logout(),
+            child: SvgPicture.asset(
+              'assets/icons/ic_sign_out.svg',
+              color: Colors.black,
+              width: 10,
+              height: 10,
+            ),
+          ),
+        ),
+        actions: [
+          const Spacer(
+            flex: 6,
+          ),
+          const CustomHeaderWidget(),
+          const Spacer(
+            flex: 2,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: CommonButtonWidget(
+              text: 'Add New',
+              width: 70,
+              height: 25,
+              size: 14,
+              onTap: () => Get.toNamed(RoutsName.addProductView),
+            ),
+          ),
+        ],
+      ),
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            CommonRowHeaderWidget(
-              svgIconLeft: 'assets/icons/ic_sign_out.svg',
-              svgIconMiddle: 'assets/icons/ic_laptop.svg',
-              onTapLeft: () => AppUtils.logout(),
-              onTapRight: () => Get.offNamed(RoutsName.addProductView),
-            ),
-            const SizedBox(
-              height: 20.0,
-            ),
             const IconsRowWidget(),
             const SizedBox(height: 10),
             Obx(
@@ -70,10 +90,13 @@ class _HomeAdminViewState extends State<HomeAdminView> {
                           )),
                     ),
                   );
+                } else if (FirebaseServices.productList.isEmpty) {
+                  return const Expanded(
+                      child: Center(child: Text('No product available')));
                 } else {
                   return const Expanded(
                       child: ProductListViewWidget(
-                    dotMenuImage: 'assets/icons/ic_back.svg',
+                    dotMenuImage: 'assets/icons/ic_dot_menu.svg',
                   ));
                 }
               },

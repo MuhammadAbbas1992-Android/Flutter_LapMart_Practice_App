@@ -27,11 +27,9 @@ class AddProductController extends GetxController {
 
   AddProductController() {
     loadProductScreen();
-    print('Called AddProductController Constructor');
   }
 
   void loadProductScreen() {
-    print('productIndex ${AppUtils.productIndex}');
     if (AppUtils.productIndex >= 0) {
       ProductModel productModel =
           FirebaseServices.productList[AppUtils.productIndex];
@@ -59,11 +57,10 @@ class AddProductController extends GetxController {
   }
 
   Future<void> addProduct() async {
-    AppUtils.mySnackBar(title: "Yes ", message: 'its working');
     if (imagePath.value.isEmpty && imageUrl.value.isEmpty) {
       AppUtils.mySnackBar(
           title: 'Alert', message: 'Please add image of product');
-      print('ABC 1');
+
       return;
     } else {
       uploadImage();
@@ -71,12 +68,9 @@ class AddProductController extends GetxController {
   }
 
   Future<void> uploadImage() async {
-    print('ABC 2');
     //Each time it will work as u choose a new image from gallary
     if (imagePath.value.isNotEmpty) {
-      print('ABC 3');
       try {
-        print('ABC 4');
         // Create a reference to Firebase Storage
         final storageRef = FirebaseStorage.instance
             .ref()
@@ -89,7 +83,6 @@ class AddProductController extends GetxController {
         imageUrl.value = await storageRef.getDownloadURL();
         uploadProduct();
       } catch (e) {
-        print('ABC 5');
         AppUtils.mySnackBar(
             title: 'Error uploading image', message: e.toString());
       }
@@ -99,9 +92,7 @@ class AddProductController extends GetxController {
   }
 
   Future<void> uploadProduct() async {
-    print('ABC 6');
     if (AppUtils.productIndex >= 0) {
-      print('ABC 7');
       //Update existing product
       ProductModel productModel =
           FirebaseServices.productList[AppUtils.productIndex];
@@ -114,16 +105,14 @@ class AddProductController extends GetxController {
       if (await FirebaseServices.updateProduct(productModel)) {
         AppUtils.mySnackBar(
             title: 'Success', message: 'Product details updated successfully');
-        print('ABC 8');
+
         clearData();
         Get.offNamed(RoutsName.homeAdminView);
       } else {
-        print('ABC 9');
         AppUtils.mySnackBar(
             title: 'Error', message: 'Product details failed to updated');
       }
     } else {
-      print('ABC 10');
       //Add new product
       ProductModel productModel = ProductModel(
           imageUrl: imageUrl.value,
@@ -134,13 +123,11 @@ class AddProductController extends GetxController {
           description: descriptionController.value.text);
 
       if (await FirebaseServices.addProduct(productModel)) {
-        print('ABC 11');
         AppUtils.mySnackBar(
             title: 'Success', message: 'Product details added successfully');
         clearData();
-        Get.offNamed(RoutsName.homeAdminView);
+        Get.toNamed(RoutsName.homeAdminView);
       } else {
-        print('ABC 12');
         AppUtils.mySnackBar(
             title: 'Error', message: 'Product details failed to add');
       }

@@ -4,9 +4,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:lap_mart/constants/app_colors.dart';
 import 'package:lap_mart/model/product_model.dart';
 import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
 import 'package:lap_mart/utils/app_utils.dart';
+import 'package:lap_mart/view/add_product/add_product_view.dart';
 import 'package:lap_mart/view_model/controller/home_admin/home_admin_controller.dart';
 import 'package:lap_mart/view_model/controller/products/products_controller.dart';
 import 'package:lap_mart/view_model/services/firebase/firebase_services.dart';
@@ -30,11 +32,10 @@ class CommonCardInfoWidget extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Card(
-          elevation: 6,
+          elevation: 5,
           child: Container(
-              height: 210,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: AppColors.white,
                 borderRadius: BorderRadius.circular(5),
               ),
               child: Padding(
@@ -48,10 +49,20 @@ class CommonCardInfoWidget extends StatelessWidget {
                         InkWell(
                           onTap: () => AppUtils.selectedProduct(productIndex),
                           child: dotMenuImage != null
-                              ? SvgPicture.asset(dotMenuImage!)
+                              ? AppUtils.isUserLogin
+                                  ? SvgPicture.asset(
+                                      dotMenuImage!,
+                                      color: AppColors.white,
+                                    )
+                                  : SvgPicture.asset(
+                                      dotMenuImage!,
+                                    )
                               : null,
                         )
                       ],
+                    ),
+                    const SizedBox(
+                      height: 2,
                     ),
                     SizedBox(
                       height: 115,
@@ -60,14 +71,14 @@ class CommonCardInfoWidget extends StatelessWidget {
                         fit: BoxFit.fill,
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 8),
                     CommonTextWidget(
                       text: productModel.name,
                       size: 12,
                       fontWeight: FontWeight.bold,
                     ),
                     const SizedBox(
-                      height: 5,
+                      height: 4,
                     ),
                     CommonTextWidget(
                       text: productModel.price,

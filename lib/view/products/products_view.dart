@@ -6,7 +6,8 @@ import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
 import 'package:lap_mart/utils/app_utils.dart';
 import 'package:lap_mart/view_model/controller/home_admin/home_admin_controller.dart';
 import 'package:lap_mart/view_model/controller/products/products_controller.dart';
-import '../../res/common_widgets/common_row_header_widget.dart';
+import 'package:lap_mart/view_model/services/firebase/firebase_services.dart';
+import '../../res/common_widgets/custom_header_widget.dart';
 import '../../res/components_widgets/icons_row_widget.dart';
 import '../../res/components_widgets/product_list_view_widget.dart';
 import '../nav_bar/nav_bar.dart';
@@ -20,6 +21,7 @@ class ProductsView extends StatefulWidget {
 
 class _ProductsViewState extends State<ProductsView> {
   final productsController = Get.put(ProductsController());
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void dispose() {
@@ -31,24 +33,21 @@ class _ProductsViewState extends State<ProductsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      key: _scaffoldKey,
       drawer: const NavBar(),
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: const [
+          Spacer(),
+          CustomHeaderWidget(),
+          Spacer(),
+        ],
+      ),
       body: SafeArea(
           child: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            CommonRowHeaderWidget(
-              svgIconLeft: 'assets/icons/ic_menu.svg',
-              svgIconMiddle: 'assets/icons/ic_laptop.svg',
-              svgIconRight: 'assets/icons/ic_sign_out.svg',
-              onTapLeft: () => const NavBar(),
-            ),
-            const SizedBox(
-              height: 20.0,
-            ),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 5.0),
               child: CommonTextWidget(
@@ -73,11 +72,13 @@ class _ProductsViewState extends State<ProductsView> {
                           )),
                     ),
                   );
+                } else if (FirebaseServices.productList.isEmpty) {
+                  return const Expanded(
+                      child: Center(child: Text('No product available')));
                 } else {
                   return const Expanded(
                       child: ProductListViewWidget(
-                    dotMenuImage: 'assets/icons/ic_back.svg',
-                  ));
+                          dotMenuImage: 'assets/icons/ic_back.svg'));
                 }
               },
             )

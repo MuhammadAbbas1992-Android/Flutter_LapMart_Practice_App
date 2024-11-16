@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
 import 'package:lap_mart/constants/app_constants.dart';
-import '../../res/common_widgets/common_row_header_widget.dart';
 import '../../res/common_widgets/common_email_widget.dart';
+import '../../res/common_widgets/custom_header_widget.dart';
 import '../nav_bar/nav_bar.dart';
 
 class ContactUsView extends StatefulWidget {
@@ -14,26 +13,25 @@ class ContactUsView extends StatefulWidget {
 }
 
 class _ContactUsViewState extends State<ContactUsView> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      key: _scaffoldKey,
       drawer: const NavBar(),
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: const [
+          Spacer(),
+          CustomHeaderWidget(),
+          Spacer(),
+        ],
+      ),
       body: const SafeArea(
           child: Padding(
         padding: EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            CommonRowHeaderWidget(
-              svgIconLeft: 'assets/icons/ic_menu.svg',
-              svgIconMiddle: 'assets/icons/ic_laptop.svg',
-              svgIconRight: 'assets/icons/ic_menu.svg',
-            ),
-            SizedBox(
-              height: 30.0,
-            ),
             CommonTextWidget(
               text: 'Contact Us',
               size: 18,

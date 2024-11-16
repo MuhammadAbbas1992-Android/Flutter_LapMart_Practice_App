@@ -9,9 +9,9 @@ import 'package:lap_mart/view_model/controller/login/login_controller.dart';
 import 'package:lap_mart/view_model/controller/sign_up/sign_up_controller.dart';
 import '../../constants/app_colors.dart';
 import '../../res/common_widgets/common_button_widget.dart';
-import '../../res/common_widgets/common_row_header_widget.dart';
 import '../../res/common_widgets/common_text_form_field_widget.dart';
 import '../../res/common_widgets/common_account_row_widget.dart';
+import '../../res/common_widgets/custom_header_widget.dart';
 import '../../res/routs/routs_name.dart';
 import '../../utils/app_utils.dart';
 
@@ -49,10 +49,8 @@ class _SignUpViewState extends State<SignUpView> {
                 const SizedBox(
                   height: 150.0,
                 ),
-                const CommonRowHeaderWidget(
+                CustomHeaderWidget(
                   size: 33,
-                  svgIconMiddle: 'assets/icons/ic_laptop.svg',
-                  svgIconRight: 'assets/icons/ic_back.svg',
                   width: 35,
                   height: 25,
                 ),
