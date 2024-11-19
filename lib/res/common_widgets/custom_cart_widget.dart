@@ -6,7 +6,7 @@ import 'package:lap_mart/view_model/controller/cart/cart_controller.dart';
 import 'package:lap_mart/view_model/services/firebase/firebase_services.dart';
 
 import '../../constants/app_colors.dart';
-import 'common_text_widget.dart';
+import 'custom_text_widget.dart';
 
 class CommonCartWidget extends StatelessWidget {
   const CommonCartWidget({

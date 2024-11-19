@@ -31,8 +31,7 @@ class AddProductController extends GetxController {
 
   void loadProductScreen() {
     if (AppUtils.productIndex >= 0) {
-      ProductModel productModel =
-          FirebaseServices.productList[AppUtils.productIndex];
+      ProductModel productModel = AppUtils.list[AppUtils.productIndex];
       imageUrl.value = productModel.imageUrl;
       selectedOption.value = productModel.category;
       nameController.value.text = productModel.name;
@@ -94,8 +93,7 @@ class AddProductController extends GetxController {
   Future<void> uploadProduct() async {
     if (AppUtils.productIndex >= 0) {
       //Update existing product
-      ProductModel productModel =
-          FirebaseServices.productList[AppUtils.productIndex];
+      ProductModel productModel = AppUtils.list[AppUtils.productIndex];
       productModel.imageUrl = imageUrl.value;
       productModel.category = selectedOption.value;
       productModel.name = nameController.value.text;

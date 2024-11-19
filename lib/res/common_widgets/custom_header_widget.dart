@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../constants/app_fonts.dart';
-import 'common_text_widget.dart';
+import 'custom_text_widget.dart';
 
 class CustomHeaderWidget extends StatelessWidget {
   final double? size;

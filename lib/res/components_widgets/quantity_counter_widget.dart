@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:lap_mart/constants/app_colors.dart';
-import 'package:lap_mart/res/common_widgets/common_button_widget.dart';
+import 'package:lap_mart/res/common_widgets/custom_button_widget.dart';
 
 import '../../view_model/controller/product_detail/product_detail_controller.dart';
 

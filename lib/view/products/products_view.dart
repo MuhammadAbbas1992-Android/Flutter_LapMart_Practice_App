@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
+import 'package:lap_mart/res/common_widgets/custom_text_widget.dart';
 import 'package:lap_mart/utils/app_utils.dart';
 import 'package:lap_mart/view_model/controller/home_admin/home_admin_controller.dart';
 import 'package:lap_mart/view_model/controller/products/products_controller.dart';
@@ -56,7 +56,7 @@ class _ProductsViewState extends State<ProductsView> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const IconsRowWidget(),
+            IconsRowWidget(productsController: productsController),
             const SizedBox(height: 10),
             Obx(
               () {
@@ -72,13 +72,15 @@ class _ProductsViewState extends State<ProductsView> {
                           )),
                     ),
                   );
-                } else if (FirebaseServices.productList.isEmpty) {
+                } else if (productsController.categoryList.isEmpty) {
                   return const Expanded(
                       child: Center(child: Text('No product available')));
                 } else {
-                  return const Expanded(
+                  return Expanded(
                       child: ProductListViewWidget(
-                          dotMenuImage: 'assets/icons/ic_back.svg'));
+                    dotMenuImage: 'assets/icons/ic_back.svg',
+                    productsController: productsController,
+                  ));
                 }
               },
             )

@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:lap_mart/constants/app_colors.dart';
 import 'package:lap_mart/constants/app_fonts.dart';
-import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
+import 'package:lap_mart/res/common_widgets/custom_text_widget.dart';
 import 'package:lap_mart/view_model/controller/add_product/add_product_controller.dart';
 
 class DropdownWidget extends StatelessWidget {

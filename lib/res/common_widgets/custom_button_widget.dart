@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lap_mart/constants/app_colors.dart';
 
-import 'common_text_widget.dart';
+import 'custom_text_widget.dart';
 
 class CommonButtonWidget extends StatelessWidget {
   const CommonButtonWidget({

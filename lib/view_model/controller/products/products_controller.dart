@@ -10,25 +10,44 @@ import '../../services/firebase/firebase_services.dart';
 class ProductsController extends GetxController {
   // Observable RxBool for loading status
   RxBool isLoading = true.obs;
-  // RxList<ProductModel> categoryList = <ProductModel>[].obs;
+
+  RxList<ProductModel> categoryList = <ProductModel>[].obs;
 
   ProductsController() {
     loadProducts();
   }
+
   void loadProducts() async {
-    print('1 Product Controller isLoading ${isLoading.value}');
     AppUtils.productIndex = -1;
     await FirebaseServices.getProducts().then(
       (value) {
-        print('2 Product Controller isLoading ${isLoading.value}');
+        AppUtils.list = <ProductModel>[];
+        categoryList.value = FirebaseServices.productList;
+        AppUtils.list.addAll(categoryList);
+
         isLoading.value = !isLoading.value;
-        print('3 Product Controller isLoading ${isLoading.value}');
       },
     ).onError(
       (error, stackTrace) {
         AppUtils.mySnackBar(
             title: 'Error', message: 'Failed to load products data');
+        isLoading.value = !isLoading.value;
       },
     );
+  }
+
+  void getCategory(String category) {
+    isLoading.value = !isLoading.value;
+
+    AppUtils.list = <ProductModel>[];
+    categoryList.value = <ProductModel>[];
+
+    for (var product in FirebaseServices.productList) {
+      if (product.category == category) {
+        categoryList.add(product);
+        AppUtils.list.addAll(categoryList);
+      }
+    }
+    isLoading.value = !isLoading.value;
   }
 }

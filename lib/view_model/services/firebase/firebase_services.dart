@@ -6,9 +6,8 @@ import 'package:lap_mart/utils/app_utils.dart';
 import '../../../model/product_model.dart';
 
 class FirebaseServices {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
   // final FirebaseDatabase _rootRef = FirebaseDatabase.instance;
-// static List<ProductModel> categoryList = <ProductModel>[];
+
   static List<ProductModel> productList = <ProductModel>[];
   static List<CartModel> cartList = <CartModel>[];
 
@@ -18,15 +17,12 @@ class FirebaseServices {
     try {
       await databaseReference.child('Products').get().then(
         (value) {
-          productList.clear();
           if (value.exists) {
+            productList = <ProductModel>[];
             for (var childSnapshot in value.children) {
               final productModel = ProductModel.fromJson(
                   Map<String, dynamic>.from(childSnapshot.value as Map));
               productList.add(productModel);
-              /* if (productModel.category == 'Hp') {
-                categoryList.add(productModel);
-              }*/
             }
           }
         },
@@ -80,9 +76,6 @@ class FirebaseServices {
               final cartModel = CartModel.fromJson(
                   Map<String, dynamic>.from(childSnapshot.value as Map));
               cartList.add(cartModel);
-              /* if (productModel.category == 'Hp') {
-                categoryList.add(productModel);
-              }*/
             }
           }
         },

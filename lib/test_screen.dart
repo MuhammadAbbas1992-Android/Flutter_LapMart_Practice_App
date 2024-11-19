@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:lap_mart/res/common_widgets/common_card_info_widget.dart';
-import 'package:lap_mart/res/common_widgets/common_cart_widget.dart';
+import 'package:lap_mart/res/common_widgets/custom_card_info_widget.dart';
+import 'package:lap_mart/res/common_widgets/custom_cart_widget.dart';
 
 class TestScreen extends StatefulWidget {
   const TestScreen({super.key});

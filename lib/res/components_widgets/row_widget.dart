@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-import '../common_widgets/common_text_widget.dart';
+import '../common_widgets/custom_text_widget.dart';
 
 class RowWidget extends StatelessWidget {
   const RowWidget({

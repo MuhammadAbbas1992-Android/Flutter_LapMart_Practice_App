@@ -11,6 +11,7 @@ class AppUtils {
   static String userEmailKey = '';
   static bool isUserLogin = false;
   static int productIndex = -1;
+  static List<ProductModel> list = <ProductModel>[];
 
   static extractEmailPart(String email) {
     // Split the email using '@' as the delimiter

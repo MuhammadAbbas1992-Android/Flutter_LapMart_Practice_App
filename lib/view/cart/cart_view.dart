@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:lap_mart/res/common_widgets/common_button_widget.dart';
-import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
+import 'package:lap_mart/res/common_widgets/custom_button_widget.dart';
+import 'package:lap_mart/res/common_widgets/custom_text_widget.dart';
 import 'package:lap_mart/view_model/controller/cart/cart_controller.dart';
 import 'package:lap_mart/view_model/services/firebase/firebase_services.dart';
 

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lap_mart/constants/app_colors.dart';
-import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
+import 'package:lap_mart/res/common_widgets/custom_text_widget.dart';
 import 'package:lap_mart/res/common_widgets/custom_header_widget.dart';
 import 'package:lap_mart/res/components_widgets/video_play_widget.dart';
 import 'package:lap_mart/constants/app_constants.dart';

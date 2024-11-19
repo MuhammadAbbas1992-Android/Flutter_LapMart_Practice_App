@@ -6,7 +6,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:lap_mart/utils/app_utils.dart';
 import 'package:lap_mart/view/home/home_view.dart';
 
-import '../../res/common_widgets/common_icon_button_widget.dart';
+import '../../res/common_widgets/custom_icon_button_widget.dart';
 import '../../res/routs/routs_name.dart';
 
 class NavBar extends StatelessWidget {

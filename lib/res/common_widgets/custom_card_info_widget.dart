@@ -6,12 +6,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:lap_mart/constants/app_colors.dart';
 import 'package:lap_mart/model/product_model.dart';
-import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
+import 'package:lap_mart/res/common_widgets/custom_text_widget.dart';
 import 'package:lap_mart/utils/app_utils.dart';
-import 'package:lap_mart/view/add_product/add_product_view.dart';
-import 'package:lap_mart/view_model/controller/home_admin/home_admin_controller.dart';
-import 'package:lap_mart/view_model/controller/products/products_controller.dart';
 import 'package:lap_mart/view_model/services/firebase/firebase_services.dart';
+
+import '../../view_model/controller/home_admin/home_admin_controller.dart';
+import '../../view_model/controller/products/products_controller.dart';
 
 class CommonCardInfoWidget extends StatelessWidget {
   const CommonCardInfoWidget({
@@ -19,15 +19,17 @@ class CommonCardInfoWidget extends StatelessWidget {
     this.dotMenuImage,
     required this.productIndex,
     this.onTap,
+    this.controller,
   });
 
   final String? dotMenuImage;
   final int productIndex;
   final VoidCallback? onTap;
+  final dynamic controller;
 
   @override
   Widget build(BuildContext context) {
-    ProductModel productModel = FirebaseServices.productList[productIndex];
+    // ProductModel productModel = FirebaseServices.categoryList[productIndex];
 
     return InkWell(
       onTap: onTap,
@@ -67,13 +69,13 @@ class CommonCardInfoWidget extends StatelessWidget {
                     SizedBox(
                       height: 115,
                       child: Image.network(
-                        productModel.imageUrl,
+                        controller.categoryList[productIndex].imageUrl,
                         fit: BoxFit.fill,
                       ),
                     ),
                     const SizedBox(height: 8),
                     CommonTextWidget(
-                      text: productModel.name,
+                      text: controller.categoryList[productIndex].name,
                       size: 12,
                       fontWeight: FontWeight.bold,
                     ),
@@ -81,7 +83,7 @@ class CommonCardInfoWidget extends StatelessWidget {
                       height: 4,
                     ),
                     CommonTextWidget(
-                      text: productModel.price,
+                      text: controller.categoryList[productIndex].price,
                       size: 12,
                       fontWeight: FontWeight.bold,
                     ),

@@ -4,13 +4,14 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
+import 'package:lap_mart/res/common_widgets/custom_text_widget.dart';
 import 'package:lap_mart/constants/app_constants.dart';
+import 'package:lap_mart/res/routs/routs_name.dart';
 import 'package:lap_mart/utils/app_utils.dart';
 import 'package:lap_mart/view_model/controller/product_detail/product_detail_controller.dart';
 
-import '../../res/common_widgets/common_button_widget.dart';
-import '../../res/common_widgets/common_image_widget.dart';
+import '../../res/common_widgets/custom_button_widget.dart';
+import '../../res/common_widgets/custom_image_widget.dart';
 import '../../res/common_widgets/custom_header_widget.dart';
 import '../../res/components_widgets/quantity_counter_widget.dart';
 import '../nav_bar/nav_bar.dart';
@@ -36,7 +37,19 @@ class _ProductDetailViewState extends State<ProductDetailView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: true,
+        // automaticallyImplyLeading: true,
+        leading: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: InkWell(
+            onTap: () => Get.toNamed(RoutsName.homeAdminView),
+            child: SvgPicture.asset(
+              'assets/icons/ic_back.svg',
+              color: Colors.black,
+              width: 10,
+              height: 10,
+            ),
+          ),
+        ),
         actions: const [
           Spacer(),
           CustomHeaderWidget(),

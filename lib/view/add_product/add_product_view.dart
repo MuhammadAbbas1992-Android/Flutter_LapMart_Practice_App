@@ -2,21 +2,22 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_common/get_reset.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:lap_mart/constants/app_colors.dart';
 import 'package:lap_mart/model/product_model.dart';
-import 'package:lap_mart/res/common_widgets/common_text_form_field_widget.dart';
-import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
+import 'package:lap_mart/res/common_widgets/custom_text_form_field_widget.dart';
+import 'package:lap_mart/res/common_widgets/custom_text_widget.dart';
 import 'package:lap_mart/res/routs/routs_name.dart';
 import 'package:lap_mart/utils/app_utils.dart';
 import 'package:lap_mart/view_model/controller/add_product/add_product_controller.dart';
 
-import '../../res/common_widgets/common_button_widget.dart';
+import '../../res/common_widgets/custom_button_widget.dart';
 import '../../res/common_widgets/custom_header_widget.dart';
 import '../../res/components_widgets/dropdown_widget.dart';
-import '../../res/common_widgets/common_text_field_widget.dart';
+import '../../res/common_widgets/custom_text_field_widget.dart';
 import '../nav_bar/nav_bar.dart';
 
 class AddProductView extends StatefulWidget {
@@ -39,11 +40,26 @@ class _AddProductViewState extends State<AddProductView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(automaticallyImplyLeading: true, actions: const [
-        Spacer(),
-        CustomHeaderWidget(),
-        Spacer(),
-      ]),
+      appBar: AppBar(
+        // automaticallyImplyLeading: true,
+        leading: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: InkWell(
+            onTap: () => Get.back(),
+            child: SvgPicture.asset(
+              'assets/icons/ic_back.svg',
+              color: Colors.black,
+              width: 10,
+              height: 10,
+            ),
+          ),
+        ),
+        actions: const [
+          Spacer(),
+          CustomHeaderWidget(),
+          Spacer(),
+        ],
+      ),
       body: SafeArea(
           child: SingleChildScrollView(
         child: Container(

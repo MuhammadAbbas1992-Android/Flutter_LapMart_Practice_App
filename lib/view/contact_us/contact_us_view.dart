@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
+import 'package:lap_mart/res/common_widgets/custom_text_widget.dart';
 import 'package:lap_mart/constants/app_constants.dart';
-import '../../res/common_widgets/common_email_widget.dart';
+import '../../res/common_widgets/custom_email_widget.dart';
 import '../../res/common_widgets/custom_header_widget.dart';
 import '../nav_bar/nav_bar.dart';
 

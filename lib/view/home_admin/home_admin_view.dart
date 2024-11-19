@@ -1,11 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:lap_mart/utils/status.dart';
-import '../../res/common_widgets/common_button_widget.dart';
+import '../../res/common_widgets/custom_button_widget.dart';
 import '../../res/common_widgets/custom_header_widget.dart';
 import '../../res/components_widgets/icons_row_widget.dart';
 import '../../res/components_widgets/product_list_view_widget.dart';
@@ -74,7 +71,9 @@ class _HomeAdminViewState extends State<HomeAdminView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const IconsRowWidget(),
+            IconsRowWidget(
+              homeAdminController: homeAdminController,
+            ),
             const SizedBox(height: 10),
             Obx(
               () {
@@ -90,13 +89,14 @@ class _HomeAdminViewState extends State<HomeAdminView> {
                           )),
                     ),
                   );
-                } else if (FirebaseServices.productList.isEmpty) {
+                } else if (homeAdminController.categoryList.isEmpty) {
                   return const Expanded(
                       child: Center(child: Text('No product available')));
                 } else {
-                  return const Expanded(
+                  return Expanded(
                       child: ProductListViewWidget(
                     dotMenuImage: 'assets/icons/ic_dot_menu.svg',
+                    homeAdminController: homeAdminController,
                   ));
                 }
               },

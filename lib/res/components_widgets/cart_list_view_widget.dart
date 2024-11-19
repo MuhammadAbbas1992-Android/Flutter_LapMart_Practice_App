@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:lap_mart/constants/app_colors.dart';
-import 'package:lap_mart/res/common_widgets/common_text_widget.dart';
+import 'package:lap_mart/res/common_widgets/custom_text_widget.dart';
 import 'package:lap_mart/view_model/controller/cart/cart_controller.dart';
 import 'package:lap_mart/view_model/services/firebase/firebase_services.dart';
-import '../common_widgets/common_cart_widget.dart';
+import '../common_widgets/custom_cart_widget.dart';
 
 class CartListViewWidget extends StatelessWidget {
   const CartListViewWidget({
