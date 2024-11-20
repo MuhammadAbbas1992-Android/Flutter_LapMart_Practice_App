@@ -17,7 +17,6 @@ import 'package:lap_mart/view_model/controller/login/login_controller.dart';
 
 import '../../res/common_widgets/custom_button_widget.dart';
 import '../../res/common_widgets/custom_text_form_field_widget.dart';
-import '../../res/common_widgets/custom_text_widget.dart';
 import '../../res/common_widgets/custom_header_widget.dart';
 
 class LoginView extends StatefulWidget {
@@ -29,7 +28,14 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   final loginController = Get.put(LoginController());
-  final _formKeys = GlobalKey<FormState>();
+  final formKeys = List.generate(2, (index) => GlobalKey<FormState>());
+
+  void login(context) async {
+    if (formKeys.any((e) => e.currentState!.validate() == false)) {
+      return;
+    }
+    loginController.loginUser();
+  }
 
   @override
   void dispose() {
@@ -59,34 +65,39 @@ class _LoginViewState extends State<LoginView> {
                 const SizedBox(
                   height: 100.0,
                 ),
-                Form(
-                    child: Column(
+                Column(
                   children: [
-                    CommonTextFormFieldWidget(
-                      hint: 'Email Address',
-                      customLabel: 'Email',
-                      prefixIcon: 'assets/icons/ic_email.svg',
-                      controller: loginController.emailController.value,
+                    Form(
+                      key: formKeys[0],
+                      child: CommonTextFormFieldWidget(
+                        hint: 'Email Address',
+                        customLabel: 'Email',
+                        prefixIcon: 'assets/icons/ic_email.svg',
+                        controller: loginController.emailController.value,
+                      ),
                     ),
                     const SizedBox(
                       height: 15.0,
                     ),
-                    CommonTextFormFieldWidget(
-                      hint: 'Password',
-                      customLabel: 'Password',
-                      prefixIcon: 'assets/icons/ic_password.svg',
-                      controller: loginController.passwordController.value,
-                      // validator: AppUtils.validatePassword,
-                      obscure: true,
+                    Form(
+                      key: formKeys[1],
+                      child: CommonTextFormFieldWidget(
+                        hint: 'Password',
+                        customLabel: 'Password',
+                        prefixIcon: 'assets/icons/ic_password.svg',
+                        controller: loginController.passwordController.value,
+                        // validator: AppUtils.validatePassword,
+                        obscure: true,
+                      ),
                     ),
                   ],
-                )),
+                ),
                 const SizedBox(
                   height: 40.0,
                 ),
                 CommonButtonWidget(
                   text: 'Sign In',
-                  onTap: () => loginController.loginUser(_formKeys),
+                  onTap: () => login(context),
                 ),
                 const SizedBox(
                   height: 10.0,

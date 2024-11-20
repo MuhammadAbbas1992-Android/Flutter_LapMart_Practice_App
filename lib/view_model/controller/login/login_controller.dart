@@ -20,13 +20,7 @@ class LoginController extends GetxController {
 
   void validateEmail() {}
 
-  void loginUser(dynamic formKey) async {
-    /*if (formKey.currentState!.validate()) {
-      loading.value = true;
-      AppUtils.mySnackBar(
-          title: 'Message', message: confirmPasswordController.value.text);
-    }*/
-
+  void loginUser() async {
     try {
       UserCredential newUser = await _auth.signInWithEmailAndPassword(
           email: emailController.value.text,
