@@ -29,6 +29,7 @@ class AddProductView extends StatefulWidget {
 
 class _AddProductViewState extends State<AddProductView> {
   final addProductController = Get.put(AddProductController());
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
@@ -64,104 +65,117 @@ class _AddProductViewState extends State<AddProductView> {
           child: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    const CommonTextWidget(
-                      text: 'Add New Device',
-                      size: 20.0,
-                      fontWeight: FontWeight.bold,
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Obx(
-                      () => Container(
-                        height: 143,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          color: AppColors.tinGrey,
-                          border:
-                              Border.all(color: AppColors.lightGrey, width: 1),
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        child: addProductController.imageUrl.isEmpty &&
-                                addProductController.imagePath.isEmpty
-                            ? Center(
-                                child: CommonTextWidget(
-                                  text: '+ Add Image',
-                                  textAlign: TextAlign.center,
-                                  onTap: () => addProductController.getImage(),
-                                ),
-                              )
-                            : addProductController.imagePath.isNotEmpty
-                                ? InkWell(
-                                    onTap: () =>
-                                        addProductController.getImage(),
-                                    child: Image.file(
-                                      File(
-                                          addProductController.imagePath.value),
-                                      fit: BoxFit.fill,
-                                    ),
-                                  )
-                                : InkWell(
-                                    onTap: () =>
-                                        addProductController.getImage(),
-                                    child: Image.network(
-                                      addProductController.imageUrl.value,
-                                      fit: BoxFit.fill,
-                                    ),
-                                  ),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 30,
                       ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    DropdownWidget(
-                      controller: addProductController,
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    CommonTextFieldWidget(
-                      hint: 'Product Name',
-                      controller: addProductController.nameController.value,
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    CommonTextFieldWidget(
-                      hint: 'Price',
-                      controller: addProductController.priceController.value,
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    CommonTextFieldWidget(
-                      hint: 'Description',
-                      height: 115,
-                      controller:
-                          addProductController.descriptionController.value,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    CommonButtonWidget(
-                      text: 'ADD',
-                      onTap: () => addProductController.addProduct(),
-                    ),
-                  ],
-                ),
-              )
-            ],
+                      const CommonTextWidget(
+                        text: 'Add New Device',
+                        size: 20.0,
+                        fontWeight: FontWeight.bold,
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Obx(
+                        () => Container(
+                          height: 143,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: AppColors.tinGrey,
+                            border: Border.all(
+                                color: AppColors.lightGrey, width: 1),
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          child: addProductController.imageUrl.isEmpty &&
+                                  addProductController.imagePath.isEmpty
+                              ? Center(
+                                  child: CommonTextWidget(
+                                    text: '+ Add Image',
+                                    textAlign: TextAlign.center,
+                                    onTap: () =>
+                                        addProductController.getImage(),
+                                  ),
+                                )
+                              : addProductController.imagePath.isNotEmpty
+                                  ? InkWell(
+                                      onTap: () =>
+                                          addProductController.getImage(),
+                                      child: Image.file(
+                                        File(addProductController
+                                            .imagePath.value),
+                                        fit: BoxFit.fill,
+                                      ),
+                                    )
+                                  : InkWell(
+                                      onTap: () =>
+                                          addProductController.getImage(),
+                                      child: Image.network(
+                                        addProductController.imageUrl.value,
+                                        fit: BoxFit.fill,
+                                      ),
+                                    ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      DropdownWidget(
+                        controller: addProductController,
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      CommonTextFieldWidget(
+                        hint: 'Product Name',
+                        controller: addProductController.nameController.value,
+                        validator: (value) =>
+                            AppUtils.validateFieldData(value, 'Product Name'),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      CommonTextFieldWidget(
+                        hint: 'Price',
+                        controller: addProductController.priceController.value,
+                        validator: (value) =>
+                            AppUtils.validateFieldData(value, 'Price'),
+                        keyboardType: TextInputType.number,
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      CommonTextFieldWidget(
+                        hint: 'Description',
+                        height: 115,
+                        controller:
+                            addProductController.descriptionController.value,
+                        validator: (value) =>
+                            AppUtils.validateFieldData(value, 'Description'),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      CommonButtonWidget(
+                        text: 'ADD',
+                        onTap: () => _formKey.currentState!.validate()
+                            ? addProductController.addProduct()
+                            : null,
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       )),

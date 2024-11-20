@@ -28,14 +28,7 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   final loginController = Get.put(LoginController());
-  final formKeys = List.generate(2, (index) => GlobalKey<FormState>());
-
-  void login(context) async {
-    if (formKeys.any((e) => e.currentState!.validate() == false)) {
-      return;
-    }
-    loginController.loginUser();
-  }
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
@@ -65,39 +58,40 @@ class _LoginViewState extends State<LoginView> {
                 const SizedBox(
                   height: 100.0,
                 ),
-                Column(
-                  children: [
-                    Form(
-                      key: formKeys[0],
-                      child: CommonTextFormFieldWidget(
+                Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      CommonTextFormFieldWidget(
                         hint: 'Email Address',
                         customLabel: 'Email',
                         prefixIcon: 'assets/icons/ic_email.svg',
                         controller: loginController.emailController.value,
+                        validator: (value) => AppUtils.validateEmail(value),
+                        keyboardType: TextInputType.emailAddress,
                       ),
-                    ),
-                    const SizedBox(
-                      height: 15.0,
-                    ),
-                    Form(
-                      key: formKeys[1],
-                      child: CommonTextFormFieldWidget(
+                      const SizedBox(
+                        height: 15.0,
+                      ),
+                      CommonTextFormFieldWidget(
                         hint: 'Password',
                         customLabel: 'Password',
                         prefixIcon: 'assets/icons/ic_password.svg',
                         controller: loginController.passwordController.value,
-                        // validator: AppUtils.validatePassword,
+                        validator: (value) => AppUtils.validatePassword(value),
                         obscure: true,
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 const SizedBox(
                   height: 40.0,
                 ),
                 CommonButtonWidget(
                   text: 'Sign In',
-                  onTap: () => login(context),
+                  onTap: () => _formKey.currentState!.validate()
+                      ? loginController.loginUser()
+                      : null,
                 ),
                 const SizedBox(
                   height: 10.0,

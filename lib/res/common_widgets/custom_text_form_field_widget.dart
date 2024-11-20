@@ -16,6 +16,7 @@ class CommonTextFormFieldWidget extends StatelessWidget {
   final String prefixIcon;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
+  final TextInputType? keyboardType;
 
   const CommonTextFormFieldWidget({
     super.key,
@@ -28,6 +29,7 @@ class CommonTextFormFieldWidget extends StatelessWidget {
     this.validator,
     this.obscure = false,
     this.customLabel,
+    this.keyboardType,
   });
 
   @override
@@ -40,6 +42,8 @@ class CommonTextFormFieldWidget extends StatelessWidget {
         obscureText: obscure,
         obscuringCharacter: obscure == true ? '*' : '.',
         textAlignVertical: TextAlignVertical.center,
+        keyboardType: keyboardType,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         // maxLines: 1, // Allows the TextField to grow with content
         // expands: true,
         decoration: InputDecoration(
@@ -67,9 +71,12 @@ class CommonTextFormFieldWidget extends StatelessWidget {
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(radius),
               borderSide: const BorderSide(color: AppColors.lightGrey)),
-          /*errorBorder: OutlineInputBorder(
+          errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(radius),
-              borderSide: const BorderSide(color: AppColors.lightGrey)),*/
+              borderSide: const BorderSide(color: AppColors.lightGrey)),
+          focusedErrorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(radius),
+              borderSide: const BorderSide(color: AppColors.lightGrey)),
         ),
       ),
     );

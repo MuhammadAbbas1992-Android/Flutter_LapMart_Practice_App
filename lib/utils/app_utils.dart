@@ -76,6 +76,20 @@ class AppUtils {
     return null;
   }
 
+  static String? validateFieldData(String? value, String field) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter $field';
+    }
+    return null;
+  }
+
+  static String? validateDropDownItem(String value, String choice) {
+    if (value == choice) {
+      return 'Please select an item from dropdown ';
+    }
+    return null;
+  }
+
   static void mySnackBar({required String title, required String message}) {
     Get.snackbar(title, message);
   }

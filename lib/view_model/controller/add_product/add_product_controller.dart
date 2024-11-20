@@ -59,7 +59,10 @@ class AddProductController extends GetxController {
     if (imagePath.value.isEmpty && imageUrl.value.isEmpty) {
       AppUtils.mySnackBar(
           title: 'Alert', message: 'Please add image of product');
-
+      return;
+    } else if (selectedOption.value == 'Choose Brand') {
+      AppUtils.mySnackBar(
+          title: 'Alert', message: 'Please select an option from dropdown');
       return;
     } else {
       uploadImage();

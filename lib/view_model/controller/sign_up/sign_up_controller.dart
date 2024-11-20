@@ -21,16 +21,7 @@ class SignUpController extends GetxController {
 
   void validateEmail() {}
 
-  void signUpUser(dynamic formKey) async {
-    /*if (formKey.currentState!.validate()) {
-      loading.value = true;
-      AppUtils.mySnackBar(
-          title: 'Message', message: confirmPasswordController.value.text);
-    }*/
-
-    print('ABC ${emailController.value.text}');
-    print('ABC ${passwordController.value.text}');
-    print('ABC ${confirmPasswordController.value.text}');
+  void signUpUser() async {
     try {
       UserCredential newUser = await _auth.createUserWithEmailAndPassword(
           email: emailController.value.text,
@@ -45,8 +36,38 @@ class SignUpController extends GetxController {
         AppUtils.mySnackBar(
             title: 'Response', message: 'Error occurred for creating new user');
       }
+    } on FirebaseAuthException catch (e) {
+      String errorMessage = '';
+
+      // Check the error code and set specific messages
+      switch (e.code) {
+        case 'email-already-in-use':
+          errorMessage = 'This email is already in use by another account.';
+          break;
+        case 'invalid-email':
+          errorMessage = 'The email address is not valid.';
+          break;
+        case 'operation-not-allowed':
+          errorMessage =
+              'Email/password accounts are not enabled. Enable them in the Firebase Console.';
+          break;
+        case 'weak-password':
+          errorMessage = 'The password is too weak.';
+          break;
+        default:
+          errorMessage = 'An unknown error occurred.';
+      }
+
+      AppUtils.mySnackBar(
+        title: 'Error',
+        message: errorMessage,
+      );
     } catch (e) {
-      AppUtils.mySnackBar(title: 'Response', message: 'Exception Occurred: $e');
+      // Catch any other errors that are not FirebaseAuthException
+      AppUtils.mySnackBar(
+        title: 'Error',
+        message: 'An error occurred: ${e.toString()}',
+      );
     }
   }
 }

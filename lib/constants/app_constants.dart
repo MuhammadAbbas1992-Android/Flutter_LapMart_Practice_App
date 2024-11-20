@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 const String text1 =
     'My name is Lolwah Altayyar, i’m an IT student, passionate about learning HTML, Javascript and python. I love creating and designing web pages and I hope to become a professional at it.';
 const String text2 =

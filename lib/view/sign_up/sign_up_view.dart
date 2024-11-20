@@ -25,10 +25,6 @@ class SignUpView extends StatefulWidget {
 class _SignUpViewState extends State<SignUpView> {
   final signUpController = Get.put(SignUpController());
   final _formKeys = GlobalKey<FormState>();
-  // final _formKeys = List.generate(3, (index) => GlobalKey<FormState>());
-
-  // final controllers = List.generate(3, (index) => TextEditingController());
-  // final formKeys = List.generate(3, (index) => GlobalKey<FormState>());
 
   @override
   void dispose() {
@@ -66,58 +62,36 @@ class _SignUpViewState extends State<SignUpView> {
                           customLabel: 'Email',
                           prefixIcon: 'assets/icons/ic_email.svg',
                           controller: signUpController.emailController.value,
-
-                          /*validator: (value) {
-                            String? msg = AppUtils.validateEmail(value);
-                            AppUtils.mySnackBar(title: 'Alert', message: msg!);
-                            // return msg;
-                            return null;
-                          },*/
+                          validator: (value) => AppUtils.validateEmail(value),
+                          keyboardType: TextInputType.emailAddress,
                         ),
                         const SizedBox(
                           height: 15.0,
                         ),
                         CommonTextFormFieldWidget(
-                          obscure: true,
                           hint: 'Password',
                           customLabel: 'Password',
                           prefixIcon: 'assets/icons/ic_password.svg',
                           controller: signUpController.passwordController.value,
-                          /*validator: (value) {
-                              // Validate only if email is valid
-                              if (_formKeys.currentState?.validate() == true) {
-                                String? msg = AppUtils.validatePassword(value);
-                                AppUtils.mySnackBar(
-                                    title: 'Alert', message: msg!);
-                                // return msg;
-                              }
-                              return null;
-                            }*/
+                          validator: (value) =>
+                              AppUtils.validatePassword(value),
+                          obscure: true,
                         ),
                         const SizedBox(
                           height: 15.0,
                         ),
                         CommonTextFormFieldWidget(
-                          obscure: true,
                           hint: 'Confirm Password',
                           customLabel: 'Confirm Password',
                           prefixIcon: 'assets/icons/ic_password.svg',
                           controller:
                               signUpController.confirmPasswordController.value,
-
-                          /*validator: (value) {
-                            // Validate only if email and password are valid
-                            if (_formKeys.currentState?.validate() == true) {
-                              String? msg = AppUtils.validateConfirmPassword(
+                          validator: (value) =>
+                              AppUtils.validateConfirmPassword(
                                   value,
                                   signUpController
-                                      .passwordController.value.text);
-                              AppUtils.mySnackBar(
-                                  title: 'Alert', message: msg!);
-                              // return msg;
-                            }
-                            return null;
-                          },*/
+                                      .passwordController.value.text),
+                          obscure: true,
                         ),
                       ],
                     )),
@@ -126,7 +100,9 @@ class _SignUpViewState extends State<SignUpView> {
                 ),
                 CommonButtonWidget(
                   text: 'Sign Up',
-                  onTap: () => signUpController.signUpUser(_formKeys),
+                  onTap: () => _formKeys.currentState!.validate()
+                      ? signUpController.signUpUser()
+                      : null,
                 ),
                 const SizedBox(
                   height: 10.0,
